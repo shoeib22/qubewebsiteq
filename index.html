@@ -11,7 +11,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 :root{
-  --or:#FF6B2B;
+  --or:#d46d41;
   --or2:rgba(255,107,43,0.18);
   --or3:rgba(255,107,43,0.06);
   --gold:#C9A84C;
@@ -71,7 +71,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(24px);padding:16px 
 .btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--or);color:#000;padding:15px 38px;font-size:12px;letter-spacing:.1em;font-weight:500;border:none;transition:all .35s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(255,107,43,.38)}
 .btn-g{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ts);padding:15px 38px;font-size:12px;letter-spacing:.1em;font-weight:300;border:1px solid rgba(255,255,255,.14);transition:all .3s}
-.btn-g:hover{color:var(--tp);border-color:rgba(255,255,255,.35)}
+.btn-g:hover{color:var(--tp);border-color:rgba(230, 151, 73, 0.35)}
 .arrow-r{font-size:16px;transition:transform .3s}
 .btn-p:hover .arrow-r,.btn-g:hover .arrow-r{transform:translateX(4px)}
 
@@ -436,6 +436,57 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
 
 /* ─── MOBILE NAV TOGGLE ──────────────────────── */
 .menu-tog{display:none;background:none;border:1px solid rgba(255,107,43,.35);color:var(--or);padding:8px 14px;font-size:13px}
+/* ─── NEON ORANGE BUTTON SYSTEM ────────────────────── */
+
+/* Navigation CTA */
+.nav-cta:hover {
+  background: #FF5F1F !important;
+  color: #000 !important;
+  border-color: #FF5F1F !important;
+  box-shadow: 0 0 15px #FF5F1F, 0 0 30px rgba(255, 95, 31, 0.4) !important;
+  font-weight: 600;
+}
+
+/* Primary Action Buttons (Experience It, Design My Theatre, etc) */
+.btn-p:hover {
+  background: #FF5F1F !important;
+  color: #000 !important;
+  transform: translateY(-3px);
+  /* Layered neon glow: sharp inner, soft outer */
+  box-shadow: 
+    0 0 10px #FF5F1F, 
+    0 0 25px #FF5F1F, 
+    0 0 50px rgba(255, 95, 31, 0.5) !important;
+}
+
+/* Secondary/Ghost Buttons (View Our Work) */
+.btn-g:hover {
+  background: rgba(255, 95, 31, 0.08) !important;
+  color: #FF5F1F !important;
+  border-color: #FF5F1F !important;
+  box-shadow: 0 0 20px rgba(255, 95, 31, 0.25) !important;
+  text-shadow: 0 0 8px rgba(255, 95, 31, 0.5);
+}
+
+/* Project Filter Buttons */
+.filter-btn:hover, .filter-btn.active {
+  color: #FF5F1F !important;
+  border-bottom-color: #FF5F1F !important;
+  text-shadow: 0 0 10px rgba(255, 95, 31, 0.4);
+}
+
+/* Contact Form Submission */
+.form-submit:hover {
+  background: #FF5F1F !important;
+  color: #000 !important;
+  box-shadow: 0 0 25px #FF5F1F !important;
+  transform: scale(1.01);
+}
+
+/* Smooth transition for all interactive elements */
+button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
 </style>
 </head>
 <body>
@@ -511,9 +562,10 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
     <div class="hero-content">
       <p class="hero-ol">HYDERABAD · EST. 2016</p>
       <h1 class="hero-h1">Your Home.<br><em>Reimagined.</em></h1>
-      <p class="hero-sub">We don't install systems. We craft intelligent living experiences that you feel in every room, every moment.</p>
+      <p class="hero-sub">We don't install systems. 
+        We craft intelligent living experiences that you feel in every room, every moment.</p>
       <div class="hero-btns">
-        <button class="btn-p" onclick="showPage('contact')">Experience It <span class="arrow-r">→</span></button>
+        <button class="btn-g" onclick="showPage('contact')">Experience It <span class="arrow-r">→</span></button>
         <button class="btn-g" onclick="showPage('projects')">View Our Work <span class="arrow-r">→</span></button>
       </div>
     </div>
@@ -532,7 +584,7 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
           <div><div class="stat-num">8</div><div class="stat-lbl">YEARS MASTERY</div></div>
           <div><div class="stat-num">∞</div><div class="stat-lbl">POSSIBILITIES</div></div>
         </div>
-        <button class="btn-p" onclick="showPage('theatre')">Explore Home Theatre <span class="arrow-r">→</span></button>
+        <button class="btn-g" onclick="showPage('theatre')">Explore Home Theatre <span class="arrow-r">→</span></button>
       </div>
       <div class="th-vis reveal rd2">
         <div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
@@ -569,7 +621,7 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
       <div class="ctrl-card"><span class="ci">⬡</span><div class="cn">ONE TOUCH</div><div class="cd">Every system. One scene. Total harmony.</div><div class="tog"><div class="ttrack" onclick="this.classList.toggle('on')"><div class="tthumb"></div></div></div></div>
     </div>
     <div style="margin-top:44px" class="reveal rd2">
-      <button class="btn-p" onclick="showPage('smarthome')">Explore Smart Home <span class="arrow-r">→</span></button>
+      <button class="btn-g" onclick="showPage('smarthome')">Explore Smart Home <span class="arrow-r">→</span></button>
     </div>
   </section>
 
@@ -600,7 +652,7 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
     <h2 class="reveal rd1">Let's Build Your<br><em>Dream Space.</em></h2>
     <p class="reveal rd2">Every extraordinary home started with one conversation.</p>
     <div class="btns reveal rd3">
-      <button class="btn-p" onclick="showPage('contact')">Start a Conversation <span class="arrow-r">→</span></button>
+      <button class="btn-g" onclick="showPage('contact')">Start a Conversation <span class="arrow-r">→</span></button>
       <button class="btn-g" onclick="showPage('projects')">View Our Work <span class="arrow-r">→</span></button>
     </div>
     <div class="contact-line reveal rd4"><span class="dot">●</span> &nbsp;Hyderabad, India &nbsp;·&nbsp; info@qubetechnologies.in &nbsp;·&nbsp; +91 98765 43210</div>
@@ -667,7 +719,7 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
       <h1>Sound.<br>Light.<br><em>Sensation.</em></h1>
       <p>Step into a world where every frame is a masterpiece and every note fills the room with purpose. Your private cinema awaits.</p>
       <div class="btns">
-        <button class="btn-p" onclick="showPage('contact')">Design My Theatre <span class="arrow-r">→</span></button>
+        <button class="btn-g" onclick="showPage('contact')">Design My Theatre <span class="arrow-r">→</span></button>
         <button class="btn-g" onclick="showPage('projects')">See Projects <span class="arrow-r">→</span></button>
       </div>
     </div>
@@ -714,7 +766,7 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
           <div class="spec-item"><span class="spec-dot"></span>Ambient light rejection screens available</div>
           <div class="spec-item"><span class="spec-dot"></span>Motorised masking for true cinematic ratios</div>
         </div>
-        <button class="btn-p" onclick="showPage('contact')">Consult Our Experts <span class="arrow-r">→</span></button>
+        <button class="btn-g" onclick="showPage('contact')">Consult Our Experts <span class="arrow-r">→</span></button>
       </div>
     </div>
   </section>
@@ -752,6 +804,17 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
   </section>
 
   <div class="divider"></div>
+  <footer>
+    <div class="ft">
+      <div class="fb"><h3><span class="logo-hex" style="width:20px;height:20px"></span>QUBE TECHNOLOGIES</h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
+      <div class="flinks">
+        <div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
+        <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li></ul></div>
+      </div>
+    </div>
+    <div class="fb-bottom"><p>© 2024 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
+  </footer>
+</div>
 
 <!-- ════════════════════════════════════════════════════
      PAGE: SMART HOME
@@ -792,7 +855,7 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
       <h1>Live Smarter.<br><em>Feel More.</em></h1>
       <p>Your home, orchestrated by intelligence. Every system working in perfect harmony — so you can focus on living.</p>
       <div class="btns">
-        <button class="btn-p" onclick="showPage('contact')">Automate My Home <span class="arrow-r">→</span></button>
+        <button class="btn-g" onclick="showPage('contact')">Automate My Home <span class="arrow-r">→</span></button>
         <button class="btn-g" onclick="showPage('projects')">See Projects <span class="arrow-r">→</span></button>
       </div>
     </div>
@@ -886,7 +949,7 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
         <div class="ps"><div class="ps-dot">5</div><div class="ps-body"><h3>Lifetime Support</h3><p>Remote monitoring, proactive maintenance, and a dedicated support line — we are always just a call away.</p></div></div>
       </div>
       <div style="text-align:center;margin-top:52px" class="reveal rd2">
-        <button class="btn-p" onclick="showPage('contact')">Begin Your Journey <span class="arrow-r">→</span></button>
+        <button class="btn-g" onclick="showPage('contact')">Begin Your Journey <span class="arrow-r">→</span></button>
       </div>
     </div>
   </section>
@@ -897,17 +960,6 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
       <div class="flinks">
         <div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li></ul></div>
         <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
-      </div>
-    </div>
-    <div class="fb-bottom"><p>© 2024 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
-  </footer>
-</div>
-  <footer>
-    <div class="ft">
-      <div class="fb"><h3><span class="logo-hex" style="width:20px;height:20px"></span>QUBE TECHNOLOGIES</h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
-      <div class="flinks">
-        <div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
-        <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li></ul></div>
       </div>
     </div>
     <div class="fb-bottom"><p>© 2024 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
@@ -999,7 +1051,7 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
     <h2 class="reveal rd1">Ready to Create<br><em>Something Extraordinary?</em></h2>
     <p class="reveal rd2">Let's talk about your space, your vision, your dream.</p>
     <div class="btns reveal rd3">
-      <button class="btn-p" onclick="showPage('contact')">Start the Conversation <span class="arrow-r">→</span></button>
+      <button class="btn-g" onclick="showPage('contact')">Start the Conversation <span class="arrow-r">→</span></button>
     </div>
   </section>
 
@@ -1107,7 +1159,7 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
     <h2 class="reveal rd1">Your Home.<br><em>Our Next Chapter.</em></h2>
     <p class="reveal rd2">Let's create something you will be proud of for decades.</p>
     <div class="btns reveal rd3">
-      <button class="btn-p" onclick="showPage('contact')">Start a Conversation <span class="arrow-r">→</span></button>
+      <button class="btn-g" onclick="showPage('contact')">Start a Conversation <span class="arrow-r">→</span></button>
       <button class="btn-g" onclick="showPage('projects')">See Our Work <span class="arrow-r">→</span></button>
     </div>
   </section>
