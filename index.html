@@ -487,6 +487,48 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
 button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
+  /* Container for the UI */
+.netflix-mockup {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  background: #000; /* Dark background like a screen */
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* Logo and Nav */
+.ntx-logo { color: #E50914; font-weight: 900; font-size: 14px; margin-right: 10px; }
+.ntx-nav { font-size: 6px; color: #e5e5e5; display: flex; gap: 8px; align-items: center; }
+.ntx-header { display: flex; align-items: center; margin-bottom: 10px; opacity: 0.8; }
+
+/* Hero Section */
+.ntx-hero {
+  flex: 1;
+  background: linear-gradient(to top, #000, transparent), 
+              linear-gradient(to right, rgba(0,0,0,0.8), transparent),
+              url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=400&auto=format&fit=crop'); /* Placeholder movie art */
+  background-size: cover;
+  border-radius: 4px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.ntx-hero-content { position: absolute; bottom: 10px; left: 10px; text-align: left; }
+.ntx-title-box { width: 60px; height: 12px; background: #fff; margin-bottom: 4px; opacity: 0.9; }
+.ntx-meta { font-size: 5px; color: #46d369; font-weight: bold; }
+
+/* Movie Grid */
+.ntx-row-label { font-size: 7px; color: #fff; font-weight: bold; margin-bottom: 5px; text-align: left; }
+.ntx-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.ntx-card { 
+  aspect-ratio: 2/3; 
+  background: #222; 
+  border-radius: 2px;
+  background-image: linear-gradient(45deg, #1a1a1a, #333); 
+}
 </style>
 </head>
 <body>
@@ -571,37 +613,38 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     </div>
     <div class="scroll-hint"><span>SCROLL</span><div class="s-line"></div></div>
   </div>
+<div class="th-vis reveal rd2">
+  <div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+  <div class="sc-glow"></div>
+  <div class="sc-reflect"></div>
 
-  <!-- Theatre preview -->
-  <section class="sec" style="background:var(--char)">
-    <div class="th-layout">
-      <div class="th-txt reveal">
-        <p class="lbl">HOME THEATRE</p>
-        <h2>Cinema.<br>In Your<br><em style="color:var(--or)">Living Room.</em></h2>
-        <p>Every seat is the best seat. Dolby Atmos acoustics, reference-grade visuals, and lighting that knows when to disappear — all tailored to your space.</p>
-        <div class="stat-row" style="margin-bottom:34px">
-          <div><div class="stat-num">100<sup style="font-size:.45em">+</sup></div><div class="stat-lbl">SPACES CRAFTED</div></div>
-          <div><div class="stat-num">8</div><div class="stat-lbl">YEARS MASTERY</div></div>
-          <div><div class="stat-num">∞</div><div class="stat-lbl">POSSIBILITIES</div></div>
-        </div>
-        <button class="btn-g" onclick="showPage('theatre')">Explore Home Theatre <span class="arrow-r">→</span></button>
-      </div>
-      <div class="th-vis reveal rd2">
-        <div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
-        <div class="sc-glow"></div>
-        <div class="sc-reflect"></div>
-        <div class="seat-row">
-          <div class="seat"></div><div class="seat"></div><div class="seat"></div>
-          <div class="seat"></div><div class="seat"></div><div class="seat"></div>
-        </div>
-        <div class="spk"></div><div class="spk"></div><div class="spk"></div>
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
-          <div style="font-size:9px;letter-spacing:.22em;color:rgba(255,107,43,.6);margin-bottom:6px">NOW PLAYING</div>
-          <div style="width:100px;height:1px;background:linear-gradient(to right,transparent,rgba(255,107,43,.4),transparent);margin:0 auto"></div>
-        </div>
+  <div class="netflix-mockup">
+    <div class="ntx-header">
+      <span class="ntx-logo">N</span>
+      <div class="ntx-nav"><span>Movies</span><span>TV Shows</span><span>My List</span></div>
+    </div>
+    
+    <div class="ntx-hero">
+      <div class="ntx-hero-content">
+        <div class="ntx-title-box"></div>
+        <div class="ntx-meta">98% Match · 2024 · 4K Ultra HD</div>
       </div>
     </div>
-  </section>
+
+    <div class="ntx-row-label">Trending Now</div>
+    <div class="ntx-grid">
+      <div class="ntx-card"></div>
+      <div class="ntx-card"></div>
+      <div class="ntx-card"></div>
+      <div class="ntx-card"></div>
+    </div>
+  </div>
+
+  <div class="seat-row">
+    <div class="seat"></div><div class="seat"></div><div class="seat"></div>
+    <div class="seat"></div><div class="seat"></div><div class="seat"></div>
+  </div>
+</div>
 
   <div class="divider"></div>
 
