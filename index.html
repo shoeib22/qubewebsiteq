@@ -35,6 +35,7 @@ em{font-style:italic}
 /* ─── CURSOR ─────────────────────────────────────── */
 #cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--or);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .12s ease}
 #cur-ring{position:fixed;top:0;left:0;width:38px;height:38px;border:1px solid rgba(255,107,43,.35);border-radius:50%;pointer-events:none;z-index:9998;transition:transform .32s cubic-bezier(.25,.46,.45,.94)}
+
 /* ─── PAGE SYSTEM ────────────────────────────────── */
 .page{display:none;min-height:100vh;animation:pageIn .7s cubic-bezier(.25,.46,.45,.94) forwards}
 .page.active{display:block}
@@ -71,7 +72,7 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(24px);padding:16px 
 .btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--or);color:#000;padding:15px 38px;font-size:12px;letter-spacing:.1em;font-weight:500;border:none;transition:all .35s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(255,107,43,.38)}
 .btn-g{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ts);padding:15px 38px;font-size:12px;letter-spacing:.1em;font-weight:300;border:1px solid rgba(255,255,255,.14);transition:all .3s}
-.btn-g:hover{color:var(--tp);border-color:rgba(230, 151, 73, 0.35)}
+.btn-g:hover{color:var(--tp);border-color:rgba(230,151,73,.35)}
 .arrow-r{font-size:16px;transition:transform .3s}
 .btn-p:hover .arrow-r,.btn-g:hover .arrow-r{transform:translateX(4px)}
 
@@ -227,18 +228,55 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(24px);padding:16px 
 .pf::before{content:'—';color:var(--or);font-size:10px}
 
 /* ══════════════════════════════════════════════════
-   PAGE 3 — SMART HOME
+   PAGE 3 — SMART HOME (REDESIGNED HERO)
 ══════════════════════════════════════════════════ */
-#sh-hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;background:var(--black);overflow:hidden}
-.sh-hero-content{position:relative;z-index:10;max-width:720px;padding:80px 40px 0}
-.sh-hero-content .ol{font-size:10px;letter-spacing:.26em;color:var(--or);margin-bottom:24px;animation:fadeUp 1s .3s both}
-.sh-hero-content h1{font-size:clamp(52px,7.5vw,96px);line-height:1.02;animation:fadeUp 1s .55s both}
-.sh-hero-content h1 em{color:var(--or)}
-.sh-hero-content p{font-size:16px;color:var(--ts);font-weight:300;line-height:1.8;margin:24px 0 44px;max-width:480px;animation:fadeUp 1s .8s both}
-.sh-hero-content .btns{animation:fadeUp 1s 1s both;display:flex;gap:16px}
+#sh-hero{
+  position:relative;
+  height:100vh;
+  min-height:620px;
+  display:flex;
+  align-items:center;
+  background:var(--black);
+  overflow:hidden;
+}
 
-/* Smart home visual */
-.sh-vis{position:absolute;right:0;top:0;bottom:0;width:52%;opacity:.55}
+/* Floor plan fills entire background */
+.sh-fp-bg{
+  position:absolute;
+  top:0; bottom:0; right:0;
+  width:70%;
+  opacity:.55;
+  pointer-events:none;
+}
+
+/* Left-anchored hero text */
+.sh-hero-content{
+  position:relative;
+  z-index:10;
+  padding:0 0 0 64px;
+  max-width:460px;
+  flex-shrink:0;
+}
+.sh-hero-content .ol{font-size:10px;letter-spacing:.26em;color:var(--or);margin-bottom:24px;animation:fadeUp 1s .3s both;display:flex;align-items:center;gap:14px}
+.sh-hero-content .ol::before{content:'';display:block;width:26px;height:1px;background:var(--or)}
+.sh-hero-content h1{font-size:clamp(52px,6.5vw,86px);line-height:1.02;animation:fadeUp 1s .55s both}
+.sh-hero-content h1 em{color:var(--or)}
+.sh-hero-content p{font-size:15px;color:var(--ts);font-weight:300;line-height:1.82;margin:24px 0 40px;max-width:380px;animation:fadeUp 1s .8s both}
+.sh-hero-content .btns{animation:fadeUp 1s 1s both;display:flex;gap:14px;flex-wrap:wrap}
+
+/* Floating node labels in hero */
+.sh-node-label{
+  position:absolute;
+  font-size:9px;
+  letter-spacing:.18em;
+  color:rgba(255,107,43,.75);
+  background:rgba(0,0,0,.72);
+  padding:5px 12px;
+  border:1px solid rgba(255,107,43,.22);
+  pointer-events:none;
+  white-space:nowrap;
+  z-index:5;
+}
 
 /* Floor plan animation */
 .fp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,107,43,.07);border:1px solid rgba(255,107,43,.12);max-width:1100px;margin:0 auto}
@@ -299,7 +337,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(24px);padding:16px 
 .proj-info h3{font-size:18px;margin-bottom:4px}
 .proj-info p{font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.1em;font-weight:300}
 .proj-tag{position:absolute;top:16px;left:16px;font-size:9px;letter-spacing:.2em;color:var(--or);border:1px solid rgba(255,107,43,.35);padding:5px 12px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px)}
-/* Project color fills */
 .pc1{background:linear-gradient(135deg,#0d0d1a,#1a0d26,#0d1a26,#e94560)}
 .pc2{background:linear-gradient(135deg,#0a0a0a,#1a1000,#0d0d00)}
 .pc3{background:linear-gradient(135deg,#0a1a0a,#001a10,#0a0a1a)}
@@ -308,8 +345,6 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(24px);padding:16px 
 .pc6{background:linear-gradient(135deg,#0d000d,#1a0014,#000d1a)}
 .pc7{background:linear-gradient(135deg,#0a0a1a,#001020,#1a0a00)}
 .pc8{background:linear-gradient(135deg,#000a14,#100a00,#0a0014)}
-/* Faint room line art on project cards */
-.proj-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.2}
 
 /* Testimonials */
 .testi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1100px;margin:0 auto;background:rgba(255,107,43,.06);border:1px solid rgba(255,107,43,.12)}
@@ -434,101 +469,13 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
 .tbrand{padding:13px 28px;border:1px solid rgba(255,255,255,.07);font-size:12px;letter-spacing:.14em;font-weight:300;color:var(--tm);white-space:nowrap;transition:all .3s}
 .tbrand:hover{border-color:rgba(255,107,43,.3);color:var(--tp)}
 
-/* ─── MOBILE NAV TOGGLE ──────────────────────── */
-.menu-tog{display:none;background:none;border:1px solid rgba(255,107,43,.35);color:var(--or);padding:8px 14px;font-size:13px}
-/* ─── NEON ORANGE BUTTON SYSTEM ────────────────────── */
-
-/* Navigation CTA */
-.nav-cta:hover {
-  background: #FF5F1F !important;
-  color: #000 !important;
-  border-color: #FF5F1F !important;
-  box-shadow: 0 0 15px #FF5F1F, 0 0 30px rgba(255, 95, 31, 0.4) !important;
-  font-weight: 600;
-}
-
-/* Primary Action Buttons (Experience It, Design My Theatre, etc) */
-.btn-p:hover {
-  background: #FF5F1F !important;
-  color: #000 !important;
-  transform: translateY(-3px);
-  /* Layered neon glow: sharp inner, soft outer */
-  box-shadow: 
-    0 0 10px #FF5F1F, 
-    0 0 25px #FF5F1F, 
-    0 0 50px rgba(255, 95, 31, 0.5) !important;
-}
-
-/* Secondary/Ghost Buttons (View Our Work) */
-.btn-g:hover {
-  background: rgba(255, 95, 31, 0.08) !important;
-  color: #FF5F1F !important;
-  border-color: #FF5F1F !important;
-  box-shadow: 0 0 20px rgba(255, 95, 31, 0.25) !important;
-  text-shadow: 0 0 8px rgba(255, 95, 31, 0.5);
-}
-
-/* Project Filter Buttons */
-.filter-btn:hover, .filter-btn.active {
-  color: #FF5F1F !important;
-  border-bottom-color: #FF5F1F !important;
-  text-shadow: 0 0 10px rgba(255, 95, 31, 0.4);
-}
-
-/* Contact Form Submission */
-.form-submit:hover {
-  background: #FF5F1F !important;
-  color: #000 !important;
-  box-shadow: 0 0 25px #FF5F1F !important;
-  transform: scale(1.01);
-}
-
-/* Smooth transition for all interactive elements */
-button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-}
-  /* Container for the UI */
-.netflix-mockup {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  background: #000; /* Dark background like a screen */
-  overflow: hidden;
-  font-family: sans-serif;
-}
-
-/* Logo and Nav */
-.ntx-logo { color: #E50914; font-weight: 900; font-size: 14px; margin-right: 10px; }
-.ntx-nav { font-size: 6px; color: #e5e5e5; display: flex; gap: 8px; align-items: center; }
-.ntx-header { display: flex; align-items: center; margin-bottom: 10px; opacity: 0.8; }
-
-/* Hero Section */
-.ntx-hero {
-  flex: 1;
-  background: linear-gradient(to top, #000, transparent), 
-              linear-gradient(to right, rgba(0,0,0,0.8), transparent),
-              url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=400&auto=format&fit=crop'); /* Placeholder movie art */
-  background-size: cover;
-  border-radius: 4px;
-  position: relative;
-  margin-bottom: 10px;
-}
-
-.ntx-hero-content { position: absolute; bottom: 10px; left: 10px; text-align: left; }
-.ntx-title-box { width: 60px; height: 12px; background: #fff; margin-bottom: 4px; opacity: 0.9; }
-.ntx-meta { font-size: 5px; color: #46d369; font-weight: bold; }
-
-/* Movie Grid */
-.ntx-row-label { font-size: 7px; color: #fff; font-weight: bold; margin-bottom: 5px; text-align: left; }
-.ntx-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-.ntx-card { 
-  aspect-ratio: 2/3; 
-  background: #222; 
-  border-radius: 2px;
-  background-image: linear-gradient(45deg, #1a1a1a, #333); 
-}
+/* ─── NEON BUTTON SYSTEM ────────────────────────── */
+.nav-cta:hover{background:#FF5F1F!important;color:#000!important;border-color:#FF5F1F!important;box-shadow:0 0 15px #FF5F1F,0 0 30px rgba(255,95,31,.4)!important;font-weight:600}
+.btn-p:hover{background:#FF5F1F!important;color:#000!important;transform:translateY(-3px);box-shadow:0 0 10px #FF5F1F,0 0 25px #FF5F1F,0 0 50px rgba(255,95,31,.5)!important}
+.btn-g:hover{background:rgba(255,95,31,.08)!important;color:#FF5F1F!important;border-color:#FF5F1F!important;box-shadow:0 0 20px rgba(255,95,31,.25)!important;text-shadow:0 0 8px rgba(255,95,31,.5)}
+.filter-btn:hover,.filter-btn.active{color:#FF5F1F!important;border-bottom-color:#FF5F1F!important;text-shadow:0 0 10px rgba(255,95,31,.4)}
+.form-submit:hover{background:#FF5F1F!important;color:#000!important;box-shadow:0 0 25px #FF5F1F!important;transform:scale(1.01)}
+button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.45,.94)!important}
 </style>
 </head>
 <body>
@@ -562,8 +509,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     <div class="grid-bg"></div>
     <div class="glow-b" style="width:420px;height:300px;background:rgba(255,107,43,.11);top:28%;left:18%;animation:bFloat 8s ease-in-out infinite"></div>
     <div class="glow-b" style="width:280px;height:200px;background:rgba(255,107,43,.07);top:52%;right:14%;animation:bFloat 11s ease-in-out infinite reverse"></div>
-
-    <!-- SVG Room Illustration -->
     <div style="position:absolute;inset:0;opacity:.55;pointer-events:none">
       <svg viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
         <defs>
@@ -592,20 +537,14 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
         <rect x="445" y="378" width="70" height="20" fill="#1a1a1a" stroke="rgba(255,107,43,0.08)" stroke-width="0.5" rx="3"/>
         <rect x="550" y="390" width="80" height="50" fill="#141414" stroke="rgba(255,107,43,0.08)" stroke-width="0.5" rx="4"/>
         <rect x="555" y="378" width="70" height="20" fill="#1a1a1a" stroke="rgba(255,107,43,0.08)" stroke-width="0.5" rx="3"/>
-        <circle cx="239" cy="185" r="3" fill="rgba(255,107,43,0.7)">
-          <animate attributeName="r" values="3;5;3" dur="1.5s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="761" cy="185" r="3" fill="rgba(255,107,43,0.7)">
-          <animate attributeName="r" values="3;5;3" dur="1.5s" begin="0.75s" repeatCount="indefinite"/>
-        </circle>
+        <circle cx="239" cy="185" r="3" fill="rgba(255,107,43,0.7)"><animate attributeName="r" values="3;5;3" dur="1.5s" repeatCount="indefinite"/></circle>
+        <circle cx="761" cy="185" r="3" fill="rgba(255,107,43,0.7)"><animate attributeName="r" values="3;5;3" dur="1.5s" begin="0.75s" repeatCount="indefinite"/></circle>
       </svg>
     </div>
-
     <div class="hero-content">
       <p class="hero-ol">HYDERABAD · EST. 2016</p>
       <h1 class="hero-h1">Your Home.<br><em>Reimagined.</em></h1>
-      <p class="hero-sub">We don't install systems. 
-        We craft intelligent living experiences that you feel in every room, every moment.</p>
+      <p class="hero-sub">We don't install systems. We craft intelligent living experiences that you feel in every room, every moment.</p>
       <div class="hero-btns">
         <button class="btn-g" onclick="showPage('contact')">Experience It <span class="arrow-r">→</span></button>
         <button class="btn-g" onclick="showPage('projects')">View Our Work <span class="arrow-r">→</span></button>
@@ -613,38 +552,37 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     </div>
     <div class="scroll-hint"><span>SCROLL</span><div class="s-line"></div></div>
   </div>
-<div class="th-vis reveal rd2">
-  <div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
-  <div class="sc-glow"></div>
-  <div class="sc-reflect"></div>
 
-  <div class="netflix-mockup">
-    <div class="ntx-header">
-      <span class="ntx-logo">N</span>
-      <div class="ntx-nav"><span>Movies</span><span>TV Shows</span><span>My List</span></div>
-    </div>
-    
-    <div class="ntx-hero">
-      <div class="ntx-hero-content">
-        <div class="ntx-title-box"></div>
-        <div class="ntx-meta">98% Match · 2024 · 4K Ultra HD</div>
+  <!-- Theatre preview -->
+  <section class="sec" style="background:var(--char)">
+    <div class="th-layout">
+      <div class="th-txt reveal">
+        <p class="lbl">HOME THEATRE</p>
+        <h2>Cinema.<br>In Your<br><em style="color:var(--or)">Living Room.</em></h2>
+        <p>Every seat is the best seat. Dolby Atmos acoustics, reference-grade visuals, and lighting that knows when to disappear — all tailored to your space.</p>
+        <div class="stat-row" style="margin-bottom:34px">
+          <div><div class="stat-num">100<sup style="font-size:.45em">+</sup></div><div class="stat-lbl">SPACES CRAFTED</div></div>
+          <div><div class="stat-num">8</div><div class="stat-lbl">YEARS MASTERY</div></div>
+          <div><div class="stat-num">∞</div><div class="stat-lbl">POSSIBILITIES</div></div>
+        </div>
+        <button class="btn-g" onclick="showPage('theatre')">Explore Home Theatre <span class="arrow-r">→</span></button>
+      </div>
+      <div class="th-vis reveal rd2">
+        <div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
+        <div class="sc-glow"></div>
+        <div class="sc-reflect"></div>
+        <div class="seat-row">
+          <div class="seat"></div><div class="seat"></div><div class="seat"></div>
+          <div class="seat"></div><div class="seat"></div><div class="seat"></div>
+        </div>
+        <div class="spk"></div><div class="spk"></div><div class="spk"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
+          <div style="font-size:9px;letter-spacing:.22em;color:rgba(255,107,43,.6);margin-bottom:6px">NOW PLAYING</div>
+          <div style="width:100px;height:1px;background:linear-gradient(to right,transparent,rgba(255,107,43,.4),transparent);margin:0 auto"></div>
+        </div>
       </div>
     </div>
-
-    <div class="ntx-row-label">Trending Now</div>
-    <div class="ntx-grid">
-      <div class="ntx-card"></div>
-      <div class="ntx-card"></div>
-      <div class="ntx-card"></div>
-      <div class="ntx-card"></div>
-    </div>
-  </div>
-
-  <div class="seat-row">
-    <div class="seat"></div><div class="seat"></div><div class="seat"></div>
-    <div class="seat"></div><div class="seat"></div><div class="seat"></div>
-  </div>
-</div>
+  </section>
 
   <div class="divider"></div>
 
@@ -724,7 +662,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     <div class="grid-bg"></div>
     <div class="glow-b" style="width:500px;height:340px;background:rgba(255,107,43,.09);top:20%;left:10%;animation:bFloat 9s ease-in-out infinite"></div>
     <div class="glow-b" style="width:350px;height:250px;background:rgba(233,69,96,.06);bottom:20%;right:10%;animation:bFloat 12s ease-in-out infinite reverse"></div>
-    <!-- Big screen art -->
     <div style="position:absolute;inset:0;opacity:.38;display:flex;align-items:center;justify-content:center">
       <svg viewBox="0 0 900 500" style="width:90%;max-width:1100px">
         <defs>
@@ -738,19 +675,16 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
           <animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite"/>
         </rect>
         <rect x="46" y="16" width="808" height="428" fill="none" stroke="rgba(255,107,43,0.35)" stroke-width="1" rx="5"/>
-        <!-- Scan line -->
         <line x1="50" y1="0" x2="850" y2="0" stroke="rgba(255,255,255,0.06)" stroke-width="1">
           <animate attributeName="y1" values="20;440;20" dur="3s" repeatCount="indefinite"/>
           <animate attributeName="y2" values="20;440;20" dur="3s" repeatCount="indefinite"/>
         </line>
-        <!-- Seats front row -->
         <rect x="120" y="450" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
         <rect x="210" y="452" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
         <rect x="300" y="454" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
         <rect x="530" y="454" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
         <rect x="620" y="452" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
         <rect x="710" y="450" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
-        <!-- Speakers -->
         <rect x="10" y="100" width="32" height="240" fill="#0D0D0D" stroke="rgba(255,107,43,0.2)" stroke-width="0.5" rx="2"/>
         <rect x="858" y="100" width="32" height="240" fill="#0D0D0D" stroke="rgba(255,107,43,0.2)" stroke-width="0.5" rx="2"/>
         <circle cx="26" cy="220" r="12" fill="#111" stroke="rgba(255,107,43,0.3)" stroke-width="0.5"/>
@@ -769,7 +703,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     <div class="scroll-hint"><span>SCROLL</span><div class="s-line"></div></div>
   </div>
 
-  <!-- Experience pillars -->
   <section class="sec" style="background:var(--char)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:56px" class="reveal">
@@ -787,15 +720,12 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
 
   <div class="divider"></div>
 
-  <!-- Screen tech -->
   <section class="sec" style="background:var(--black)">
     <div class="screen-showcase">
       <div class="screen-visual reveal">
         <div class="screen-img"></div>
         <div class="screen-scan"></div>
-        <div class="screen-overlay">
-          <div class="screen-play">▷</div>
-        </div>
+        <div class="screen-overlay"><div class="screen-play">▷</div></div>
         <div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
       </div>
       <div class="screen-txt reveal rd2">
@@ -816,7 +746,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
 
   <div class="divider"></div>
 
-  <!-- Audio section -->
   <section class="sec" style="background:var(--char)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:56px" class="reveal">
@@ -860,39 +789,160 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
 </div>
 
 <!-- ════════════════════════════════════════════════════
-     PAGE: SMART HOME
+     PAGE: SMART HOME  ← REDESIGNED HERO
 ════════════════════════════════════════════════════ -->
 <div class="page" id="page-smarthome">
+
+  <!-- ── HERO ── -->
   <div id="sh-hero">
-    <div class="grid-bg"></div>
-    <div class="glow-b" style="width:400px;height:300px;background:rgba(255,107,43,.10);top:25%;right:8%;animation:bFloat 9s ease-in-out infinite"></div>
-    <!-- Floor plan visual right side -->
-    <div class="sh-vis">
-      <svg viewBox="0 0 500 560" style="width:100%;height:100%;opacity:.5">
-        <!-- Room outline -->
-        <rect x="40" y="40" width="420" height="480" fill="none" stroke="rgba(255,107,43,0.25)" stroke-width="0.5"/>
-        <!-- Internal walls -->
-        <line x1="220" y1="40" x2="220" y2="280" stroke="rgba(255,107,43,0.18)" stroke-width="0.5"/>
-        <line x1="40" y1="280" x2="420" y2="280" stroke="rgba(255,107,43,0.18)" stroke-width="0.5"/>
-        <line x1="220" y1="370" x2="220" y2="520" stroke="rgba(255,107,43,0.18)" stroke-width="0.5"/>
-        <!-- Furniture sketches -->
-        <rect x="60" y="60" width="120" height="80" fill="none" stroke="rgba(255,107,43,0.15)" stroke-width="0.5"/>
-        <rect x="70" y="100" width="100" height="30" fill="none" stroke="rgba(255,107,43,0.1)" stroke-width="0.5"/>
-        <circle cx="320" cy="160" r="50" fill="none" stroke="rgba(255,107,43,0.15)" stroke-width="0.5"/>
-        <rect x="240" y="300" width="140" height="60" fill="none" stroke="rgba(255,107,43,0.12)" stroke-width="0.5"/>
-        <rect x="60" y="300" width="100" height="140" fill="none" stroke="rgba(255,107,43,0.12)" stroke-width="0.5"/>
-        <!-- Smart dots -->
-        <circle cx="130" cy="72" r="5" fill="rgba(255,107,43,0.7)"><animate attributeName="opacity" values=".4;1;.4" dur="2s" repeatCount="indefinite"/></circle>
-        <circle cx="320" cy="100" r="5" fill="rgba(255,107,43,0.7)"><animate attributeName="opacity" values=".4;1;.4" dur="2.5s" begin=".5s" repeatCount="indefinite"/></circle>
-        <circle cx="90" cy="340" r="5" fill="rgba(255,107,43,0.7)"><animate attributeName="opacity" values=".4;1;.4" dur="3s" begin="1s" repeatCount="indefinite"/></circle>
-        <circle cx="310" cy="320" r="5" fill="rgba(255,107,43,0.7)"><animate attributeName="opacity" values=".4;1;.4" dur="2.2s" begin="1.5s" repeatCount="indefinite"/></circle>
-        <!-- Connection lines -->
-        <line x1="130" y1="72" x2="320" y2="100" stroke="rgba(255,107,43,0.1)" stroke-width="0.5" stroke-dasharray="4,4"/>
-        <line x1="320" y1="100" x2="310" y2="320" stroke="rgba(255,107,43,0.1)" stroke-width="0.5" stroke-dasharray="4,4"/>
-        <line x1="310" y1="320" x2="90" y2="340" stroke="rgba(255,107,43,0.1)" stroke-width="0.5" stroke-dasharray="4,4"/>
-        <line x1="90" y1="340" x2="130" y2="72" stroke="rgba(255,107,43,0.1)" stroke-width="0.5" stroke-dasharray="4,4"/>
-      </svg>
-    </div>
+    <!-- Subtle grid overlay -->
+    <div class="grid-bg" style="background-size:60px 60px"></div>
+
+    <!-- Glow blobs -->
+    <div class="glow-b" style="width:380px;height:260px;background:rgba(255,107,43,.10);top:15%;right:18%;animation:bFloat 9s ease-in-out infinite;filter:blur(80px)"></div>
+    <div class="glow-b" style="width:250px;height:180px;background:rgba(233,69,96,.06);bottom:12%;right:34%;animation:bFloat 12s ease-in-out infinite reverse;filter:blur(80px)"></div>
+    <div class="glow-b" style="width:200px;height:140px;background:rgba(255,107,43,.06);top:42%;right:8%;animation:bFloat 7s ease-in-out infinite;animation-delay:2s;filter:blur(80px)"></div>
+
+    <!-- Full-bleed floor plan SVG (right 70%) -->
+    <svg class="sh-fp-bg" viewBox="0 0 600 560" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="rgba(255,107,43,0.16)"/>
+          <stop offset="100%" stop-color="rgba(255,107,43,0)"/>
+        </radialGradient>
+        <radialGradient id="rg2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="rgba(233,69,96,0.10)"/>
+          <stop offset="100%" stop-color="rgba(233,69,96,0)"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Outer shell -->
+      <rect x="30" y="30" width="540" height="500" fill="rgba(255,107,43,0.012)" stroke="rgba(255,107,43,0.22)" stroke-width="1"/>
+
+      <!-- Internal walls -->
+      <line x1="250" y1="30" x2="250" y2="310" stroke="rgba(255,107,43,0.18)" stroke-width="0.8"/>
+      <line x1="30" y1="310" x2="570" y2="310" stroke="rgba(255,107,43,0.18)" stroke-width="0.8"/>
+      <line x1="250" y1="390" x2="250" y2="530" stroke="rgba(255,107,43,0.18)" stroke-width="0.8"/>
+      <line x1="430" y1="310" x2="430" y2="530" stroke="rgba(255,107,43,0.15)" stroke-width="0.8"/>
+
+      <!-- Door arcs -->
+      <path d="M250 150 Q272 150 272 128" fill="none" stroke="rgba(255,107,43,0.18)" stroke-width="0.6"/>
+      <path d="M250 385 Q272 385 272 363" fill="none" stroke="rgba(255,107,43,0.18)" stroke-width="0.6"/>
+      <path d="M430 385 Q452 385 452 363" fill="none" stroke="rgba(255,107,43,0.18)" stroke-width="0.6"/>
+
+      <!-- Room labels -->
+      <text x="140" y="178" fill="rgba(255,107,43,0.35)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">LIVING ROOM</text>
+      <text x="410" y="178" fill="rgba(255,107,43,0.35)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">MASTER SUITE</text>
+      <text x="140" y="435" fill="rgba(255,107,43,0.35)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">KITCHEN</text>
+      <text x="340" y="435" fill="rgba(255,107,43,0.35)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">OFFICE</text>
+      <text x="500" y="435" fill="rgba(255,107,43,0.35)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">BATH</text>
+
+      <!-- Furniture — Living Room sofa + TV -->
+      <rect x="58" y="62" width="140" height="78" fill="none" stroke="rgba(255,107,43,0.13)" stroke-width="0.6" rx="2"/>
+      <rect x="63" y="67" width="130" height="68" fill="rgba(255,107,43,0.04)" rx="1"/>
+      <rect x="68" y="155" width="120" height="28" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" rx="1"/>
+      <rect x="88" y="198" width="80" height="48" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" rx="1"/>
+      <rect x="58" y="38" width="170" height="18" fill="rgba(255,107,43,0.06)" stroke="rgba(255,107,43,0.18)" stroke-width="0.5"/>
+
+      <!-- Furniture — Master Bedroom -->
+      <rect x="290" y="58" width="130" height="110" fill="none" stroke="rgba(255,107,43,0.13)" stroke-width="0.6" rx="2"/>
+      <rect x="295" y="63" width="120" height="100" fill="rgba(255,107,43,0.04)" rx="1"/>
+      <rect x="435" y="65" width="100" height="88" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" rx="1"/>
+      <circle cx="410" cy="232" r="30" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.6"/>
+
+      <!-- Furniture — Kitchen -->
+      <rect x="45" y="328" width="180" height="40" fill="none" stroke="rgba(255,107,43,0.12)" stroke-width="0.6"/>
+      <rect x="45" y="372" width="80" height="58" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" rx="1"/>
+      <circle cx="170" cy="396" r="25" fill="none" stroke="rgba(255,107,43,0.12)" stroke-width="0.6"/>
+      <circle cx="198" cy="390" r="17" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.5"/>
+
+      <!-- Furniture — Office desk -->
+      <rect x="272" y="340" width="130" height="68" fill="none" stroke="rgba(255,107,43,0.12)" stroke-width="0.6" rx="1"/>
+      <rect x="278" y="346" width="118" height="56" fill="rgba(255,107,43,0.03)"/>
+
+      <!-- Room glow fills -->
+      <ellipse cx="140" cy="175" rx="90" ry="60" fill="url(#rg1)" opacity="0.55"/>
+      <ellipse cx="410" cy="170" rx="110" ry="70" fill="url(#rg2)" opacity="0.45"/>
+      <ellipse cx="140" cy="430" rx="90" ry="58" fill="url(#rg1)" opacity="0.32"/>
+      <ellipse cx="340" cy="430" rx="70" ry="50" fill="url(#rg1)" opacity="0.25"/>
+
+      <!-- Network connection lines -->
+      <line x1="140" y1="102" x2="410" y2="122" stroke="rgba(255,107,43,0.08)" stroke-width="0.6" stroke-dasharray="5,5"/>
+      <line x1="410" y1="122" x2="340" y2="432" stroke="rgba(255,107,43,0.08)" stroke-width="0.6" stroke-dasharray="5,5"/>
+      <line x1="340" y1="432" x2="140" y2="393" stroke="rgba(255,107,43,0.08)" stroke-width="0.6" stroke-dasharray="5,5"/>
+      <line x1="140" y1="393" x2="140" y2="102" stroke="rgba(255,107,43,0.08)" stroke-width="0.6" stroke-dasharray="5,5"/>
+      <line x1="140" y1="102" x2="340" y2="432" stroke="rgba(255,107,43,0.05)" stroke-width="0.5" stroke-dasharray="3,7"/>
+
+      <!-- Hub spokes -->
+      <line x1="300" y1="267" x2="140" y2="102" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" stroke-dasharray="4,6"/>
+      <line x1="300" y1="267" x2="410" y2="122" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" stroke-dasharray="4,6"/>
+      <line x1="300" y1="267" x2="140" y2="393" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" stroke-dasharray="4,6"/>
+      <line x1="300" y1="267" x2="340" y2="432" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" stroke-dasharray="4,6"/>
+      <line x1="300" y1="267" x2="500" y2="402" stroke="rgba(255,107,43,0.08)" stroke-width="0.5" stroke-dasharray="4,6"/>
+
+      <!-- Central hub -->
+      <circle cx="300" cy="267" r="18" fill="rgba(255,107,43,0.06)" stroke="rgba(255,107,43,0.30)" stroke-width="1">
+        <animate attributeName="r" values="18;24;18" dur="3.2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="3.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="300" cy="267" r="7" fill="rgba(255,107,43,0.22)" stroke="rgba(255,107,43,0.65)" stroke-width="0.8"/>
+      <circle cx="300" cy="267" r="3" fill="#d46d41"/>
+      <text x="300" y="293" fill="rgba(255,107,43,0.45)" font-family="Inter,sans-serif" font-size="8" letter-spacing="2" text-anchor="middle">HUB</text>
+
+      <!-- Smart device nodes -->
+      <circle cx="140" cy="102" r="8" fill="rgba(255,107,43,0.12)" stroke="rgba(255,107,43,0.48)" stroke-width="0.8">
+        <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="140" cy="102" r="3.5" fill="rgba(255,107,43,0.9)"/>
+
+      <circle cx="410" cy="122" r="8" fill="rgba(255,107,43,0.10)" stroke="rgba(255,107,43,0.42)" stroke-width="0.8">
+        <animate attributeName="r" values="8;12;8" dur="2.5s" begin="0.6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="410" cy="122" r="3.5" fill="rgba(255,107,43,0.85)"/>
+
+      <circle cx="140" cy="393" r="8" fill="rgba(255,107,43,0.10)" stroke="rgba(255,107,43,0.38)" stroke-width="0.8">
+        <animate attributeName="r" values="8;11;8" dur="3s" begin="1s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="140" cy="393" r="3.5" fill="rgba(255,107,43,0.80)"/>
+
+      <circle cx="340" cy="432" r="8" fill="rgba(255,107,43,0.10)" stroke="rgba(255,107,43,0.34)" stroke-width="0.8">
+        <animate attributeName="r" values="8;11;8" dur="2.3s" begin="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="340" cy="432" r="3.5" fill="rgba(255,107,43,0.75)"/>
+
+      <circle cx="500" cy="402" r="6" fill="rgba(255,107,43,0.08)" stroke="rgba(255,107,43,0.28)" stroke-width="0.7">
+        <animate attributeName="r" values="6;9;6" dur="3.5s" begin="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="500" cy="402" r="2.5" fill="rgba(255,107,43,0.65)"/>
+
+      <!-- Corner frame marks -->
+      <line x1="30" y1="50" x2="30" y2="30" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
+      <line x1="30" y1="30" x2="50" y2="30" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
+      <line x1="570" y1="50" x2="570" y2="30" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
+      <line x1="550" y1="30" x2="570" y2="30" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
+      <line x1="30" y1="510" x2="30" y2="530" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
+      <line x1="30" y1="530" x2="50" y2="530" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
+      <line x1="570" y1="510" x2="570" y2="530" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
+      <line x1="550" y1="530" x2="570" y2="530" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
+
+      <!-- Scale bar -->
+      <line x1="460" y1="518" x2="560" y2="518" stroke="rgba(255,107,43,0.28)" stroke-width="0.6"/>
+      <line x1="460" y1="514" x2="460" y2="522" stroke="rgba(255,107,43,0.28)" stroke-width="0.6"/>
+      <line x1="560" y1="514" x2="560" y2="522" stroke="rgba(255,107,43,0.28)" stroke-width="0.6"/>
+      <text x="510" y="513" fill="rgba(255,107,43,0.28)" font-family="Inter,sans-serif" font-size="8" text-anchor="middle" letter-spacing="1">5,200 SQ FT</text>
+
+      <!-- Animated scan line -->
+      <line x1="30" y1="30" x2="570" y2="30" stroke="rgba(255,107,43,0.15)" stroke-width="0.8">
+        <animate attributeName="y1" values="30;530;30" dur="6s" repeatCount="indefinite"/>
+        <animate attributeName="y2" values="30;530;30" dur="6s" repeatCount="indefinite"/>
+      </line>
+    </svg>
+
+    <!-- Floating status labels -->
+    <div class="sh-node-label" style="top:16%;right:11%">5 ZONES ACTIVE</div>
+    <div class="sh-node-label" style="bottom:20%;right:19%">CLIMATE · 23°C</div>
+
+    <!-- Left-anchored hero copy -->
     <div class="sh-hero-content">
       <p class="ol">SMART HOME AUTOMATION</p>
       <h1>Live Smarter.<br><em>Feel More.</em></h1>
@@ -1023,7 +1073,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     </div>
   </div>
 
-  <!-- Filter -->
   <div class="filter-bar">
     <button class="filter-btn active" onclick="setFilter(this,'all')">ALL PROJECTS</button>
     <button class="filter-btn" onclick="setFilter(this,'theatre')">HOME THEATRE</button>
@@ -1031,7 +1080,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     <button class="filter-btn" onclick="setFilter(this,'complete')">FULL HOME</button>
   </div>
 
-  <!-- Project Grid -->
   <div class="proj-grid" id="projGrid">
     <div class="proj-card wide" data-cat="theatre complete"><div class="proj-bg pc1"></div><div class="proj-overlay"></div><div class="proj-tag">HOME THEATRE</div><div class="proj-info"><h3>The Krishnamurthy Residence</h3><p>JUBILEE HILLS · 9.4.6 ATMOS · 200" SCREEN</p></div></div>
     <div class="proj-card" data-cat="automation"><div class="proj-bg pc2"></div><div class="proj-overlay"></div><div class="proj-tag">SMART HOME</div><div class="proj-info"><h3>Villa Serenity</h3><p>BANJARA HILLS · FULL AUTOMATION</p></div></div>
@@ -1043,7 +1091,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     <div class="proj-card" data-cat="complete theatre"><div class="proj-bg pc8"></div><div class="proj-overlay"></div><div class="proj-tag">FULL HOME</div><div class="proj-info"><h3>Madhapur Residence</h3><p>MADHAPUR · 360° SMART + THEATRE</p></div></div>
   </div>
 
-  <!-- Brand ticker -->
   <section class="sec" style="background:var(--char);padding-top:80px;padding-bottom:80px">
     <div style="text-align:center;margin-bottom:44px" class="reveal">
       <p class="lbl lbl-c">TRUSTED BRANDS</p>
@@ -1056,11 +1103,10 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     </div>
   </section>
 
-  <!-- Testimonials -->
   <section class="sec" style="background:var(--black)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:56px" class="reveal">
-        <p class="lbl lbl-c">Mock CLIENT STORIES</p>
+        <p class="lbl lbl-c">CLIENT STORIES</p>
         <h2 style="font-size:clamp(32px,4vw,52px)">Words From<br><em style="color:var(--or)">Those Who Live It.</em></h2>
       </div>
       <div class="testi-row reveal rd1">
@@ -1086,7 +1132,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     </div>
   </section>
 
-  <!-- CTA -->
   <section id="home-cta" style="padding:120px 64px">
     <div class="cta-rings"><span></span><span></span><span></span></div>
     <div class="cta-glow2"></div>
@@ -1124,7 +1169,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     </div>
   </div>
 
-  <!-- Manifesto -->
   <section class="sec" style="background:var(--char)">
     <div class="manifesto reveal">
       <blockquote>"We don't install systems.<br>We craft <em>intelligent living</em><br>experiences."</blockquote>
@@ -1134,7 +1178,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
 
   <div class="divider"></div>
 
-  <!-- Stats band -->
   <div class="stats-band reveal">
     <div class="sb-item"><div class="sb-num">2016</div><div class="sb-lbl">FOUNDED</div></div>
     <div class="sb-item"><div class="sb-num">100<sup style="font-size:.45em">+</sup></div><div class="sb-lbl">PROJECTS</div></div>
@@ -1144,7 +1187,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
 
   <div class="divider"></div>
 
-  <!-- Timeline -->
   <section class="sec" style="background:var(--black)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:70px" class="reveal">
@@ -1178,7 +1220,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
 
   <div class="divider"></div>
 
-  <!-- Values -->
   <section class="sec" style="background:var(--char)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:56px" class="reveal">
@@ -1194,7 +1235,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     </div>
   </section>
 
-  <!-- CTA -->
   <section id="home-cta" style="padding:120px 64px">
     <div class="cta-rings"><span></span><span></span><span></span></div>
     <div class="cta-glow2"></div>
@@ -1232,7 +1272,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     </div>
   </div>
 
-  <!-- Contact body -->
   <div class="ct-layout">
     <div class="ct-info reveal">
       <p class="lbl">CONTACT US</p>
@@ -1247,7 +1286,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
           <div class="ct-icon">✉</div>
           <div class="ct-detail"><h4>EMAIL</h4><a href="mailto:info@qubetechnologies.in">info@qubetechnologies.in</a></div>
         </div>
-
         <div class="ct-method">
           <div class="ct-icon">◎</div>
           <div class="ct-detail"><h4>SHOWROOM</h4><p>Hyderabad, Telangana<br>By appointment only</p></div>
@@ -1282,7 +1320,6 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
     </div>
   </div>
 
-  <!-- Map -->
   <div class="map-strip">
     <div class="map-grid"></div>
     <div class="map-pin">
@@ -1321,51 +1358,23 @@ button, a, .btn-g, .btn-g, .nav-cta, .form-submit {
 @keyframes bFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(18px,-13px) scale(1.04)}66%{transform:translate(-9px,9px) scale(.97)}}
 </style>
 <script>
-// ── Cursor Setup
+// ── Cursor
 const cur = document.getElementById('cur');
 const ring = document.getElementById('cur-ring');
-let mx = 0, my = 0; // Mouse coordinates
-let cx = 0, cy = 0; // Cursor center (dot) coordinates
-let rx = 0, ry = 0; // Ring coordinates
-let targetScale = 1;
-let currentScale = 1;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX;
-  my = e.clientY;
-});
-
-(function loop() {
-  // Smooth positioning
-  cx += (mx - cx) * 0.2;  
-  cy += (my - cy) * 0.2;
-  
-  rx += (mx - rx) * 0.11;
-  ry += (my - ry) * 0.11;
-
-  // Smooth scaling
-  currentScale += (targetScale - currentScale) * 0.15;
-
-  // FIXED: One single transform property for the dot
-  // We use cx and cy so it stays centered while scaling
-  cur.style.transform = `translate(${cx - 5}px, ${cy - 5}px) scale(${currentScale})`;
-  
-  // Ring stays separate
-  ring.style.transform = `translate(${rx - 19}px, ${ry - 19}px)`;
-  
+let mx=0,my=0,cx=0,cy=0,rx=0,ry=0,targetScale=1,currentScale=1;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function loop(){
+  cx+=(mx-cx)*.2; cy+=(my-cy)*.2;
+  rx+=(mx-rx)*.11; ry+=(my-ry)*.11;
+  currentScale+=(targetScale-currentScale)*.15;
+  cur.style.transform=`translate(${cx-5}px,${cy-5}px) scale(${currentScale})`;
+  ring.style.transform=`translate(${rx-19}px,${ry-19}px)`;
   requestAnimationFrame(loop);
 })();
 
-// ── Hover Listeners (Simplified)
-document.querySelectorAll('button, a, .ctrl-card, .pillar, .proj-card, .tc, .fp-room, .val-card, .ct-method, .exp-card, .pkg, .audio-card, .ps').forEach(el => {
-  el.addEventListener('mouseenter', () => { 
-    targetScale = 2.2; 
-    ring.style.opacity = '.4'; 
-  });
-  el.addEventListener('mouseleave', () => { 
-    targetScale = 1; 
-    ring.style.opacity = '1'; 
-  });
+document.querySelectorAll('button,a,.ctrl-card,.pillar,.proj-card,.tc,.fp-room,.val-card,.ct-method,.exp-card,.pkg,.audio-card,.ps').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{targetScale=2.2;ring.style.opacity='.4';});
+  el.addEventListener('mouseleave',()=>{targetScale=1;ring.style.opacity='1';});
 });
 
 // ── Nav scroll
@@ -1377,11 +1386,9 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const p=document.getElementById('page-'+id);
   if(p){p.classList.add('active');window.scrollTo({top:0,behavior:'instant'});}
-  // Nav active
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
   const nl=document.getElementById('nl-'+id);
   if(nl)nl.classList.add('active');
-  // Re-trigger reveals
   setTimeout(()=>{
     document.querySelectorAll('#page-'+id+' .reveal').forEach(el=>{
       const r=new IntersectionObserver(entries=>{
@@ -1415,8 +1422,7 @@ function setFilter(btn,cat){
   btn.classList.add('active');
   document.querySelectorAll('.proj-card').forEach(card=>{
     const cats=card.dataset.cat||'';
-    const show=cat==='all'||cats.includes(cat);
-    card.style.display=show?'':'none';
+    card.style.display=(cat==='all'||cats.includes(cat))?'':'none';
   });
 }
 
