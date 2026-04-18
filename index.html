@@ -476,6 +476,59 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
 .filter-btn:hover,.filter-btn.active{color:#FF5F1F!important;border-bottom-color:#FF5F1F!important;text-shadow:0 0 10px rgba(255,95,31,.4)}
 .form-submit:hover{background:#FF5F1F!important;color:#000!important;box-shadow:0 0 25px #FF5F1F!important;transform:scale(1.01)}
 button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.45,.94)!important}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  /* Adjust height to fit your nav bar's design */
+  height: 40px; 
+  width: auto; /* Keeps the aspect ratio perfect */
+  display: block;
+  
+  /* Optional: adds a smooth transition if you change opacity on hover */
+  transition: opacity 0.3s ease;
+}
+
+.logo-img:hover {
+  opacity: 0.8;
+}
+/* Container to keep the logo and text on the same line */
+.footer-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between logo and text */
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.footer-logo-img {
+  width: 50px;   /* Slightly larger than the old 20px for better clarity */
+  height: auto;  /* Maintain aspect ratio */
+  display: inline-block;
+}
+
+/* Ensure the text doesn't wrap weirdly on mobile */
+@media (max-width: 480px) {
+  .footer-logo-wrapper {
+    justify-content: center; /* Centers the logo/text if your footer is center-aligned on mobile */
+  }
+}
+.proj-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;      /* Fills the area */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease; /* For a nice hover effect */
+}
+
+/* Optional hover effect */
+.proj-card:hover .proj-bg {
+  transform: scale(1.05);
+}
 </style>
 </head>
 <body>
@@ -486,8 +539,8 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
 
 <!-- ═══════ NAV ═══════ -->
 <nav id="nav">
-  <a class="nav-logo" href="#" onclick="showPage('home');return false">
-    <span class="logo-hex"></span>QUBE
+ <a class="nav-logo" href="#" onclick="showPage('home');return false">
+    <img src="images /logo/qube-logo.png" alt="Company Logo" class="logo-img">
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#" onclick="showPage('home');return false" id="nl-home">Home</a></li>
@@ -642,7 +695,10 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
   <footer>
     <div class="ft">
       <div class="fb">
-        <h3><span class="logo-hex" style="width:20px;height:20px"></span>QUBE TECHNOLOGIES</h3>
+       <h3 class="footer-logo-wrapper">
+        <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
+        QUBE TECHNOLOGIES
+      </h3>
         <p>Crafting intelligent living experiences in Hyderabad since 2016. Where technology disappears into beauty.</p>
       </div>
       <div class="flinks">
@@ -778,7 +834,10 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
   <div class="divider"></div>
   <footer>
     <div class="ft">
-      <div class="fb"><h3><span class="logo-hex" style="width:20px;height:20px"></span>QUBE TECHNOLOGIES</h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
+      <div class="fb"> <h3 class="footer-logo-wrapper">
+        <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
+        QUBE TECHNOLOGIES
+      </h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
       <div class="flinks">
         <div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
         <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li></ul></div>
@@ -1049,7 +1108,10 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
 
   <footer>
     <div class="ft">
-      <div class="fb"><h3><span class="logo-hex" style="width:20px;height:20px"></span>QUBE TECHNOLOGIES</h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
+      <div class="fb"> <h3 class="footer-logo-wrapper">
+        <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
+        QUBE TECHNOLOGIES
+      </h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
       <div class="flinks">
         <div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li></ul></div>
         <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
@@ -1081,14 +1143,85 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
   </div>
 
   <div class="proj-grid" id="projGrid">
-    <div class="proj-card wide" data-cat="theatre complete"><div class="proj-bg pc1"></div><div class="proj-overlay"></div><div class="proj-tag">HOME THEATRE</div><div class="proj-info"><h3>The Krishnamurthy Residence</h3><p>JUBILEE HILLS · 9.4.6 ATMOS · 200" SCREEN</p></div></div>
-    <div class="proj-card" data-cat="automation"><div class="proj-bg pc2"></div><div class="proj-overlay"></div><div class="proj-tag">SMART HOME</div><div class="proj-info"><h3>Villa Serenity</h3><p>BANJARA HILLS · FULL AUTOMATION</p></div></div>
-    <div class="proj-card" data-cat="theatre"><div class="proj-bg pc3"></div><div class="proj-overlay"></div><div class="proj-tag">HOME THEATRE</div><div class="proj-info"><h3>The Reddy Estate</h3><p>KOKAPET · 7.2.4 DOLBY</p></div></div>
-    <div class="proj-card" data-cat="complete"><div class="proj-bg pc4"></div><div class="proj-overlay"></div><div class="proj-tag">FULL HOME</div><div class="proj-info"><h3>Gachibowli Penthouse</h3><p>GACHIBOWLI · 3,200 SQ FT</p></div></div>
-    <div class="proj-card wide" data-cat="automation complete"><div class="proj-bg pc5"></div><div class="proj-overlay"></div><div class="proj-tag">SMART HOME</div><div class="proj-info"><h3>Narsingi Heights</h3><p>NARSINGI · CRESTRON · 5,000 SQ FT</p></div></div>
-    <div class="proj-card" data-cat="theatre"><div class="proj-bg pc6"></div><div class="proj-overlay"></div><div class="proj-tag">HOME THEATRE</div><div class="proj-info"><h3>The Mehta Cinema Room</h3><p>HITECH CITY · REFERENCE GRADE</p></div></div>
-    <div class="proj-card" data-cat="automation"><div class="proj-bg pc7"></div><div class="proj-overlay"></div><div class="proj-tag">SMART HOME</div><div class="proj-info"><h3>Kondapur Villa</h3><p>KONDAPUR · LUTRON · 4,800 SQ FT</p></div></div>
-    <div class="proj-card" data-cat="complete theatre"><div class="proj-bg pc8"></div><div class="proj-overlay"></div><div class="proj-tag">FULL HOME</div><div class="proj-info"><h3>Madhapur Residence</h3><p>MADHAPUR · 360° SMART + THEATRE</p></div></div>
+    <div class="proj-card wide" data-cat="theatre complete">
+      <div class="proj-bg pc1" style="background-image: url('images /projects/krishnamurthy-theatre.jpg');"></div>
+      <div class="proj-overlay"></div>
+      <div class="proj-tag">HOME THEATRE</div>
+      <div class="proj-info">
+        <h3>The Krishnamurthy Residence</h3>
+        <p>JUBILEE HILLS · 9.4.6 ATMOS · 200" SCREEN</p>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="automation">
+      <div class="proj-bg pc2" style="background-image: url('images/projects/villa-serenity.jpg');"></div>
+      <div class="proj-overlay"></div>
+      <div class="proj-tag">SMART HOME</div>
+      <div class="proj-info">
+        <h3>Villa Serenity</h3>
+        <p>BANJARA HILLS · FULL AUTOMATION</p>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="theatre">
+      <div class="proj-bg pc3" style="background-image: url('images/projects/reddy-theatre.jpg');"></div>
+      <div class="proj-overlay"></div>
+      <div class="proj-tag">HOME THEATRE</div>
+      <div class="proj-info">
+        <h3>The Reddy Estate</h3>
+        <p>KOKAPET · 7.2.4 DOLBY</p>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="complete">
+      <div class="proj-bg pc4" style="background-image: url('images/projects/gachibowli-penthouse.jpg');"></div>
+      <div class="proj-overlay"></div>
+      <div class="proj-tag">FULL HOME</div>
+      <div class="proj-info">
+        <h3>Gachibowli Penthouse</h3>
+        <p>GACHIBOWLI · 3,200 SQ FT</p>
+      </div>
+    </div>
+
+    <div class="proj-card wide" data-cat="automation complete">
+      <div class="proj-bg pc5" style="background-image: url('images/projects/narsingi-automation.jpg');"></div>
+      <div class="proj-overlay"></div>
+      <div class="proj-tag">SMART HOME</div>
+      <div class="proj-info">
+        <h3>Narsingi Heights</h3>
+        <p>NARSINGI · CRESTRON · 5,000 SQ FT</p>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="theatre">
+      <div class="proj-bg pc6" style="background-image: url('images/projects/mehta-cinema.jpg');"></div>
+      <div class="proj-overlay"></div>
+      <div class="proj-tag">HOME THEATRE</div>
+      <div class="proj-info">
+        <h3>The Mehta Cinema Room</h3>
+        <p>HITECH CITY · REFERENCE GRADE</p>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="automation">
+      <div class="proj-bg pc7" style="background-image: url('images/projects/kondapur-villa.jpg');"></div>
+      <div class="proj-overlay"></div>
+      <div class="proj-tag">SMART HOME</div>
+      <div class="proj-info">
+        <h3>Kondapur Villa</h3>
+        <p>KONDAPUR · LUTRON · 4,800 SQ FT</p>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="complete theatre">
+      <div class="proj-bg pc8" style="background-image: url('images/projects/madhapur-smart.jpg');"></div>
+      <div class="proj-overlay"></div>
+      <div class="proj-tag">FULL HOME</div>
+      <div class="proj-info">
+        <h3>Madhapur Residence</h3>
+        <p>MADHAPUR · 360° SMART + THEATRE</p>
+      </div>
+    </div>
   </div>
 
   <section class="sec" style="background:var(--char);padding-top:80px;padding-bottom:80px">
@@ -1145,7 +1278,12 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
 
   <footer>
     <div class="ft">
-      <div class="fb"><h3><span class="logo-hex" style="width:20px;height:20px"></span>QUBE TECHNOLOGIES</h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
+      <div class="fb">
+     <h3 class="footer-logo-wrapper">
+        <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
+        QUBE TECHNOLOGIES
+      </h3>
+        <p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
       <div class="flinks">
         <div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li></ul></div>
         <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
@@ -1249,7 +1387,12 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
 
   <footer>
     <div class="ft">
-      <div class="fb"><h3><span class="logo-hex" style="width:20px;height:20px"></span>QUBE TECHNOLOGIES</h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
+      <div class="fb"> 
+        <h3 class="footer-logo-wrapper">
+        <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
+        QUBE TECHNOLOGIES
+      </h3>
+      <p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
       <div class="flinks">
         <div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li></ul></div>
         <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('projects');return false">Projects</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
@@ -1343,7 +1486,10 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
 
   <footer>
     <div class="ft">
-      <div class="fb"><h3><span class="logo-hex" style="width:20px;height:20px"></span>QUBE TECHNOLOGIES</h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
+      <div class="fb"> <h3 class="footer-logo-wrapper">
+        <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
+        QUBE TECHNOLOGIES
+      </h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
       <div class="flinks">
         <div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li></ul></div>
         <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li></ul></div>
