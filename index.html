@@ -522,7 +522,12 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(24px);padding:16px 
   opacity:.55;
   pointer-events:none;
 }
-
+.sh-node .node-ring,
+.sh-node .node-core{transition:all .25s cubic-bezier(.34,1.56,.64,1)}
+.sh-node:hover .node-ring{stroke-width:2.5;filter:drop-shadow(0 0 8px rgba(255,140,70,0.9))}
+.sh-node:hover .node-core{r:5.5;fill:#fff}
+.sh-node.node-active .node-ring{fill:rgba(255,140,70,0.7);stroke:#fff}
+.sh-node.node-active .node-core{fill:#fff;r:5}
 /* Left-anchored hero text */
 .sh-hero-content{
   position:relative;
@@ -1165,11 +1170,11 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
         <div class="exp-body">
           <div class="exp-content">
             <div class="exp-content-inner">
-              <p class="exp-desc">We are authorized dealers for a curated portfolio of world-class projectors, ensuring you get the perfect match for your room's throw distance, screen size, and ambient light. As a premier seller of BenQ, we deliver uncompromising visual fidelity directly to your home.</p>
+              <p class="exp-desc">We are authorized dealers for a curated portfolio of world-class projectors, ensuring you get the perfect match for your room's throw distance, screen size, and ambient light. As a premier seller of trusted brands, we deliver uncompromising visual fidelity directly to your home.</p>
               <div class="exp-data-grid">
                 <div class="data-point">
                   <h4>AUTHORIZED DEALER</h4>
-                  <p>Direct sales and expert calibration of BenQ's Pro Cinema line, alongside other elite optical brands.</p>
+                  <p>Direct sales and expert calibration.</p>
                 </div>
                 <div class="data-point">
                   <h4>RESOLUTION & HDR</h4>
@@ -1177,7 +1182,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
                 </div>
                 <div class="data-point">
                   <h4>LIGHT ENGINE</h4>
-                  <p>Laser phosphor and advanced lamp options, delivering anywhere from 2,000 to 10,000+ lumens.</p>
+                  <p>Laser phosphor and advanced lamp options, ensures consistent performance.</p>
                 </div>
               </div>
             </div>
@@ -1270,7 +1275,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
         <div class="imm-content">
           <div class="imm-num">01</div>
           <h3>Premium Equipment Supply</h3>
-          <p>As authorized dealers for top-tier brands like BenQ, we don't just sell boxes. We curate the perfect combination of projectors, screens, and AV components tailored exactly to your room's dimensions and viewing habits.</p>
+          <p>As authorized dealers for top-tier brands, we don't just sell boxes. We curate the perfect combination of projectors, screens, and AV components tailored exactly to your room's dimensions and viewing habits.</p>
           <div class="imm-tags">
             <span class="imm-tag">AUTHORIZED DEALERS</span>
             <span class="imm-tag">CURATED SELECTION</span>
@@ -1359,138 +1364,141 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     <div class="glow-b" style="width:200px;height:140px;background:rgba(255,107,43,.06);top:42%;right:8%;animation:bFloat 7s ease-in-out infinite;animation-delay:2s;filter:blur(80px)"></div>
 
     <!-- Full-bleed floor plan SVG (right 70%) -->
-    <svg class="sh-fp-bg" viewBox="0 0 600 560" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="rgba(255,107,43,0.16)"/>
-          <stop offset="100%" stop-color="rgba(255,107,43,0)"/>
-        </radialGradient>
-        <radialGradient id="rg2" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="rgba(233,69,96,0.10)"/>
-          <stop offset="100%" stop-color="rgba(233,69,96,0)"/>
-        </radialGradient>
-      </defs>
+   <!-- Full-bleed floor plan SVG (right 70%) -->
+<svg class="sh-fp-bg" viewBox="0 0 600 560" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,107,43,0.45)"/>
+      <stop offset="100%" stop-color="rgba(255,107,43,0)"/>
+    </radialGradient>
+    <radialGradient id="rg2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(233,69,96,0.35)"/>
+      <stop offset="100%" stop-color="rgba(233,69,96,0)"/>
+    </radialGradient>
+  </defs>
 
-      <!-- Outer shell -->
-      <rect x="30" y="30" width="540" height="500" fill="rgba(255,107,43,0.012)" stroke="rgba(255,107,43,0.22)" stroke-width="1"/>
+  <!-- Outer shell -->
+  <rect x="30" y="30" width="540" height="500" fill="rgba(255,107,43,0.04)" stroke="rgba(255,107,43,0.7)" stroke-width="1.5"/>
 
-      <!-- Internal walls -->
-      <line x1="250" y1="30" x2="250" y2="310" stroke="rgba(255,107,43,0.18)" stroke-width="0.8"/>
-      <line x1="30" y1="310" x2="570" y2="310" stroke="rgba(255,107,43,0.18)" stroke-width="0.8"/>
-      <line x1="250" y1="390" x2="250" y2="530" stroke="rgba(255,107,43,0.18)" stroke-width="0.8"/>
-      <line x1="430" y1="310" x2="430" y2="530" stroke="rgba(255,107,43,0.15)" stroke-width="0.8"/>
+  <!-- Internal walls -->
+  <line x1="250" y1="30" x2="250" y2="310" stroke="rgba(255,107,43,0.6)" stroke-width="1.2"/>
+  <line x1="30" y1="310" x2="570" y2="310" stroke="rgba(255,107,43,0.6)" stroke-width="1.2"/>
+  <line x1="250" y1="390" x2="250" y2="530" stroke="rgba(255,107,43,0.6)" stroke-width="1.2"/>
+  <line x1="430" y1="310" x2="430" y2="530" stroke="rgba(255,107,43,0.5)" stroke-width="1.2"/>
 
-      <!-- Door arcs -->
-      <path d="M250 150 Q272 150 272 128" fill="none" stroke="rgba(255,107,43,0.18)" stroke-width="0.6"/>
-      <path d="M250 385 Q272 385 272 363" fill="none" stroke="rgba(255,107,43,0.18)" stroke-width="0.6"/>
-      <path d="M430 385 Q452 385 452 363" fill="none" stroke="rgba(255,107,43,0.18)" stroke-width="0.6"/>
+  <!-- Door arcs -->
+  <path d="M250 150 Q272 150 272 128" fill="none" stroke="rgba(255,107,43,0.6)" stroke-width="1"/>
+  <path d="M250 385 Q272 385 272 363" fill="none" stroke="rgba(255,107,43,0.6)" stroke-width="1"/>
+  <path d="M430 385 Q452 385 452 363" fill="none" stroke="rgba(255,107,43,0.6)" stroke-width="1"/>
 
-      <!-- Room labels -->
-      <text x="140" y="178" fill="rgba(255,107,43,0.35)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">LIVING ROOM</text>
-      <text x="410" y="178" fill="rgba(255,107,43,0.35)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">MASTER SUITE</text>
-      <text x="140" y="435" fill="rgba(255,107,43,0.35)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">KITCHEN</text>
-      <text x="340" y="435" fill="rgba(255,107,43,0.35)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">OFFICE</text>
-      <text x="500" y="435" fill="rgba(255,107,43,0.35)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">BATH</text>
+  <!-- Room labels -->
+  <text x="140" y="178" fill="rgba(255,150,80,0.95)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">LIVING ROOM</text>
+  <text x="410" y="178" fill="rgba(255,150,80,0.95)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">MASTER SUITE</text>
+  <text x="140" y="435" fill="rgba(255,150,80,0.95)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">KITCHEN</text>
+  <text x="340" y="435" fill="rgba(255,150,80,0.95)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">OFFICE</text>
+  <text x="500" y="435" fill="rgba(255,150,80,0.95)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">BATH</text>
 
-      <!-- Furniture — Living Room sofa + TV -->
-      <rect x="58" y="62" width="140" height="78" fill="none" stroke="rgba(255,107,43,0.13)" stroke-width="0.6" rx="2"/>
-      <rect x="63" y="67" width="130" height="68" fill="rgba(255,107,43,0.04)" rx="1"/>
-      <rect x="68" y="155" width="120" height="28" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" rx="1"/>
-      <rect x="88" y="198" width="80" height="48" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" rx="1"/>
-      <rect x="58" y="38" width="170" height="18" fill="rgba(255,107,43,0.06)" stroke="rgba(255,107,43,0.18)" stroke-width="0.5"/>
+  <!-- Furniture — Living Room sofa + TV -->
+  <rect x="58" y="62" width="140" height="78" fill="none" stroke="rgba(255,107,43,0.5)" stroke-width="1.2" rx="2"/>
+  <rect x="63" y="67" width="130" height="68" fill="rgba(255,107,43,0.15)" rx="1"/>
+  <rect x="68" y="155" width="120" height="28" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1.2" rx="1"/>
+  <rect x="88" y="198" width="80" height="48" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1.2" rx="1"/>
+  <rect x="58" y="38" width="170" height="18" fill="rgba(255,107,43,0.2)" stroke="rgba(255,107,43,0.6)" stroke-width="1"/>
 
-      <!-- Furniture — Master Bedroom -->
-      <rect x="290" y="58" width="130" height="110" fill="none" stroke="rgba(255,107,43,0.13)" stroke-width="0.6" rx="2"/>
-      <rect x="295" y="63" width="120" height="100" fill="rgba(255,107,43,0.04)" rx="1"/>
-      <rect x="435" y="65" width="100" height="88" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" rx="1"/>
-      <circle cx="410" cy="232" r="30" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.6"/>
+  <!-- Furniture — Master Bedroom -->
+  <rect x="290" y="58" width="130" height="110" fill="none" stroke="rgba(255,107,43,0.5)" stroke-width="1.2" rx="2"/>
+  <rect x="295" y="63" width="120" height="100" fill="rgba(255,107,43,0.15)" rx="1"/>
+  <rect x="435" y="65" width="100" height="88" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1.2" rx="1"/>
+  <circle cx="410" cy="232" r="30" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1.2"/>
 
-      <!-- Furniture — Kitchen -->
-      <rect x="45" y="328" width="180" height="40" fill="none" stroke="rgba(255,107,43,0.12)" stroke-width="0.6"/>
-      <rect x="45" y="372" width="80" height="58" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" rx="1"/>
-      <circle cx="170" cy="396" r="25" fill="none" stroke="rgba(255,107,43,0.12)" stroke-width="0.6"/>
-      <circle cx="198" cy="390" r="17" fill="none" stroke="rgba(255,107,43,0.10)" stroke-width="0.5"/>
+  <!-- Furniture — Kitchen -->
+  <rect x="45" y="328" width="180" height="40" fill="none" stroke="rgba(255,107,43,0.45)" stroke-width="1.2"/>
+  <rect x="45" y="372" width="80" height="58" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1.2" rx="1"/>
+  <circle cx="170" cy="396" r="25" fill="none" stroke="rgba(255,107,43,0.45)" stroke-width="1.2"/>
+  <circle cx="198" cy="390" r="17" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1"/>
 
-      <!-- Furniture — Office desk -->
-      <rect x="272" y="340" width="130" height="68" fill="none" stroke="rgba(255,107,43,0.12)" stroke-width="0.6" rx="1"/>
-      <rect x="278" y="346" width="118" height="56" fill="rgba(255,107,43,0.03)"/>
+  <!-- Furniture — Office desk -->
+  <rect x="272" y="340" width="130" height="68" fill="none" stroke="rgba(255,107,43,0.45)" stroke-width="1.2" rx="1"/>
+  <rect x="278" y="346" width="118" height="56" fill="rgba(255,107,43,0.12)"/>
 
-      <!-- Room glow fills -->
-      <ellipse cx="140" cy="175" rx="90" ry="60" fill="url(#rg1)" opacity="0.55"/>
-      <ellipse cx="410" cy="170" rx="110" ry="70" fill="url(#rg2)" opacity="0.45"/>
-      <ellipse cx="140" cy="430" rx="90" ry="58" fill="url(#rg1)" opacity="0.32"/>
-      <ellipse cx="340" cy="430" rx="70" ry="50" fill="url(#rg1)" opacity="0.25"/>
+  <!-- Room glow fills -->
+  <ellipse cx="140" cy="175" rx="90" ry="60" fill="url(#rg1)" opacity="0.9"/>
+  <ellipse cx="410" cy="170" rx="110" ry="70" fill="url(#rg2)" opacity="0.85"/>
+  <ellipse cx="140" cy="430" rx="90" ry="58" fill="url(#rg1)" opacity="0.7"/>
+  <ellipse cx="340" cy="430" rx="70" ry="50" fill="url(#rg1)" opacity="0.6"/>
 
-      <!-- Network connection lines (Modified to show wireless waves) -->
-      <path d="M140 102 Q 275 112 410 122" fill="none" stroke="rgba(255,107,43,0.15)" stroke-width="0.6" stroke-dasharray="3,4"/>
-      <path d="M410 122 Q 375 277 340 432" fill="none" stroke="rgba(255,107,43,0.15)" stroke-width="0.6" stroke-dasharray="3,4"/>
-      <path d="M340 432 Q 240 412 140 393" fill="none" stroke="rgba(255,107,43,0.15)" stroke-width="0.6" stroke-dasharray="3,4"/>
-      <path d="M140 393 Q 120 247 140 102" fill="none" stroke="rgba(255,107,43,0.15)" stroke-width="0.6" stroke-dasharray="3,4"/>
+  <!-- Central hub (kept, no spokes) -->
+  <circle cx="300" cy="267" r="18" fill="rgba(255,107,43,0.25)" stroke="rgba(255,107,43,0.9)" stroke-width="1.5">
+    <animate attributeName="r" values="18;24;18" dur="3.2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="3.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="300" cy="267" r="7" fill="rgba(255,150,80,0.8)" stroke="rgba(255,180,120,1)" stroke-width="1"/>
+  <circle cx="300" cy="267" r="3" fill="#ff8c4d"/>
+  <text x="300" y="293" fill="rgba(255,160,90,1)" font-family="Inter,sans-serif" font-size="8" letter-spacing="2" text-anchor="middle">QUBE CORE</text>
 
-      <!-- Hub spokes -->
-      <line x1="300" y1="267" x2="140" y2="102" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" stroke-dasharray="4,6"/>
-      <line x1="300" y1="267" x2="410" y2="122" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" stroke-dasharray="4,6"/>
-      <line x1="300" y1="267" x2="140" y2="393" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" stroke-dasharray="4,6"/>
-      <line x1="300" y1="267" x2="340" y2="432" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" stroke-dasharray="4,6"/>
-      <line x1="300" y1="267" x2="500" y2="402" stroke="rgba(255,107,43,0.08)" stroke-width="0.5" stroke-dasharray="4,6"/>
+  <!-- Smart device nodes — REACTIVE (clickable, hover/active states) -->
+  <g class="sh-node" data-room="LIVING ROOM" style="cursor:pointer">
+    <circle class="node-ring" cx="140" cy="102" r="8" fill="rgba(255,107,43,0.4)" stroke="rgba(255,160,90,1)" stroke-width="1.2">
+      <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle class="node-core" cx="140" cy="102" r="3.5" fill="#ffb380"/>
+    <circle class="node-hit" cx="140" cy="102" r="20" fill="transparent"/>
+  </g>
 
-      <!-- Central hub -->
-      <circle cx="300" cy="267" r="18" fill="rgba(255,107,43,0.06)" stroke="rgba(255,107,43,0.30)" stroke-width="1">
-        <animate attributeName="r" values="18;24;18" dur="3.2s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.5;1;0.5" dur="3.2s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="300" cy="267" r="7" fill="rgba(255,107,43,0.22)" stroke="rgba(255,107,43,0.65)" stroke-width="0.8"/>
-      <circle cx="300" cy="267" r="3" fill="#d46d41"/>
-      <text x="300" y="293" fill="rgba(255,107,43,0.45)" font-family="Inter,sans-serif" font-size="8" letter-spacing="2" text-anchor="middle">QUBE CORE</text>
+  <g class="sh-node" data-room="MASTER SUITE" style="cursor:pointer">
+    <circle class="node-ring" cx="410" cy="122" r="8" fill="rgba(255,107,43,0.35)" stroke="rgba(255,150,80,0.95)" stroke-width="1.2">
+      <animate attributeName="r" values="8;12;8" dur="2.5s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle class="node-core" cx="410" cy="122" r="3.5" fill="#ffaa70"/>
+    <circle class="node-hit" cx="410" cy="122" r="20" fill="transparent"/>
+  </g>
 
-      <!-- Smart device nodes -->
-      <circle cx="140" cy="102" r="8" fill="rgba(255,107,43,0.12)" stroke="rgba(255,107,43,0.48)" stroke-width="0.8">
-        <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="140" cy="102" r="3.5" fill="rgba(255,107,43,0.9)"/>
+  <g class="sh-node" data-room="KITCHEN" style="cursor:pointer">
+    <circle class="node-ring" cx="140" cy="393" r="8" fill="rgba(255,107,43,0.35)" stroke="rgba(255,140,70,0.9)" stroke-width="1.2">
+      <animate attributeName="r" values="8;11;8" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle class="node-core" cx="140" cy="393" r="3.5" fill="#ff9c60"/>
+    <circle class="node-hit" cx="140" cy="393" r="20" fill="transparent"/>
+  </g>
 
-      <circle cx="410" cy="122" r="8" fill="rgba(255,107,43,0.10)" stroke="rgba(255,107,43,0.42)" stroke-width="0.8">
-        <animate attributeName="r" values="8;12;8" dur="2.5s" begin="0.6s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="410" cy="122" r="3.5" fill="rgba(255,107,43,0.85)"/>
+  <g class="sh-node" data-room="OFFICE" style="cursor:pointer">
+    <circle class="node-ring" cx="340" cy="432" r="8" fill="rgba(255,107,43,0.3)" stroke="rgba(255,130,60,0.85)" stroke-width="1.2">
+      <animate attributeName="r" values="8;11;8" dur="2.3s" begin="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle class="node-core" cx="340" cy="432" r="3.5" fill="#ff8f55"/>
+    <circle class="node-hit" cx="340" cy="432" r="20" fill="transparent"/>
+  </g>
 
-      <circle cx="140" cy="393" r="8" fill="rgba(255,107,43,0.10)" stroke="rgba(255,107,43,0.38)" stroke-width="0.8">
-        <animate attributeName="r" values="8;11;8" dur="3s" begin="1s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="140" cy="393" r="3.5" fill="rgba(255,107,43,0.80)"/>
+  <g class="sh-node" data-room="BATH" style="cursor:pointer">
+    <circle class="node-ring" cx="500" cy="402" r="6" fill="rgba(255,107,43,0.3)" stroke="rgba(255,120,55,0.8)" stroke-width="1">
+      <animate attributeName="r" values="6;9;6" dur="3.5s" begin="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle class="node-core" cx="500" cy="402" r="2.5" fill="#ff8050"/>
+    <circle class="node-hit" cx="500" cy="402" r="18" fill="transparent"/>
+  </g>
 
-      <circle cx="340" cy="432" r="8" fill="rgba(255,107,43,0.10)" stroke="rgba(255,107,43,0.34)" stroke-width="0.8">
-        <animate attributeName="r" values="8;11;8" dur="2.3s" begin="1.5s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="340" cy="432" r="3.5" fill="rgba(255,107,43,0.75)"/>
+  <!-- Corner frame marks -->
+  <line x1="30" y1="50" x2="30" y2="30" stroke="#ff7a3d" stroke-width="2"/>
+  <line x1="30" y1="30" x2="50" y2="30" stroke="#ff7a3d" stroke-width="2"/>
+  <line x1="570" y1="50" x2="570" y2="30" stroke="#ff7a3d" stroke-width="2"/>
+  <line x1="550" y1="30" x2="570" y2="30" stroke="#ff7a3d" stroke-width="2"/>
+  <line x1="30" y1="510" x2="30" y2="530" stroke="#ff7a3d" stroke-width="2"/>
+  <line x1="30" y1="530" x2="50" y2="530" stroke="#ff7a3d" stroke-width="2"/>
+  <line x1="570" y1="510" x2="570" y2="530" stroke="#ff7a3d" stroke-width="2"/>
+  <line x1="550" y1="530" x2="570" y2="530" stroke="#ff7a3d" stroke-width="2"/>
 
-      <circle cx="500" cy="402" r="6" fill="rgba(255,107,43,0.08)" stroke="rgba(255,107,43,0.28)" stroke-width="0.7">
-        <animate attributeName="r" values="6;9;6" dur="3.5s" begin="2s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="500" cy="402" r="2.5" fill="rgba(255,107,43,0.65)"/>
+  <!-- Scale bar -->
+  <line x1="460" y1="518" x2="560" y2="518" stroke="#ff7a3d" stroke-width="1.2"/>
+  <line x1="460" y1="514" x2="460" y2="522" stroke="#ff7a3d" stroke-width="1.2"/>
+  <line x1="560" y1="514" x2="560" y2="522" stroke="#ff7a3d" stroke-width="1.2"/>
+  <text x="510" y="513" fill="#ff7a3d" font-family="Inter,sans-serif" font-size="8" text-anchor="middle" letter-spacing="1">QUBE BLUEPRINT</text>
 
-      <!-- Corner frame marks -->
-      <line x1="30" y1="50" x2="30" y2="30" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
-      <line x1="30" y1="30" x2="50" y2="30" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
-      <line x1="570" y1="50" x2="570" y2="30" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
-      <line x1="550" y1="30" x2="570" y2="30" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
-      <line x1="30" y1="510" x2="30" y2="530" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
-      <line x1="30" y1="530" x2="50" y2="530" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
-      <line x1="570" y1="510" x2="570" y2="530" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
-      <line x1="550" y1="530" x2="570" y2="530" stroke="rgba(255,107,43,0.35)" stroke-width="1"/>
-
-      <!-- Scale bar -->
-      <line x1="460" y1="518" x2="560" y2="518" stroke="rgba(255,107,43,0.28)" stroke-width="0.6"/>
-      <line x1="460" y1="514" x2="460" y2="522" stroke="rgba(255,107,43,0.28)" stroke-width="0.6"/>
-      <line x1="560" y1="514" x2="560" y2="522" stroke="rgba(255,107,43,0.28)" stroke-width="0.6"/>
-      <text x="510" y="513" fill="rgba(255,107,43,0.28)" font-family="Inter,sans-serif" font-size="8" text-anchor="middle" letter-spacing="1">QUBE BLUEPRINT</text>
-
-      <!-- Animated scan line -->
-      <line x1="30" y1="30" x2="570" y2="30" stroke="rgba(255,107,43,0.15)" stroke-width="0.8">
-        <animate attributeName="y1" values="30;530;30" dur="6s" repeatCount="indefinite"/>
-        <animate attributeName="y2" values="30;530;30" dur="6s" repeatCount="indefinite"/>
-      </line>
-    </svg>
+  <!-- Animated scan line -->
+  <line x1="30" y1="30" x2="570" y2="30" stroke="rgba(255,150,80,0.5)" stroke-width="1.5">
+    <animate attributeName="y1" values="30;530;30" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="y2" values="30;530;30" dur="6s" repeatCount="indefinite"/>
+  </line>
+</svg>
 
     <!-- Floating status labels -->
     <div class="sh-node-label" style="top:16%;right:11%">QUBE SYSTEM ACTIVE</div>
@@ -1575,8 +1583,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
         <div class="int-card"><span class="int-icon">◈</span><h4>CRESTRON</h4><p>Commercial-grade control</p></div>
         <div class="int-card"><span class="int-icon">◉</span><h4>LUTRON</h4><p>Lighting perfection</p></div>
         <div class="int-card"><span class="int-icon">◎</span><h4>CONTROL4</h4><p>Unified automation</p></div>
-        <div class="int-card"><span class="int-icon">◐</span><h4>SONOS</h4><p>Whole-home audio</p></div>
-        <div class="int-card"><span class="int-icon">⚬</span><h4>WIRELESS SYSTEMS</h4><p>Z-Wave, Zigbee & Wi-Fi</p></div>
+        <div class="int-card"><span class="int-icon">⚬</span><h4> RTI</h4><p>Wired Automation</p></div>
       </div>
     </div>
   </section>
@@ -1606,7 +1613,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
   <footer>
     <div class="ft">
       <div class="fb"> <h3 class="footer-logo-wrapper">
-        <img src="images/logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
+        <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
         QUBE TECHNOLOGIES
       </h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
       <div class="flinks">
@@ -1621,6 +1628,10 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
      PAGE: PROJECTS
 ════════════════════════════════════════════════════ -->
 <div class="page" id="page-projects">
+  
+  <!-- ==========================================
+       HERO SECTION
+  =========================================== -->
   <div id="pj-hero">
     <div class="grid-bg"></div>
     <div class="glow-b" style="width:500px;height:350px;background:rgba(255,107,43,.08);top:0%;left:30%;animation:bFloat 9s ease-in-out infinite"></div>
@@ -1631,95 +1642,145 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     </div>
   </div>
 
-  <div class="filter-bar">
-    <button class="filter-btn active" onclick="setFilter(this,'all')">ALL PROJECTS</button>
-    <button class="filter-btn" onclick="setFilter(this,'theatre')">HOME THEATRE</button>
-    <button class="filter-btn" onclick="setFilter(this,'automation')">SMART AUTOMATION</button>
-    <button class="filter-btn" onclick="setFilter(this,'complete')">FULL HOME</button>
-  </div>
+  <!-- ==========================================
+       DUAL VERTICAL VIDEO SHOWREEL SECTION
+  =========================================== -->
+  <section class="sec" style="background:var(--black); padding-top: 80px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+    <div class="sec-narrow">
+      <div style="text-align:center; margin-bottom:56px" class="reveal">
+        <p class="lbl lbl-c">OUR SHOWREEL</p>
+        <h2 style="font-size:clamp(32px,4vw,52px)">Experience the <br><em style="color:var(--or)">Transformation.</em></h2>
+      </div>
+      
+      <!-- Video Flex Container -->
+      <div class="reveal rd1" style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; align-items: center;">
+        
+        <!-- Video 1 (Smart Home / Intercom) -->
+        <div class="media-container" style="position:relative; width:100%; max-width:320px; border-radius:24px; overflow:hidden; aspect-ratio:9/16; background:#0a0a0a; box-shadow:0 25px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
+          <video 
+            src="videos/@qubetechnologies_ - R⤓Download.MP4" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            style="width: 100%; height: 100%; object-fit: cover;">
+          </video>
+        </div>
 
-  <div class="proj-grid" id="projGrid">
-    <div class="proj-card wide" data-cat="theatre complete">
-      <div class="proj-bg pc1" style="background-image: url('images /projects/krishnamurthy-theatre.jpg');"></div>
-      <div class="proj-overlay"></div>
-      <div class="proj-tag">HOME THEATRE</div>
-      <div class="proj-info">
-        <h3>The Krishnamurthy Residence</h3>
-        <p>JUBILEE HILLS · 9.4.6 ATMOS · 200" SCREEN</p>
+        <!-- Video 2 (Home Theatre / Villa) -->
+        <div class="media-container" style="position:relative; width:100%; max-width:320px; border-radius:24px; overflow:hidden; aspect-ratio:9/16; background:#0a0a0a; box-shadow:0 25px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
+          <video 
+            src="videos/@qubetechnologies_ - R⤓Download 2.MP4" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            style="width: 100%; height: 100%; object-fit: cover;">
+          </video>
+        </div>
+
       </div>
     </div>
+  </section>
 
-    <div class="proj-card" data-cat="automation">
-      <div class="proj-bg pc2" style="background-image: url('images /projects/villa-serenity.jpeg');"></div>
-      <div class="proj-overlay"></div>
-      <div class="proj-tag">SMART HOME</div>
-      <div class="proj-info">
-        <h3>Villa Serenity</h3>
-        <p>BANJARA HILLS · FULL AUTOMATION</p>
-      </div>
+  <!-- ==========================================
+       PROJECTS GALLERY & FILTERS
+  =========================================== -->
+  <!-- <section style="padding-top: 60px; padding-bottom: 80px; background:var(--bg-color);">
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" onclick="setFilter(this,'all')">ALL PROJECTS</button>
+      <button class="filter-btn" onclick="setFilter(this,'theatre')">HOME THEATRE</button>
+      <button class="filter-btn" onclick="setFilter(this,'automation')">SMART AUTOMATION</button>
+      <button class="filter-btn" onclick="setFilter(this,'complete')">FULL HOME</button>
     </div>
 
-    <div class="proj-card" data-cat="theatre">
-      <div class="proj-bg pc3" style="background-image: url('images /projects/reddy-theatre.jpeg');"></div>
-      <div class="proj-overlay"></div>
-      <div class="proj-tag">HOME THEATRE</div>
-      <div class="proj-info">
-        <h3>The Reddy Estate</h3>
-        <p>KOKAPET · 7.2.4 DOLBY</p>
+    <div class="proj-grid reveal rd1" id="projGrid">
+      
+      <div class="proj-card wide" data-cat="theatre complete">
+        <div class="proj-bg pc1" style="background-image: url('images/projects/krishnamurthy-theatre.jpg');"></div>
+        <div class="proj-overlay"></div>
+        <div class="proj-tag">HOME THEATRE</div>
+        <div class="proj-info">
+          <h3>The Krishnamurthy Residence</h3>
+          <p>JUBILEE HILLS · 9.4.6 ATMOS · 200" SCREEN</p>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="automation">
+        <div class="proj-bg pc2" style="background-image: url('images/projects/villa-serenity.jpeg');"></div>
+        <div class="proj-overlay"></div>
+        <div class="proj-tag">SMART HOME</div>
+        <div class="proj-info">
+          <h3>Villa Serenity</h3>
+          <p>BANJARA HILLS · FULL AUTOMATION</p>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="theatre">
+        <div class="proj-bg pc3" style="background-image: url('images/projects/reddy-theatre.jpeg');"></div>
+        <div class="proj-overlay"></div>
+        <div class="proj-tag">HOME THEATRE</div>
+        <div class="proj-info">
+          <h3>The Reddy Estate</h3>
+          <p>KOKAPET · 7.2.4 DOLBY</p>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="complete">
+        <div class="proj-bg pc4" style="background-image: url('images/projects/achibowli-penthouse.jpeg');"></div>
+        <div class="proj-overlay"></div>
+        <div class="proj-tag">FULL HOME</div>
+        <div class="proj-info">
+          <h3>Gachibowli Penthouse</h3>
+          <p>GACHIBOWLI · 3,200 SQ FT</p>
+        </div>
+      </div>
+
+      <div class="proj-card wide" data-cat="automation complete">
+        <div class="proj-bg pc5" style="background-image: url('images/projects/narsingi-automation.jpeg');"></div>
+        <div class="proj-overlay"></div>
+        <div class="proj-tag">SMART HOME</div>
+        <div class="proj-info">
+          <h3>Narsingi Heights</h3>
+          <p>NARSINGI · CRESTRON · 5,000 SQ FT</p>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="theatre">
+        <div class="proj-bg pc6" style="background-image: url('images/projects/mehta-cinema.jpeg');"></div>
+        <div class="proj-overlay"></div>
+        <div class="proj-tag">HOME THEATRE</div>
+        <div class="proj-info">
+          <h3>The Mehta Cinema Room</h3>
+          <p>HITECH CITY · REFERENCE GRADE</p>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="automation">
+        <div class="proj-bg pc7" style="background-image: url('images/projects/kondapur-villa.jpeg');"></div>
+        <div class="proj-overlay"></div>
+        <div class="proj-tag">SMART HOME</div>
+        <div class="proj-info">
+          <h3>Kondapur Villa</h3>
+          <p>KONDAPUR · LUTRON · 4,800 SQ FT</p>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="complete theatre">
+        <div class="proj-bg pc8" style="background-image: url('images/projects/madhapur-smart.jpeg');"></div>
+        <div class="proj-overlay"></div>
+        <div class="proj-tag">FULL HOME</div>
+        <div class="proj-info">
+          <h3>Madhapur Residence</h3>
+          <p>MADHAPUR · 360° SMART + THEATRE</p>
+        </div>
       </div>
     </div>
+  </section>-->
 
-    <div class="proj-card" data-cat="complete">
-      <div class="proj-bg pc4" style="background-image: url('images /projects/achibowli-penthouse.jpeg');"></div>
-      <div class="proj-overlay"></div>
-      <div class="proj-tag">FULL HOME</div>
-      <div class="proj-info">
-        <h3>Gachibowli Penthouse</h3>
-        <p>GACHIBOWLI · 3,200 SQ FT</p>
-      </div>
-    </div>
-
-    <div class="proj-card wide" data-cat="automation complete">
-      <div class="proj-bg pc5" style="background-image: url('images /projects/narsingi-automation.jpeg');"></div>
-      <div class="proj-overlay"></div>
-      <div class="proj-tag">SMART HOME</div>
-      <div class="proj-info">
-        <h3>Narsingi Heights</h3>
-        <p>NARSINGI · CRESTRON · 5,000 SQ FT</p>
-      </div>
-    </div>
-
-    <div class="proj-card" data-cat="theatre">
-      <div class="proj-bg pc6" style="background-image: url('images /projects/mehta-cinema.jpeg');"></div>
-      <div class="proj-overlay"></div>
-      <div class="proj-tag">HOME THEATRE</div>
-      <div class="proj-info">
-        <h3>The Mehta Cinema Room</h3>
-        <p>HITECH CITY · REFERENCE GRADE</p>
-      </div>
-    </div>
-
-    <div class="proj-card" data-cat="automation">
-      <div class="proj-bg pc7" style="background-image: url('images /projects/kondapur-villa.jpeg');"></div>
-      <div class="proj-overlay"></div>
-      <div class="proj-tag">SMART HOME</div>
-      <div class="proj-info">
-        <h3>Kondapur Villa</h3>
-        <p>KONDAPUR · LUTRON · 4,800 SQ FT</p>
-      </div>
-    </div>
-
-    <div class="proj-card" data-cat="complete theatre">
-      <div class="proj-bg pc8" style="background-image: url('images /projects/madhapur-smart.jpeg');"></div>
-      <div class="proj-overlay"></div>
-      <div class="proj-tag">FULL HOME</div>
-      <div class="proj-info">
-        <h3>Madhapur Residence</h3>
-        <p>MADHAPUR · 360° SMART + THEATRE</p>
-      </div>
-    </div>
-  </div>
-
+  <!-- ==========================================
+       TRUSTED BRANDS
+  =========================================== -->
   <section class="sec" style="background:var(--char);padding-top:80px;padding-bottom:80px">
     <div style="text-align:center;margin-bottom:44px" class="reveal">
       <p class="lbl lbl-c">TRUSTED BRANDS</p>
@@ -1732,6 +1793,9 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     </div>
   </section>
 
+  <!-- ==========================================
+       CLIENT STORIES
+  =========================================== -->
   <section class="sec" style="background:var(--black)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:56px" class="reveal">
@@ -1761,6 +1825,9 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     </div>
   </section>
 
+  <!-- ==========================================
+       CALL TO ACTION
+  =========================================== -->
   <section id="home-cta" style="padding:120px 64px">
     <div class="cta-rings"><span></span><span></span><span></span></div>
     <div class="cta-glow2"></div>
@@ -1772,21 +1839,41 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     </div>
   </section>
 
+  <!-- ==========================================
+       FOOTER
+  =========================================== -->
   <footer>
     <div class="ft">
       <div class="fb">
-     <h3 class="footer-logo-wrapper">
-        <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
-        QUBE TECHNOLOGIES
-      </h3>
-        <p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
+        <h3 class="footer-logo-wrapper">
+          <img src="images/logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
+          QUBE TECHNOLOGIES
+        </h3>
+        <p>Crafting intelligent living experiences in Hyderabad since 2016.</p>
+      </div>
       <div class="flinks">
-        <div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li></ul></div>
-        <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
+        <div class="fcol">
+          <h4>SERVICES</h4>
+          <ul>
+            <li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li>
+            <li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li>
+          </ul>
+        </div>
+        <div class="fcol">
+          <h4>COMPANY</h4>
+          <ul>
+            <li><a href="#" onclick="showPage('about');return false">Our Story</a></li>
+            <li><a href="#" onclick="showPage('contact');return false">Contact</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="fb-bottom"><p>© 2024 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
+    <div class="fb-bottom">
+      <p>© 2024 Qube Technologies.</p>
+      <p>Designed with <span class="acc">♥</span> in Hyderabad</p>
+    </div>
   </footer>
+  
 </div>
 
 <!-- ════════════════════════════════════════════════════
@@ -2096,6 +2183,31 @@ window.addEventListener('scroll', () => {
     hc.style.transform = `translateY(${y * 0.22}px)`;
     hc.style.opacity = Math.max(0, 1 - y / (window.innerHeight * 0.65));
   }
+});
+// ── Reactive Smart Home Floor Plan Nodes
+document.querySelectorAll('.sh-node').forEach(node => {
+  node.addEventListener('click', () => {
+    const wasActive = node.classList.contains('node-active');
+    document.querySelectorAll('.sh-node').forEach(n => n.classList.remove('node-active'));
+    if (!wasActive) {
+      node.classList.add('node-active');
+      const room = node.getAttribute('data-room');
+      // Optional: surface feedback via the floating label area
+      let label = document.querySelector('.sh-node-label.dynamic');
+      if (!label) {
+        label = document.createElement('div');
+        label.className = 'sh-node-label dynamic';
+        label.style.bottom = '32%';
+        label.style.right = '11%';
+        document.getElementById('sh-hero').appendChild(label);
+      }
+      label.textContent = room + ' · DEVICE SELECTED';
+      label.style.display = 'block';
+    } else {
+      const label = document.querySelector('.sh-node-label.dynamic');
+      if (label) label.style.display = 'none';
+    }
+  });
 });
 
 // ── Project Filtering System
