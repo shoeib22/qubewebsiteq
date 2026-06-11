@@ -177,15 +177,142 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(24px);padding:16px 
 .ht-hero-content .btns{display:flex;gap:16px;justify-content:center;animation:fadeUp 1s 1s both}
 
 /* Experience pillars */
-.exp-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,107,43,.07);border:1px solid rgba(255,107,43,.12);max-width:1100px;margin:0 auto}
-.exp-card{background:var(--surf);padding:40px 28px;text-align:center;transition:background .3s;position:relative;overflow:hidden}
-.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--or);transform:scaleX(0);transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
-.exp-card:hover{background:var(--mid)}.exp-card:hover::before{transform:scaleX(1)}
-.exp-icon{font-size:30px;margin-bottom:18px;display:block;opacity:.55;transition:opacity .3s}
-.exp-card:hover .exp-icon{opacity:1}
-.exp-card h3{font-size:15px;font-weight:500;margin-bottom:10px;letter-spacing:-.01em}
-.exp-card p{font-size:12px;color:var(--ts);font-weight:300;line-height:1.68}
+/* ─── INTERACTIVE EXPERIENCE ACCORDION ─── */
+.exp-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 960px;
+  margin: 0 auto;
+}
 
+.exp-item {
+  background: #060606;
+  border: 1px solid rgba(255, 107, 43, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+.exp-item:hover {
+  background: #0a0a0a;
+  border-color: rgba(255, 107, 43, 0.35);
+}
+
+.exp-item.active {
+  background: #080808;
+  border-color: var(--or);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 107, 43, 0.08);
+}
+
+.exp-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 36px;
+}
+
+.exp-head-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.exp-icon {
+  font-size: 26px;
+  color: var(--or);
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.exp-item:hover .exp-icon, .exp-item.active .exp-icon {
+  opacity: 1;
+}
+
+.exp-head h3 {
+  font-size: 24px;
+  margin: 0;
+  color: var(--tp);
+}
+
+.exp-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 107, 43, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--or);
+  font-size: 20px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.exp-item.active .exp-toggle {
+  transform: rotate(45deg);
+  background: var(--or);
+  color: #000;
+  border-color: var(--or);
+}
+
+/* CSS Grid trick for smooth height animation */
+.exp-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.exp-item.active .exp-body {
+  grid-template-rows: 1fr;
+}
+
+.exp-content {
+  overflow: hidden;
+}
+
+.exp-content-inner {
+  padding: 0 36px 36px 86px; /* 86px aligns text with the heading, bypassing the icon */
+}
+
+.exp-desc {
+  font-size: 15px;
+  color: var(--ts);
+  line-height: 1.75;
+  margin-bottom: 28px;
+  max-width: 700px;
+}
+
+.exp-data-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 24px;
+}
+
+.data-point h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--or);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.data-point p {
+  font-size: 13px;
+  color: #d1d1d1;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .exp-content-inner { padding: 0 24px 24px 24px; }
+  .exp-data-grid { grid-template-columns: 1fr; gap: 16px; }
+  .exp-head-left { gap: 16px; }
+  .exp-head { padding: 20px 24px; }
+}
 /* Screen tech showcase */
 .screen-showcase{display:grid;grid-template-columns:1.2fr 1fr;gap:70px;align-items:center;max-width:1200px;margin:0 auto}
 .screen-visual{position:relative;aspect-ratio:16/9;background:#050505;border:1px solid rgba(255,107,43,.2);overflow:hidden}
@@ -202,17 +329,164 @@ nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(24px);padding:16px 
 .spec-item{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ts);font-weight:300}
 .spec-dot{width:4px;height:4px;border-radius:50%;background:var(--or);flex-shrink:0}
 
-/* Audio visual section */
-.audio-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:1000px;margin:0 auto;background:rgba(255,107,43,.06);border:1px solid rgba(255,107,43,.12)}
-.audio-card{background:var(--surf);padding:50px 40px;position:relative;overflow:hidden;transition:background .3s}
-.audio-card:hover{background:var(--mid)}
-.audio-card h3{font-size:26px;margin-bottom:14px}
-.audio-card p{font-size:13px;color:var(--ts);font-weight:300;line-height:1.75}
-.wave-anim{height:40px;display:flex;align-items:center;gap:3px;margin-top:28px}
-.wave-bar{width:3px;background:var(--or);border-radius:2px;animation:waveBar .8s ease-in-out infinite alternate}
-.wave-bar:nth-child(1){height:8px;animation-delay:0s}.wave-bar:nth-child(2){height:18px;animation-delay:.1s}.wave-bar:nth-child(3){height:28px;animation-delay:.2s}.wave-bar:nth-child(4){height:36px;animation-delay:.3s}.wave-bar:nth-child(5){height:28px;animation-delay:.4s}.wave-bar:nth-child(6){height:18px;animation-delay:.5s}.wave-bar:nth-child(7){height:10px;animation-delay:.6s}.wave-bar:nth-child(8){height:20px;animation-delay:.7s}.wave-bar:nth-child(9){height:30px;animation-delay:.6s}.wave-bar:nth-child(10){height:18px;animation-delay:.5s}.wave-bar:nth-child(11){height:8px;animation-delay:.4s}
-@keyframes waveBar{from{opacity:.3;transform:scaleY(.4)}to{opacity:1;transform:scaleY(1)}}
-.ac-num{position:absolute;top:28px;right:28px;font-family:'Cormorant Garamond',serif;font-size:48px;color:rgba(255,107,43,.08);line-height:1}
+/* ─── IMMERSIVE APPROACH SECTION ─── */
+.imm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.imm-card {
+  position: relative;
+  background: #030303;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 70px 50px 50px;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+}
+
+.imm-card:hover {
+  border-color: rgba(255, 107, 43, 0.35);
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(255,107,43,0.1);
+}
+
+.imm-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.3;
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.imm-card:hover .imm-bg {
+  opacity: 0.7;
+  transform: scale(1.05);
+}
+
+/* 1. Cinematic Projector Beam Effect */
+.bg-beam {
+  background: radial-gradient(circle at 50% -20%, rgba(255,107,43,0.25) 0%, transparent 60%);
+}
+.bg-beam::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 180deg at 50% -10%, rgba(255,107,43,0.1) 0deg, transparent 35deg, transparent 325deg, rgba(255,107,43,0.1) 360deg);
+}
+
+/* 2. Acoustic Waves Effect */
+.bg-waves {
+  background: repeating-radial-gradient(circle at 0% 100%, rgba(255,107,43,0.02) 0, rgba(255,107,43,0.02) 2px, transparent 3px, transparent 30px);
+}
+.bg-waves::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, #030303 90%);
+}
+
+/* 3. Precision Blueprint Grid Effect */
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(255,107,43,0.05) 1px, transparent 1px), 
+    linear-gradient(90deg, rgba(255,107,43,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+}
+.bg-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, #030303 80%);
+}
+
+/* 4. Focal Calibration Glow Effect */
+.bg-focus {
+  background: radial-gradient(circle at 80% 60%, rgba(255,107,43,0.15) 0%, transparent 50%);
+}
+.bg-focus::after {
+  content: '';
+  position: absolute;
+  top: 60%; left: 80%;
+  width: 120px; height: 120px;
+  border: 1px solid rgba(255,107,43,0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.imm-content {
+  position: relative;
+  z-index: 1;
+}
+
+.imm-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 100px;
+  color: rgba(255, 255, 255, 0.03);
+  line-height: 0.7;
+  margin-bottom: 20px;
+  transition: color 0.6s, transform 0.6s;
+  letter-spacing: -0.05em;
+}
+
+.imm-card:hover .imm-num {
+  color: rgba(255, 107, 43, 0.15);
+  transform: translateX(10px);
+}
+
+.imm-content h3 {
+  font-size: 30px;
+  margin-bottom: 16px;
+  color: var(--tp);
+  letter-spacing: -0.02em;
+}
+
+.imm-content p {
+  font-size: 13px;
+  color: var(--ts);
+  line-height: 1.85;
+  margin-bottom: 30px;
+}
+
+.imm-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.imm-tag {
+  font-size: 9px;
+  color: var(--or);
+  border: 1px solid rgba(255, 107, 43, 0.25);
+  padding: 8px 14px;
+  letter-spacing: 0.16em;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  transition: background 0.3s, color 0.3s;
+}
+
+.imm-card:hover .imm-tag {
+  background: rgba(255, 107, 43, 0.08);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .imm-card { padding: 40px 30px 30px; min-height: 380px; }
+  .imm-num { font-size: 80px; }
+  .imm-content h3 { font-size: 26px; }
+}
 
 /* Package tiers */
 .pkg-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1100px;margin:0 auto;background:rgba(255,107,43,.06);border:1px solid rgba(255,107,43,.12)}
@@ -714,65 +988,134 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
      PAGE: HOME THEATRE
 ════════════════════════════════════════════════════ -->
 <div class="page" id="page-theatre">
-  <div id="ht-hero">
-    <div class="grid-bg"></div>
-    <div class="glow-b" style="width:500px;height:340px;background:rgba(255,107,43,.09);top:20%;left:10%;animation:bFloat 9s ease-in-out infinite"></div>
-    <div class="glow-b" style="width:350px;height:250px;background:rgba(233,69,96,.06);bottom:20%;right:10%;animation:bFloat 12s ease-in-out infinite reverse"></div>
-    <div style="position:absolute;inset:0;opacity:.38;display:flex;align-items:center;justify-content:center">
-      <svg viewBox="0 0 900 500" style="width:90%;max-width:1100px">
-        <defs>
-          <linearGradient id="htg" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#1a1a2e"/>
-            <stop offset="50%" style="stop-color:#0f3460"/>
-            <stop offset="100%" style="stop-color:#e94560"/>
-          </linearGradient>
-        </defs>
-        <rect x="50" y="20" width="800" height="420" fill="url(#htg)" rx="4" opacity="0.9">
-          <animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite"/>
-        </rect>
-        <rect x="46" y="16" width="808" height="428" fill="none" stroke="rgba(255,107,43,0.35)" stroke-width="1" rx="5"/>
-        <line x1="50" y1="0" x2="850" y2="0" stroke="rgba(255,255,255,0.06)" stroke-width="1">
-          <animate attributeName="y1" values="20;440;20" dur="3s" repeatCount="indefinite"/>
-          <animate attributeName="y2" values="20;440;20" dur="3s" repeatCount="indefinite"/>
-        </line>
-        <rect x="120" y="450" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
-        <rect x="210" y="452" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
-        <rect x="300" y="454" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
-        <rect x="530" y="454" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
-        <rect x="620" y="452" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
-        <rect x="710" y="450" width="70" height="40" fill="#111" stroke="rgba(255,107,43,0.15)" stroke-width="0.5" rx="3"/>
-        <rect x="10" y="100" width="32" height="240" fill="#0D0D0D" stroke="rgba(255,107,43,0.2)" stroke-width="0.5" rx="2"/>
-        <rect x="858" y="100" width="32" height="240" fill="#0D0D0D" stroke="rgba(255,107,43,0.2)" stroke-width="0.5" rx="2"/>
-        <circle cx="26" cy="220" r="12" fill="#111" stroke="rgba(255,107,43,0.3)" stroke-width="0.5"/>
-        <circle cx="874" cy="220" r="12" fill="#111" stroke="rgba(255,107,43,0.3)" stroke-width="0.5"/>
-      </svg>
-    </div>
-    <div class="ht-hero-content">
-      <p class="ol">HOME THEATRE</p>
-      <h1>Sound.<br>Light.<br><em>Sensation.</em></h1>
-      <p>Step into a world where every frame is a masterpiece and every note fills the room with purpose. Your private cinema awaits.</p>
-      <div class="btns">
-        <button class="btn-g" onclick="showPage('contact')">Design My Theatre <span class="arrow-r">→</span></button>
-        <button class="btn-g" onclick="showPage('projects')">See Projects <span class="arrow-r">→</span></button>
-      </div>
-    </div>
-    <div class="scroll-hint"><span>SCROLL</span><div class="s-line"></div></div>
-  </div>
+  
+  <div id="ht-hero" style="background-color: var(--black); display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; position: relative; margin: 0;">
+    
+    <div style="position: absolute; width: 60vw; height: 50vh; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, rgba(0,0,0,0) 70%); top: 10%; z-index: 0; filter: blur(50px);"></div>
+    <div style="position: absolute; width: 40vw; height: 40vh; background: radial-gradient(circle, rgba(250,250,248,0.04) 0%, rgba(0,0,0,0) 70%); bottom: 10%; right: 10%; z-index: 0; filter: blur(40px);"></div>
+<svg viewBox="0 0 1000 600" style="width: 100%; max-width: 1200px; position: relative; z-index: 1;">
+      <defs>
+        <filter id="tv-glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="30" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        
+        <filter id="floor-glow" x="-20%" y="-50%" width="140%" height="200%">
+          <feGaussianBlur stdDeviation="8" result="blur" />
+        </filter>
 
-  <section class="sec" style="background:var(--char)">
-    <div class="sec-narrow">
-      <div style="text-align:center;margin-bottom:56px" class="reveal">
-        <p class="lbl lbl-c">THE EXPERIENCE</p>
-        <h2 style="font-size:clamp(36px,4.5vw,58px)">Every Element.<br><em style="color:var(--or)">Perfectly Orchestrated.</em></h2>
-      </div>
-      <div class="exp-row reveal rd1">
-        <div class="exp-card"><span class="exp-icon">◉</span><h3>4K Laser</h3><p>Reference-grade projection with 3,000+ lumens and infinite contrast for day or night viewing.</p></div>
-        <div class="exp-card"><span class="exp-icon">◈</span><h3>Dolby Atmos</h3><p>Three-dimensional sound that moves around you — overhead, behind, everywhere at once.</p></div>
-        <div class="exp-card"><span class="exp-icon">◎</span><h3>Acoustic Design</h3><p>Panels, diffusers, and bass traps custom-calculated for your exact room dimensions.</p></div>
-        <div class="exp-card"><span class="exp-icon">◐</span><h3>Cinema Lighting</h3><p>Tunable LEDs and bias lighting that respond to your content automatically.</p></div>
-      </div>
-    </div>
-  </section>
+        <linearGradient id="movie-screen" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:var(--char)" />
+          <stop offset="50%" style="stop-color:var(--or3)" />
+          <stop offset="100%" style="stop-color:var(--or)" />
+          <animate attributeName="x1" values="0%; 100%; 0%" dur="15s" repeatCount="indefinite" />
+          <animate attributeName="y1" values="0%; 100%; 0%" dur="20s" repeatCount="indefinite" />
+        </linearGradient>
+
+        <linearGradient id="panel-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#020202" />
+          <stop offset="50%" stop-color="#080808" />
+          <stop offset="100%" stop-color="#000000" />
+        </linearGradient>
+      </defs>
+
+      <rect x="20" y="40" width="120" height="420" rx="4" fill="url(#panel-grad)" stroke="rgba(255,107,43,0.2)" stroke-width="1.5" />
+      <line x1="20" y1="120" x2="140" y2="120" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
+      <line x1="20" y1="200" x2="140" y2="200" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
+      <line x1="20" y1="280" x2="140" y2="280" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
+      <line x1="20" y1="360" x2="140" y2="360" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
+      
+      <rect x="860" y="40" width="120" height="420" rx="4" fill="url(#panel-grad)" stroke="rgba(255,107,43,0.2)" stroke-width="1.5" />
+      <line x1="860" y1="120" x2="980" y2="120" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
+      <line x1="860" y1="200" x2="980" y2="200" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
+      <line x1="860" y1="280" x2="980" y2="280" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
+      <line x1="860" y1="360" x2="980" y2="360" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
+
+      <line x1="0" y1="485" x2="1000" y2="485" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+      
+      <line x1="250" y1="480" x2="750" y2="480" stroke="var(--or)" stroke-width="5" filter="url(#floor-glow)" opacity="0.4">
+        <animate attributeName="opacity" values="0.3; 0.6; 0.3" dur="6s" repeatCount="indefinite" />
+      </line>
+
+      <rect x="180" y="60" width="640" height="360" fill="var(--or)" opacity="0.25" filter="url(#tv-glow)">
+        <animate attributeName="opacity" values="0.15; 0.35; 0.15" dur="4s" repeatCount="indefinite" />
+      </rect>
+
+      <rect x="175" y="55" width="650" height="370" rx="10" fill="#020202" stroke="#333" stroke-width="2" />
+      <rect x="180" y="60" width="640" height="360" rx="8" fill="#000" />
+
+      <rect x="190" y="70" width="620" height="340" rx="4" fill="url(#movie-screen)" />
+
+      <line x1="190" y1="70" x2="810" y2="70" stroke="rgba(255,107,43,0.3)" stroke-width="2">
+        <animate attributeName="y1" values="70;410;70" dur="6s" repeatCount="indefinite" />
+        <animate attributeName="y2" values="70;410;70" dur="6s" repeatCount="indefinite" />
+      </line>
+
+      <foreignObject x="190" y="70" width="620" height="340">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="ht-hero-content" style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--tp); padding: 20px; box-sizing: border-box; position: relative; z-index: 10;">
+          <p class="ol" style="margin: 0 0 10px 0; font-size: 14px; letter-spacing: 2px; color: var(--or); font-family: 'Inter', sans-serif; font-weight: 500;">HOME THEATRE</p>
+          <h1 style="margin: 0 0 15px 0; font-size: 46px; line-height: 1.1; font-family: 'Cormorant Garamond', serif; font-weight: 400; text-shadow: 0 4px 12px rgba(0,0,0,0.8);">Sound.<br>Light.<br><em style="color: var(--or); font-style: italic;">Sensation.</em></h1>
+          <p style="margin: 0 0 25px 0; font-size: 15px; max-width: 80%; color: #fff; line-height: 1.5; font-family: 'Inter', sans-serif; font-weight: 400; text-shadow: 0 2px 6px rgba(0,0,0,0.8);">Step into a world where every frame is a masterpiece and every note fills the room with purpose. Your private cinema awaits.</p>
+          <div class="btns" style="display: flex; gap: 15px;">
+            <button class="btn-g" onclick="showPage('contact')" style="padding: 12px 24px; background: var(--or); color: #000; border: none; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0.1em; font-size: 12px; cursor: pointer; border-radius: 2px; box-shadow: 0 4px 15px rgba(255,107,43,0.3);">Design My Theatre <span class="arrow-r">→</span></button>
+            <button class="btn-g" onclick="showPage('projects')" style="padding: 12px 24px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: #fff; border: 1px solid rgba(255,255,255,0.4); font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.1em; font-size: 12px; cursor: pointer; border-radius: 2px;">See Projects <span class="arrow-r">→</span></button>
+          </div>
+        </div>
+      </foreignObject>
+
+      <rect x="230" y="445" width="540" height="40" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
+      <rect x="230" y="445" width="540" height="8" rx="2" fill="#0a0a0a" /> <rect x="260" y="455" width="140" height="18" rx="2" fill="#020202" stroke="#333" stroke-width="1.5" />
+      <circle cx="275" cy="464" r="2" fill="var(--or)" opacity="0.8" />
+      <rect x="600" y="455" width="140" height="18" rx="2" fill="#020202" stroke="#333" stroke-width="1.5" />
+      <circle cx="615" cy="464" r="2" fill="var(--or)" opacity="0.8" />
+      
+      <rect x="430" y="450" width="140" height="28" rx="3" fill="#050505" stroke="#444" stroke-width="1.5" />
+      <rect x="440" y="455" width="60" height="18" rx="2" fill="#000" stroke="#222" stroke-width="1" />
+      <rect x="445" y="465" width="4" height="6" fill="var(--or)"><animate attributeName="height" values="2;6;3;8;2" dur="0.8s" repeatCount="indefinite" /><animate attributeName="y" values="469;465;468;463;469" dur="0.8s" repeatCount="indefinite" /></rect>
+      <rect x="451" y="462" width="4" height="9" fill="var(--or)"><animate attributeName="height" values="5;9;4;7;5" dur="1.1s" repeatCount="indefinite" /><animate attributeName="y" values="466;462;467;464;466" dur="1.1s" repeatCount="indefinite" /></rect>
+      <rect x="457" y="464" width="4" height="7" fill="var(--or)"><animate attributeName="height" values="8;3;9;4;8" dur="0.9s" repeatCount="indefinite" /><animate attributeName="y" values="463;468;462;467;463" dur="0.9s" repeatCount="indefinite" /></rect>
+      <rect x="463" y="467" width="4" height="4" fill="var(--or)"><animate attributeName="height" values="3;7;2;6;3" dur="1.3s" repeatCount="indefinite" /><animate attributeName="y" values="468;464;469;465;468" dur="1.3s" repeatCount="indefinite" /></rect>
+      <circle cx="520" cy="464" r="8" fill="#0a0a0a" stroke="#555" stroke-width="1.5" /> 
+      <circle cx="545" cy="464" r="6" fill="#0a0a0a" stroke="#555" stroke-width="1.5" /> 
+      <circle cx="520" cy="464" r="6" fill="#000" /> 
+
+      <polygon points="65,480 70,470 130,470 135,480" fill="#020202" stroke="#2a2a2a" stroke-width="1"/>
+      <polygon points="75,480 78,485 81,480" fill="#666" />
+      <polygon points="119,480 122,485 125,480" fill="#666" />
+      <rect x="70" y="140" width="60" height="330" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
+      <rect x="73" y="143" width="54" height="324" rx="2" fill="#080808" /> <circle cx="100" cy="180" r="14" fill="#050505" stroke="#444" stroke-width="1.5" /> <circle cx="100" cy="180" r="6" fill="#1a1a1a" /> <circle cx="100" cy="240" r="20" fill="#030303" stroke="rgba(255,107,43,0.5)" stroke-width="1.5" /> <circle cx="100" cy="240" r="16" fill="#0a0a0a" /> <circle cx="100" cy="240" r="4" fill="#020202" />
+      <circle cx="100" cy="320" r="24" fill="#030303" stroke="#444" stroke-width="2" /> <circle cx="100" cy="320" r="18" fill="#0a0a0a" /> <circle cx="100" cy="320" r="5" fill="#020202" />
+      <circle cx="100" cy="400" r="24" fill="#030303" stroke="#444" stroke-width="2" /> <circle cx="100" cy="400" r="18" fill="#0a0a0a" /> <circle cx="100" cy="400" r="5" fill="#020202" />
+
+      <polygon points="865,480 870,470 930,470 935,480" fill="#020202" stroke="#2a2a2a" stroke-width="1"/>
+      <polygon points="875,480 878,485 881,480" fill="#666" />
+      <polygon points="919,480 922,485 925,480" fill="#666" />
+      <rect x="870" y="140" width="60" height="330" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
+      <rect x="873" y="143" width="54" height="324" rx="2" fill="#080808" /> <circle cx="900" cy="180" r="14" fill="#050505" stroke="#444" stroke-width="1.5" /> 
+      <circle cx="900" cy="180" r="6" fill="#1a1a1a" /> 
+      <circle cx="900" cy="240" r="20" fill="#030303" stroke="rgba(255,107,43,0.5)" stroke-width="1.5" /> 
+      <circle cx="900" cy="240" r="16" fill="#0a0a0a" /> 
+      <circle cx="900" cy="240" r="4" fill="#020202" />
+      <circle cx="900" cy="320" r="24" fill="#030303" stroke="#444" stroke-width="2" /> 
+      <circle cx="900" cy="320" r="18" fill="#0a0a0a" /> 
+      <circle cx="900" cy="320" r="5" fill="#020202" />
+      <circle cx="900" cy="400" r="24" fill="#030303" stroke="#444" stroke-width="2" /> 
+      <circle cx="900" cy="400" r="18" fill="#0a0a0a" /> 
+      <circle cx="900" cy="400" r="5" fill="#020202" />
+
+      <rect x="760" y="340" width="84" height="135" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
+      <rect x="764" y="344" width="76" height="127" rx="2" fill="#080808" /> <circle cx="802" cy="390" r="32" fill="#020202" stroke="#333" stroke-width="3" /> <circle cx="802" cy="390" r="24" fill="#0a0a0a" /> 
+      <circle cx="802" cy="390" r="8" fill="#000" /> 
+      <circle cx="802" cy="450" r="10" fill="#000" /> <circle cx="770" cy="355" r="2" fill="rgba(255,107,43,1)" /> <rect x="770" y="475" width="10" height="5" fill="#333" />
+      <rect x="824" y="475" width="10" height="5" fill="#333" />
+
+      <path d="M 180 600 L 180 540 Q 180 515 200 515 L 320 515 Q 340 515 340 540 L 340 600 Z" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
+      <path d="M 160 600 L 160 550 Q 160 530 175 530 L 205 530 Q 220 530 220 550 L 220 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <path d="M 300 600 L 300 550 Q 300 530 315 530 L 345 530 Q 360 530 360 550 L 360 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <ellipse cx="330" cy="545" rx="8" ry="4" fill="#000" stroke="#444" stroke-width="1.5" /> <path d="M 340 600 L 340 540 Q 340 515 360 515 L 640 515 Q 660 515 660 540 L 660 600 Z" fill="#020202" stroke="#2a2a2a" stroke-width="2" />
+      <path d="M 640 600 L 640 550 Q 640 530 655 530 L 685 530 Q 700 530 700 550 L 700 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <ellipse cx="670" cy="545" rx="8" ry="4" fill="#000" stroke="#444" stroke-width="1.5" /> <path d="M 660 600 L 660 540 Q 660 515 680 515 L 800 515 Q 820 515 820 540 L 820 600 Z" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
+      <path d="M 780 600 L 780 550 Q 780 530 795 530 L 825 530 Q 840 530 840 550 L 840 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <line x1="180" y1="595" x2="820" y2="595" stroke="var(--or)" stroke-width="8" filter="url(#floor-glow)" opacity="0.25" />
+
+    </svg>
+  </div>
 
   <div class="divider"></div>
 
@@ -800,36 +1143,190 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     </div>
   </section>
 
+<div class="divider"></div>
+
+<section class="sec" style="background:var(--char)">
+  <div class="sec-narrow">
+    <div style="text-align:center;margin-bottom:56px" class="reveal">
+      <p class="lbl lbl-c">THE EXPERIENCE</p>
+      <h2 style="font-size:clamp(36px,4.5vw,58px)">Precision Engineering.<br><em style="color:var(--or)">Perfectly Orchestrated.</em></h2>
+    </div>
+
+    <div class="exp-accordion reveal rd1">
+      
+      <div class="exp-item active" onclick="toggleExpCard(this)">
+        <div class="exp-head">
+          <div class="exp-head-left">
+            <span class="exp-icon">◉</span>
+            <h3>Cinematic Projection</h3>
+          </div>
+          <span class="exp-toggle">+</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-content">
+            <div class="exp-content-inner">
+              <p class="exp-desc">We are authorized dealers for a curated portfolio of world-class projectors, ensuring you get the perfect match for your room's throw distance, screen size, and ambient light. As a premier seller of BenQ, we deliver uncompromising visual fidelity directly to your home.</p>
+              <div class="exp-data-grid">
+                <div class="data-point">
+                  <h4>AUTHORIZED DEALER</h4>
+                  <p>Direct sales and expert calibration of BenQ's Pro Cinema line, alongside other elite optical brands.</p>
+                </div>
+                <div class="data-point">
+                  <h4>RESOLUTION & HDR</h4>
+                  <p>Native 4K and 8K options with dynamic HDR10+ frame-by-frame tone mapping.</p>
+                </div>
+                <div class="data-point">
+                  <h4>LIGHT ENGINE</h4>
+                  <p>Laser phosphor and advanced lamp options, delivering anywhere from 2,000 to 10,000+ lumens.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item" onclick="toggleExpCard(this)">
+        <div class="exp-head">
+          <div class="exp-head-left">
+            <span class="exp-icon">◈</span>
+            <h3>Reference-Grade Audio</h3>
+          </div>
+          <span class="exp-toggle">+</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-content">
+            <div class="exp-content-inner">
+              <p class="exp-desc">Sound that doesn't just fill the room, but maps to its physical space. We design custom multi-channel layouts that place every whisper and explosion exactly where the director intended.</p>
+              <div class="exp-data-grid">
+                <div class="data-point">
+                  <h4>IMMERSIVE FORMATS</h4>
+                  <p>Full decoding and spatial rendering for Dolby Atmos, DTS:X, and IMAX Enhanced tracks.</p>
+                </div>
+                <div class="data-point">
+                  <h4>SYSTEM ARCHITECTURE</h4>
+                  <p>Scalable configurations from precise 5.1.2 setups to massive 11.4.6 dedicated theatre grids.</p>
+                </div>
+                <div class="data-point">
+                  <h4>DSP CALIBRATION</h4>
+                  <p>Multi-point microphone measurement ensuring time-alignment and phase coherence across all seats.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item" onclick="toggleExpCard(this)">
+        <div class="exp-head">
+          <div class="exp-head-left">
+            <span class="exp-icon">◎</span>
+            <h3>Acoustic Engineering</h3>
+          </div>
+          <span class="exp-toggle">+</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-content">
+            <div class="exp-content-inner">
+              <p class="exp-desc">The room itself is your most critical audio component. We physically tune your space using advanced modeling to eliminate distortion, standing waves, and echo, ensuring pristine audio clarity.</p>
+              <div class="exp-data-grid">
+                <div class="data-point">
+                  <h4>BASS MANAGEMENT</h4>
+                  <p>Calculated low-frequency corner trapping to absorb standing waves and tighten bass response.</p>
+                </div>
+                <div class="data-point">
+                  <h4>REFLECTION CONTROL</h4>
+                  <p>Broadband absorption panels placed precisely at first-reflection points to stop sound smearing.</p>
+                </div>
+                <div class="data-point">
+                  <h4>SPATIAL DIFFUSION</h4>
+                  <p>Geometric rear-wall diffusers that scatter sound waves, creating a massive, natural soundstage.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
   <div class="divider"></div>
 
-  <section class="sec" style="background:var(--char)">
-    <div class="sec-narrow">
-      <div style="text-align:center;margin-bottom:56px" class="reveal">
-        <p class="lbl lbl-c">AUDIO MASTERY</p>
-        <h2 style="font-size:clamp(34px,4vw,54px)">Sound You<br><em style="color:var(--or)">Feel, Not Just Hear.</em></h2>
-      </div>
-      <div class="audio-grid reveal rd1">
-        <div class="audio-card">
-          <span class="ac-num">01</span>
-          <h3>Surround Sound</h3>
-          <p>From 5.1 to 9.4.6 Atmos configurations — we design speaker placements that fill your room with a perfect soundstage, front to back, floor to ceiling.</p>
-          <div class="wave-anim">
-            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-          </div>
-        </div>
-        <div class="audio-card">
-          <span class="ac-num">02</span>
-          <h3>Acoustic Treatment</h3>
-          <p>Scientifically modelled bass traps, broadband absorbers, and diffusers that tame reflections and deliver perfectly balanced sound at every seat.</p>
-          <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
-            <div style="font-size:11px;color:var(--tm);border:1px solid rgba(255,255,255,.06);padding:6px 14px;letter-spacing:.08em">ABSORPTION</div>
-            <div style="font-size:11px;color:var(--tm);border:1px solid rgba(255,255,255,.06);padding:6px 14px;letter-spacing:.08em">DIFFUSION</div>
-            <div style="font-size:11px;color:var(--tm);border:1px solid rgba(255,255,255,.06);padding:6px 14px;letter-spacing:.08em">BASS TRAPPING</div>
-          </div>
-        </div>
-      </div>
+<section class="sec" style="background:var(--char); position: relative; overflow: hidden;">
+  <!-- Subtle ambient background glow for the whole section -->
+  <div style="position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,107,43,0.03) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;"></div>
+
+  <div class="sec-narrow">
+    <div style="text-align:center;margin-bottom:70px" class="reveal">
+      <p class="lbl lbl-c">OUR APPROACH</p>
+      <h2 style="font-size:clamp(38px,5vw,64px)">The Right Gear.<br><em style="color:var(--or)">The Perfect Setup.</em></h2>
     </div>
-  </section>
+    
+    <div class="imm-grid reveal rd1">
+      
+      <!-- Card 1: Equipment Supply -->
+      <div class="imm-card">
+        <div class="imm-bg bg-beam"></div>
+        <div class="imm-content">
+          <div class="imm-num">01</div>
+          <h3>Premium Equipment Supply</h3>
+          <p>As authorized dealers for top-tier brands like BenQ, we don't just sell boxes. We curate the perfect combination of projectors, screens, and AV components tailored exactly to your room's dimensions and viewing habits.</p>
+          <div class="imm-tags">
+            <span class="imm-tag">AUTHORIZED DEALERS</span>
+            <span class="imm-tag">CURATED SELECTION</span>
+            <span class="imm-tag">GENUINE WARRANTY</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Acoustic Treatment -->
+      <div class="imm-card">
+        <div class="imm-bg bg-waves"></div>
+        <div class="imm-content">
+          <div class="imm-num">02</div>
+          <h3>Acoustic Treatment Setup</h3>
+          <p>The best equipment sounds average in a poor room. We supply and install specialized acoustic panels, diffusers, and bass traps designed to eliminate echoes, control reflections, and tighten low-end frequencies.</p>
+          <div class="imm-tags">
+            <span class="imm-tag">BASS TRAPPING</span>
+            <span class="imm-tag">REFLECTION CONTROL</span>
+            <span class="imm-tag">SOUND DIFFUSION</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Professional Installation -->
+      <div class="imm-card">
+        <div class="imm-bg bg-grid"></div>
+        <div class="imm-content">
+          <div class="imm-num">03</div>
+          <h3>Professional Installation</h3>
+          <p>From precise screen mounting to seamless, invisible cable management in your AV racks, our installation team ensures your home theatre looks as clean as the picture on the screen. No clutter, just pure entertainment.</p>
+          <div class="imm-tags">
+            <span class="imm-tag">CLEAN AESTHETICS</span>
+            <span class="imm-tag">PRECISE MOUNTING</span>
+            <span class="imm-tag">INVISIBLE CABLING</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Precision Calibration -->
+      <div class="imm-card">
+        <div class="imm-bg bg-focus"></div>
+        <div class="imm-content">
+          <div class="imm-num">04</div>
+          <h3>Precision Calibration</h3>
+          <p>Our job doesn't end at wiring. We meticulously tune your audio receivers using advanced DSP to ensure every seat is the sweet spot, and calibrate your projectors for reference-grade color accuracy and contrast.</p>
+          <div class="imm-tags">
+            <span class="imm-tag">DSP TUNING</span>
+            <span class="imm-tag">COLOR ACCURACY</span>
+            <span class="imm-tag">REFERENCE AUDIO</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
   <div class="divider"></div>
   <footer>
@@ -846,9 +1343,8 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     <div class="fb-bottom"><p>© 2024 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
   </footer>
 </div>
-
 <!-- ════════════════════════════════════════════════════
-     PAGE: SMART HOME  ← REDESIGNED HERO
+     PAGE: SMART HOME  ← QUBE BRANDED HERO
 ════════════════════════════════════════════════════ -->
 <div class="page" id="page-smarthome">
 
@@ -925,12 +1421,11 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
       <ellipse cx="140" cy="430" rx="90" ry="58" fill="url(#rg1)" opacity="0.32"/>
       <ellipse cx="340" cy="430" rx="70" ry="50" fill="url(#rg1)" opacity="0.25"/>
 
-      <!-- Network connection lines -->
-      <line x1="140" y1="102" x2="410" y2="122" stroke="rgba(255,107,43,0.08)" stroke-width="0.6" stroke-dasharray="5,5"/>
-      <line x1="410" y1="122" x2="340" y2="432" stroke="rgba(255,107,43,0.08)" stroke-width="0.6" stroke-dasharray="5,5"/>
-      <line x1="340" y1="432" x2="140" y2="393" stroke="rgba(255,107,43,0.08)" stroke-width="0.6" stroke-dasharray="5,5"/>
-      <line x1="140" y1="393" x2="140" y2="102" stroke="rgba(255,107,43,0.08)" stroke-width="0.6" stroke-dasharray="5,5"/>
-      <line x1="140" y1="102" x2="340" y2="432" stroke="rgba(255,107,43,0.05)" stroke-width="0.5" stroke-dasharray="3,7"/>
+      <!-- Network connection lines (Modified to show wireless waves) -->
+      <path d="M140 102 Q 275 112 410 122" fill="none" stroke="rgba(255,107,43,0.15)" stroke-width="0.6" stroke-dasharray="3,4"/>
+      <path d="M410 122 Q 375 277 340 432" fill="none" stroke="rgba(255,107,43,0.15)" stroke-width="0.6" stroke-dasharray="3,4"/>
+      <path d="M340 432 Q 240 412 140 393" fill="none" stroke="rgba(255,107,43,0.15)" stroke-width="0.6" stroke-dasharray="3,4"/>
+      <path d="M140 393 Q 120 247 140 102" fill="none" stroke="rgba(255,107,43,0.15)" stroke-width="0.6" stroke-dasharray="3,4"/>
 
       <!-- Hub spokes -->
       <line x1="300" y1="267" x2="140" y2="102" stroke="rgba(255,107,43,0.10)" stroke-width="0.6" stroke-dasharray="4,6"/>
@@ -946,7 +1441,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
       </circle>
       <circle cx="300" cy="267" r="7" fill="rgba(255,107,43,0.22)" stroke="rgba(255,107,43,0.65)" stroke-width="0.8"/>
       <circle cx="300" cy="267" r="3" fill="#d46d41"/>
-      <text x="300" y="293" fill="rgba(255,107,43,0.45)" font-family="Inter,sans-serif" font-size="8" letter-spacing="2" text-anchor="middle">HUB</text>
+      <text x="300" y="293" fill="rgba(255,107,43,0.45)" font-family="Inter,sans-serif" font-size="8" letter-spacing="2" text-anchor="middle">QUBE CORE</text>
 
       <!-- Smart device nodes -->
       <circle cx="140" cy="102" r="8" fill="rgba(255,107,43,0.12)" stroke="rgba(255,107,43,0.48)" stroke-width="0.8">
@@ -988,7 +1483,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
       <line x1="460" y1="518" x2="560" y2="518" stroke="rgba(255,107,43,0.28)" stroke-width="0.6"/>
       <line x1="460" y1="514" x2="460" y2="522" stroke="rgba(255,107,43,0.28)" stroke-width="0.6"/>
       <line x1="560" y1="514" x2="560" y2="522" stroke="rgba(255,107,43,0.28)" stroke-width="0.6"/>
-      <text x="510" y="513" fill="rgba(255,107,43,0.28)" font-family="Inter,sans-serif" font-size="8" text-anchor="middle" letter-spacing="1">5,200 SQ FT</text>
+      <text x="510" y="513" fill="rgba(255,107,43,0.28)" font-family="Inter,sans-serif" font-size="8" text-anchor="middle" letter-spacing="1">QUBE BLUEPRINT</text>
 
       <!-- Animated scan line -->
       <line x1="30" y1="30" x2="570" y2="30" stroke="rgba(255,107,43,0.15)" stroke-width="0.8">
@@ -998,17 +1493,17 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     </svg>
 
     <!-- Floating status labels -->
-    <div class="sh-node-label" style="top:16%;right:11%">5 ZONES ACTIVE</div>
-    <div class="sh-node-label" style="bottom:20%;right:19%">CLIMATE · 23°C</div>
+    <div class="sh-node-label" style="top:16%;right:11%">QUBE SYSTEM ACTIVE</div>
+    <div class="sh-node-label" style="bottom:20%;right:19%">WIRELESS MESH · OPTIMIZED</div>
 
     <!-- Left-anchored hero copy -->
     <div class="sh-hero-content">
-      <p class="ol">SMART HOME AUTOMATION</p>
-      <h1>Live Smarter.<br><em>Feel More.</em></h1>
-      <p>Your home, orchestrated by intelligence. Every system working in perfect harmony — so you can focus on living.</p>
+      <p class="ol">WIRED & WIRELESS AUTOMATION BY QUBE</p>
+      <h1>Intelligent Living.<br><em>Designed by Qube.</em></h1>
+      <p>Your home, orchestrated by industry-leading intelligence. Whether building new or upgrading a finished home, Qube Technologies integrates every system seamlessly — wired or wireless.</p>
       <div class="btns">
-        <button class="btn-g" onclick="showPage('contact')">Automate My Home <span class="arrow-r">→</span></button>
-        <button class="btn-g" onclick="showPage('projects')">See Projects <span class="arrow-r">→</span></button>
+        <button class="btn-g" onclick="showPage('contact')">Automate With Qube <span class="arrow-r">→</span></button>
+        <button class="btn-g" onclick="showPage('projects')">View Qube Projects <span class="arrow-r">→</span></button>
       </div>
     </div>
     <div class="scroll-hint"><span>SCROLL</span><div class="s-line"></div></div>
@@ -1018,34 +1513,34 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
   <section class="sec" style="background:var(--char)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:56px" class="reveal">
-        <p class="lbl lbl-c">ROOM BY ROOM</p>
+        <p class="lbl lbl-c">THE QUBE EXPERIENCE</p>
         <h2 style="font-size:clamp(34px,4.5vw,58px)">Intelligence In<br><em style="color:var(--or)">Every Corner.</em></h2>
       </div>
       <div class="fp-grid reveal rd1">
         <div class="fp-room">
           <span class="room-num">01</span>
           <h3>Living Room</h3>
-          <p>Scene-based lighting, automated curtains, multi-room audio, and a single tap to set the mood for movie night, a dinner party, or a quiet evening.</p>
+          <p>Curated scene-based lighting, ultra-quiet automated curtains, and multi-room acoustic perfection. A single tap on your Qube interface sets the mood.</p>
           <div class="room-controls">
-            <div class="rc"><span class="rc-dot"></span>Scene Mode</div>
+            <div class="rc"><span class="rc-dot"></span>Qube Scene Mode</div>
             <div class="rc"><span class="rc-dot"></span>Smart Curtains</div>
-            <div class="rc"><span class="rc-dot"></span>Audio</div>
+            <div class="rc"><span class="rc-dot"></span>High-Fidelity Audio</div>
           </div>
         </div>
         <div class="fp-room">
           <span class="room-num">02</span>
-          <h3>Master Bedroom</h3>
-          <p>Wake up to gradual sunrise lighting. Fall asleep to perfect darkness. Climate auto-adjusts through the night for deep, restful sleep.</p>
+          <h3>Master Suite</h3>
+          <p>Wake up to a gradual, simulated sunrise. Fall asleep in absolute darkness. Climate instinctively adjusts through the night for restorative sleep.</p>
           <div class="room-controls">
             <div class="rc"><span class="rc-dot"></span>Sunrise Wake</div>
-            <div class="rc"><span class="rc-dot"></span>Climate</div>
+            <div class="rc"><span class="rc-dot"></span>Adaptive Climate</div>
             <div class="rc"><span class="rc-dot"></span>Privacy Mode</div>
           </div>
         </div>
         <div class="fp-room">
           <span class="room-num">03</span>
-          <h3>Kitchen</h3>
-          <p>Hands-free controls for lighting and exhaust while cooking. Smart display with recipe integration and grocery reminders built in.</p>
+          <h3>Culinary Space</h3>
+          <p>Hands-free environment control while you cook. Integrated smart displays keep your recipes, lighting, and ventilation perfectly synced.</p>
           <div class="room-controls">
             <div class="rc"><span class="rc-dot"></span>Voice Control</div>
             <div class="rc"><span class="rc-dot"></span>Task Lighting</div>
@@ -1055,11 +1550,11 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
         <div class="fp-room">
           <span class="room-num">04</span>
           <h3>Home Office</h3>
-          <p>Focus mode dims distractions, adjusts lighting for video calls, and manages do-not-disturb across your entire home automatically.</p>
+          <p>Activate Focus Mode to dim distractions, optimize lighting for video conferencing, and engage a whole-home Do Not Disturb protocol.</p>
           <div class="room-controls">
             <div class="rc"><span class="rc-dot"></span>Focus Mode</div>
-            <div class="rc"><span class="rc-dot"></span>Call Lighting</div>
-            <div class="rc"><span class="rc-dot"></span>DND Whole Home</div>
+            <div class="rc"><span class="rc-dot"></span>Conference Light</div>
+            <div class="rc"><span class="rc-dot"></span>DND Protocol</div>
           </div>
         </div>
       </div>
@@ -1072,14 +1567,16 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
   <section class="sec" style="background:var(--black)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:56px" class="reveal">
-        <p class="lbl lbl-c">INTEGRATIONS</p>
-        <h2 style="font-size:clamp(32px,4vw,52px)">Works With<br><em style="color:var(--or)">The Best In The World.</em></h2>
+        <p class="lbl lbl-c">QUBE PARTNERS</p>
+        <h2 style="font-size:clamp(32px,4vw,52px)">Wired & Wireless<br><em style="color:var(--or)">Perfection.</em></h2>
       </div>
-      <div class="int-row reveal rd1">
+      <!-- Added a 5th card specifically for Wireless to balance out the message -->
+      <div class="int-row reveal rd1" style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
         <div class="int-card"><span class="int-icon">◈</span><h4>CRESTRON</h4><p>Commercial-grade control</p></div>
         <div class="int-card"><span class="int-icon">◉</span><h4>LUTRON</h4><p>Lighting perfection</p></div>
         <div class="int-card"><span class="int-icon">◎</span><h4>CONTROL4</h4><p>Unified automation</p></div>
         <div class="int-card"><span class="int-icon">◐</span><h4>SONOS</h4><p>Whole-home audio</p></div>
+        <div class="int-card"><span class="int-icon">⚬</span><h4>WIRELESS SYSTEMS</h4><p>Z-Wave, Zigbee & Wi-Fi</p></div>
       </div>
     </div>
   </section>
@@ -1090,15 +1587,15 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
   <section class="sec" style="background:var(--char)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:64px" class="reveal">
-        <p class="lbl lbl-c">OUR PROCESS</p>
+        <p class="lbl lbl-c">THE QUBE PROCESS</p>
         <h2 style="font-size:clamp(32px,4vw,52px)">From Concept<br><em style="color:var(--or)">To Reality.</em></h2>
       </div>
       <div class="process-steps reveal rd1">
-        <div class="ps"><div class="ps-dot">1</div><div class="ps-body"><h3>Discovery</h3><p>We spend time understanding how you live — your rhythms, your routines, your aspirations. No two homes are alike.</p></div></div>
-        <div class="ps"><div class="ps-dot">2</div><div class="ps-body"><h3>Design</h3><p>Our engineers create a complete system architecture tailored to your space — with 3D renders so you see it before it exists.</p></div></div>
-        <div class="ps"><div class="ps-dot">3</div><div class="ps-body"><h3>Installation</h3><p>Our certified technicians work with precision and care, leaving your home cleaner than they found it.</p></div></div>
-        <div class="ps"><div class="ps-dot">4</div><div class="ps-body"><h3>Training</h3><p>We ensure every member of your household is confident and comfortable with their new intelligent home.</p></div></div>
-        <div class="ps"><div class="ps-dot">5</div><div class="ps-body"><h3>Lifetime Support</h3><p>Remote monitoring, proactive maintenance, and a dedicated support line — we are always just a call away.</p></div></div>
+        <div class="ps"><div class="ps-dot">1</div><div class="ps-body"><h3>Discovery</h3><p>We spend time understanding how you live — your rhythms, routines, and aesthetic goals. Every Qube home is inherently unique.</p></div></div>
+        <div class="ps"><div class="ps-dot">2</div><div class="ps-body"><h3>Architecture</h3><p>Qube engineers create a master blueprint tailored to your space, designing a robust hybrid network of wired and wireless technologies.</p></div></div>
+        <div class="ps"><div class="ps-dot">3</div><div class="ps-body"><h3>Deployment</h3><p>Whether installing fresh cabling in a new build or deploying non-intrusive wireless modules in a finished home, our certified specialists execute with absolute precision.</p></div></div>
+        <div class="ps"><div class="ps-dot">4</div><div class="ps-body"><h3>Onboarding</h3><p>We ensure you and your family are completely fluent and comfortable with navigating your new intelligent living space.</p></div></div>
+        <div class="ps"><div class="ps-dot">5</div><div class="ps-body"><h3>Qube Care Support</h3><p>Proactive remote monitoring, scheduled maintenance, and a dedicated rapid-response team. Qube is always just a call away.</p></div></div>
       </div>
       <div style="text-align:center;margin-top:52px" class="reveal rd2">
         <button class="btn-g" onclick="showPage('contact')">Begin Your Journey <span class="arrow-r">→</span></button>
@@ -1109,7 +1606,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
   <footer>
     <div class="ft">
       <div class="fb"> <h3 class="footer-logo-wrapper">
-        <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
+        <img src="images/logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
         QUBE TECHNOLOGIES
       </h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
       <div class="flinks">
@@ -1117,10 +1614,9 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
         <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
       </div>
     </div>
-    <div class="fb-bottom"><p>© 2024 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
+    <div class="fb-bottom"><p>© 2026 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
   </footer>
 </div>
-
 <!-- ════════════════════════════════════════════════════
      PAGE: PROJECTS
 ════════════════════════════════════════════════════ -->
@@ -1501,84 +1997,138 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
 
 <!-- ════════ GLOBAL JS ════════ -->
 <style>
-@keyframes bFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(18px,-13px) scale(1.04)}66%{transform:translate(-9px,9px) scale(.97)}}
+@keyframes bFloat {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(18px,-13px) scale(1.04); }
+  66% { transform: translate(-9px,9px) scale(0.97); }
+}
 </style>
+
 <script>
-// ── Cursor
+// ── Cursor Logic
 const cur = document.getElementById('cur');
 const ring = document.getElementById('cur-ring');
-let mx=0,my=0,cx=0,cy=0,rx=0,ry=0,targetScale=1,currentScale=1;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function loop(){
-  cx+=(mx-cx)*.2; cy+=(my-cy)*.2;
-  rx+=(mx-rx)*.11; ry+=(my-ry)*.11;
-  currentScale+=(targetScale-currentScale)*.15;
-  cur.style.transform=`translate(${cx-5}px,${cy-5}px) scale(${currentScale})`;
-  ring.style.transform=`translate(${rx-19}px,${ry-19}px)`;
+let mx = 0, my = 0, cx = 0, cy = 0, rx = 0, ry = 0, targetScale = 1, currentScale = 1;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; 
+  my = e.clientY;
+});
+
+(function loop() {
+  cx += (mx - cx) * 0.2; 
+  cy += (my - cy) * 0.2;
+  rx += (mx - rx) * 0.11; 
+  ry += (my - ry) * 0.11;
+  currentScale += (targetScale - currentScale) * 0.15;
+  
+  if (cur && ring) {
+    cur.style.transform = `translate(${cx - 5}px, ${cy - 5}px) scale(${currentScale})`;
+    ring.style.transform = `translate(${rx - 19}px, ${ry - 19}px)`;
+  }
   requestAnimationFrame(loop);
 })();
 
-document.querySelectorAll('button,a,.ctrl-card,.pillar,.proj-card,.tc,.fp-room,.val-card,.ct-method,.exp-card,.pkg,.audio-card,.ps').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{targetScale=2.2;ring.style.opacity='.4';});
-  el.addEventListener('mouseleave',()=>{targetScale=1;ring.style.opacity='1';});
+// Add hover effect for interactive elements (including the new .exp-item accordion cards)
+const interactiveElements = 'button, a, .ctrl-card, .pillar, .proj-card, .tc, .fp-room, .val-card, .ct-method, .exp-card, .exp-item, .pkg, .audio-card, .ps';
+document.querySelectorAll(interactiveElements).forEach(el => {
+  el.addEventListener('mouseenter', () => { targetScale = 2.2; ring.style.opacity = '0.4'; });
+  el.addEventListener('mouseleave', () => { targetScale = 1; ring.style.opacity = '1'; });
 });
 
-// ── Nav scroll
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
+// ── Nav Scroll Effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
+});
 
-// ── Page navigation
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  const p=document.getElementById('page-'+id);
-  if(p){p.classList.add('active');window.scrollTo({top:0,behavior:'instant'});}
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  const nl=document.getElementById('nl-'+id);
-  if(nl)nl.classList.add('active');
-  setTimeout(()=>{
-    document.querySelectorAll('#page-'+id+' .reveal').forEach(el=>{
-      const r=new IntersectionObserver(entries=>{
-        entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');r.unobserve(e.target);}});
-      },{threshold:.1});
+// ── Page Navigation System
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const p = document.getElementById('page-' + id);
+  if (p) {
+    p.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const nl = document.getElementById('nl-' + id);
+  if (nl) nl.classList.add('active');
+  
+  // Re-trigger reveal animations for the new page
+  setTimeout(() => {
+    document.querySelectorAll('#page-' + id + ' .reveal').forEach(el => {
+      const r = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('vis');
+            r.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
       r.observe(el);
     });
-  },50);
+  }, 50);
 }
 
-// ── Global reveal observer
-function initReveals(){
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});
-  },{threshold:.1});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+// ── Global Scroll Reveal Observer
+function initReveals() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('vis');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 }
 initReveals();
 
-// ── Hero parallax (home)
-window.addEventListener('scroll',()=>{
-  if(!document.getElementById('page-home').classList.contains('active'))return;
-  const y=window.scrollY;
-  const hc=document.querySelector('#page-home .hero-content');
-  if(hc&&y<window.innerHeight){hc.style.transform=`translateY(${y*.22}px)`;hc.style.opacity=Math.max(0,1-y/(window.innerHeight*.65));}
+// ── Hero Parallax (Home Page)
+window.addEventListener('scroll', () => {
+  const homePage = document.getElementById('page-home');
+  if (!homePage || !homePage.classList.contains('active')) return;
+  
+  const y = window.scrollY;
+  const hc = document.querySelector('#page-home .hero-content');
+  if (hc && y < window.innerHeight) {
+    hc.style.transform = `translateY(${y * 0.22}px)`;
+    hc.style.opacity = Math.max(0, 1 - y / (window.innerHeight * 0.65));
+  }
 });
 
-// ── Project filter
-function setFilter(btn,cat){
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+// ── Project Filtering System
+function setFilter(btn, cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.proj-card').forEach(card=>{
-    const cats=card.dataset.cat||'';
-    card.style.display=(cat==='all'||cats.includes(cat))?'':'none';
+  
+  document.querySelectorAll('.proj-card').forEach(card => {
+    const cats = card.dataset.cat || '';
+    card.style.display = (cat === 'all' || cats.includes(cat)) ? '' : 'none';
   });
 }
 
-// ── Form submit
-function handleSubmit(){
-  const btn=document.querySelector('.form-submit');
-  btn.textContent='✓ Enquiry Sent — We\'ll Be In Touch Soon';
-  btn.style.background='#1a4a1a';
-  btn.style.color='rgba(255,255,255,.8)';
-  btn.disabled=true;
+// ── Interactive Experience Accordion (Home Theatre Page)
+function toggleExpCard(element) {
+  // Automatically close any currently open cards
+  document.querySelectorAll('.exp-item').forEach(el => { 
+    if(el !== element) el.classList.remove('active'); 
+  });
+  
+  // Toggle the clicked card open/closed
+  element.classList.toggle('active');
+}
+
+// ── Form Submission Mock
+function handleSubmit() {
+  const btn = document.querySelector('.form-submit');
+  if (btn) {
+    btn.textContent = '✓ Enquiry Sent — We\'ll Be In Touch Soon';
+    btn.style.background = '#1a4a1a';
+    btn.style.color = 'rgba(255,255,255,0.8)';
+    btn.disabled = true;
+  }
 }
 </script>
 </body>
