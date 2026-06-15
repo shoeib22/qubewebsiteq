@@ -323,20 +323,43 @@ nav.scrolled {
 .data-point p{font-size:13px;color:#d1d1d1;font-weight:300;line-height:1.6}
 
 /* Theatre Hero Screen Text Classes */
+.ht-svg-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: 1000 / 600;
+  margin: 0 auto;
+}
 .ht-hero-content {
-  width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--tp); padding: 20px; box-sizing: border-box; position: relative; z-index: 10;
+  position: absolute;
+  top: 11.66%;
+  left: 19%;
+  width: 62%;
+  height: 56.66%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--tp);
+  padding: 2%;
+  box-sizing: border-box;
+  z-index: 10;
 }
 .ht-hero-content .ol {
-  margin: 0 0 10px 0; font-size: 14px; letter-spacing: 2px; color: var(--orange); font-family: 'Inter', sans-serif; font-weight: 500;
+  margin: 0 0 2% 0; font-size: clamp(8px, 1.2vw, 14px); letter-spacing: 2px; color: var(--orange); font-family: 'Inter', sans-serif; font-weight: 500;
 }
 .ht-hero-content h1 {
-  margin: 0 0 15px 0; font-size: 46px; line-height: 1.1; font-family: 'Cormorant Garamond', serif; font-weight: 400; text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+  margin: 0 0 3% 0; font-size: clamp(20px, 3.5vw, 46px); line-height: 1.1; font-family: 'Cormorant Garamond', serif; font-weight: 400; text-shadow: 0 4px 12px rgba(0,0,0,0.8);
 }
 .ht-hero-content .ht-desc {
-  margin: 0 0 25px 0; font-size: 15px; max-width: 80%; color: #fff; line-height: 1.5; font-family: 'Inter', sans-serif; font-weight: 400; text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+  margin: 0 0 4% 0; font-size: clamp(9px, 1.2vw, 15px); max-width: 90%; color: #fff; line-height: 1.4; font-family: 'Inter', sans-serif; font-weight: 400; text-shadow: 0 2px 6px rgba(0,0,0,0.8);
 }
 .ht-hero-content .btns {
-  display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;
+  display: flex; gap: clamp(6px, 1.5vw, 15px); flex-wrap: wrap; justify-content: center;
+}
+.ht-hero-content .btn-g {
+  padding: clamp(6px, 1vw, 12px) clamp(10px, 2vw, 24px) !important; font-size: clamp(7px, 1vw, 12px) !important; letter-spacing: 0.1em;
 }
 
 .screen-showcase{display:grid;grid-template-columns:1.2fr 1fr;gap:70px;align-items:center;max-width:1200px;margin:0 auto}
@@ -649,14 +672,6 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
   .exp-head { padding: 20px; }
   .exp-head-left { gap: 12px; }
   .exp-head h3 { font-size: 18px; }
-  
-  /* Theatre Hero Overrides for Mobile */
-  .ht-hero-content { padding: 10px; }
-  .ht-hero-content h1 { font-size: 32px; margin-bottom: 10px; }
-  .ht-hero-content .ht-desc { font-size: 12px; max-width: 95%; margin-bottom: 15px; }
-  .ht-hero-content .ol { font-size: 12px; }
-  .ht-hero-content .btns { gap: 10px; }
-  .ht-hero-content .btn-g { padding: 10px 16px !important; font-size: 10px !important; }
 
   /* Timeline */
   .timeline::before { left: 20px; transform: none; }
@@ -686,11 +701,11 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
   .sh-status-pills { flex-direction: column; align-items: flex-start; }
   
   /* Theatre Hero Super Small Mobile Overrides */
-  .ht-hero-content h1 { font-size: 22px; margin-bottom: 5px; }
-  .ht-hero-content .ht-desc { font-size: 9px; line-height: 1.3; margin-bottom: 8px; max-width: 100%; }
-  .ht-hero-content .ol { font-size: 9px; margin-bottom: 5px; }
+  .ht-hero-content h1 { font-size: 18px; margin-bottom: 6px; }
+  .ht-hero-content .ht-desc { display: none; } /* Hide to prevent overflow on very tiny TV screens */
+  .ht-hero-content .ol { font-size: 8px; margin-bottom: 4px; }
   .ht-hero-content .btns { gap: 6px; }
-  .ht-hero-content .btn-g { padding: 6px 12px !important; font-size: 8px !important; }
+  .ht-hero-content .btn-g { padding: 5px 10px !important; font-size: 7px !important; }
 }
 </style>
 </head>
@@ -863,125 +878,123 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     <div style="position: absolute; width: 60vw; height: 50vh; background: radial-gradient(circle, var(--orange-dim) 0%, rgba(0,0,0,0) 70%); top: 10%; z-index: 0; filter: blur(50px);"></div>
     <div style="position: absolute; width: 40vw; height: 40vh; background: radial-gradient(circle, var(--ivory-mute) 0%, rgba(0,0,0,0) 70%); bottom: 10%; right: 10%; z-index: 0; filter: blur(40px);"></div>
     
-    <svg viewBox="0 0 1000 600" style="width: 100%; max-width: 1200px; position: relative; z-index: 1;">
-      <defs>
-        <filter id="tv-glow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="30" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-        <filter id="floor-glow" x="-20%" y="-50%" width="140%" height="200%">
-          <feGaussianBlur stdDeviation="8" result="blur" />
-        </filter>
-        <linearGradient id="movie-screen" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:var(--char)" />
-          <stop offset="50%" style="stop-color:var(--orange-dim)" />
-          <stop offset="100%" style="stop-color:var(--orange)" />
-          <animate attributeName="x1" values="0%; 100%; 0%" dur="15s" repeatCount="indefinite" />
-          <animate attributeName="y1" values="0%; 100%; 0%" dur="20s" repeatCount="indefinite" />
-        </linearGradient>
-        <linearGradient id="panel-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#020202" />
-          <stop offset="50%" stop-color="#080808" />
-          <stop offset="100%" stop-color="#000000" />
-        </linearGradient>
-      </defs>
+    <div class="ht-svg-wrapper">
+      <svg viewBox="0 0 1000 600" style="width: 100%; height: auto; display: block; position: relative; z-index: 1;">
+        <defs>
+          <filter id="tv-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="30" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+          <filter id="floor-glow" x="-20%" y="-50%" width="140%" height="200%">
+            <feGaussianBlur stdDeviation="8" result="blur" />
+          </filter>
+          <linearGradient id="movie-screen" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:var(--char)" />
+            <stop offset="50%" style="stop-color:var(--orange-dim)" />
+            <stop offset="100%" style="stop-color:var(--orange)" />
+            <animate attributeName="x1" values="0%; 100%; 0%" dur="15s" repeatCount="indefinite" />
+            <animate attributeName="y1" values="0%; 100%; 0%" dur="20s" repeatCount="indefinite" />
+          </linearGradient>
+          <linearGradient id="panel-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#020202" />
+            <stop offset="50%" stop-color="#080808" />
+            <stop offset="100%" stop-color="#000000" />
+          </linearGradient>
+        </defs>
 
-      <rect x="20" y="40" width="120" height="420" rx="4" fill="url(#panel-grad)" stroke="var(--orange-dim)" stroke-width="1.5" />
-      <line x1="20" y1="120" x2="140" y2="120" stroke="var(--orange-dim)" stroke-width="2" />
-      <line x1="20" y1="200" x2="140" y2="200" stroke="var(--orange-dim)" stroke-width="2" />
-      <line x1="20" y1="280" x2="140" y2="280" stroke="var(--orange-dim)" stroke-width="2" />
-      <line x1="20" y1="360" x2="140" y2="360" stroke="var(--orange-dim)" stroke-width="2" />
-      
-      <rect x="860" y="40" width="120" height="420" rx="4" fill="url(#panel-grad)" stroke="var(--orange-dim)" stroke-width="1.5" />
-      <line x1="860" y1="120" x2="980" y2="120" stroke="var(--orange-dim)" stroke-width="2" />
-      <line x1="860" y1="200" x2="980" y2="200" stroke="var(--orange-dim)" stroke-width="2" />
-      <line x1="860" y1="280" x2="980" y2="280" stroke="var(--orange-dim)" stroke-width="2" />
-      <line x1="860" y1="360" x2="980" y2="360" stroke="var(--orange-dim)" stroke-width="2" />
+        <rect x="20" y="40" width="120" height="420" rx="4" fill="url(#panel-grad)" stroke="var(--orange-dim)" stroke-width="1.5" />
+        <line x1="20" y1="120" x2="140" y2="120" stroke="var(--orange-dim)" stroke-width="2" />
+        <line x1="20" y1="200" x2="140" y2="200" stroke="var(--orange-dim)" stroke-width="2" />
+        <line x1="20" y1="280" x2="140" y2="280" stroke="var(--orange-dim)" stroke-width="2" />
+        <line x1="20" y1="360" x2="140" y2="360" stroke="var(--orange-dim)" stroke-width="2" />
+        
+        <rect x="860" y="40" width="120" height="420" rx="4" fill="url(#panel-grad)" stroke="var(--orange-dim)" stroke-width="1.5" />
+        <line x1="860" y1="120" x2="980" y2="120" stroke="var(--orange-dim)" stroke-width="2" />
+        <line x1="860" y1="200" x2="980" y2="200" stroke="var(--orange-dim)" stroke-width="2" />
+        <line x1="860" y1="280" x2="980" y2="280" stroke="var(--orange-dim)" stroke-width="2" />
+        <line x1="860" y1="360" x2="980" y2="360" stroke="var(--orange-dim)" stroke-width="2" />
 
-      <line x1="0" y1="485" x2="1000" y2="485" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
-      
-      <line x1="250" y1="480" x2="750" y2="480" stroke="var(--orange)" stroke-width="5" filter="url(#floor-glow)" opacity="0.4">
-        <animate attributeName="opacity" values="0.3; 0.6; 0.3" dur="6s" repeatCount="indefinite" />
-      </line>
+        <line x1="0" y1="485" x2="1000" y2="485" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+        
+        <line x1="250" y1="480" x2="750" y2="480" stroke="var(--orange)" stroke-width="5" filter="url(#floor-glow)" opacity="0.4">
+          <animate attributeName="opacity" values="0.3; 0.6; 0.3" dur="6s" repeatCount="indefinite" />
+        </line>
 
-      <rect x="180" y="60" width="640" height="360" fill="var(--orange)" opacity="0.25" filter="url(#tv-glow)">
-        <animate attributeName="opacity" values="0.15; 0.35; 0.15" dur="4s" repeatCount="indefinite" />
-      </rect>
+        <rect x="180" y="60" width="640" height="360" fill="var(--orange)" opacity="0.25" filter="url(#tv-glow)">
+          <animate attributeName="opacity" values="0.15; 0.35; 0.15" dur="4s" repeatCount="indefinite" />
+        </rect>
 
-      <rect x="175" y="55" width="650" height="370" rx="10" fill="#020202" stroke="#333" stroke-width="2" />
-      <rect x="180" y="60" width="640" height="360" rx="8" fill="#000" />
+        <rect x="175" y="55" width="650" height="370" rx="10" fill="#020202" stroke="#333" stroke-width="2" />
+        <rect x="180" y="60" width="640" height="360" rx="8" fill="#000" />
 
-      <rect x="190" y="70" width="620" height="340" rx="4" fill="url(#movie-screen)" />
+        <rect x="190" y="70" width="620" height="340" rx="4" fill="url(#movie-screen)" />
 
-      <line x1="190" y1="70" x2="810" y2="70" stroke="var(--orange-glow)" stroke-width="2">
-        <animate attributeName="y1" values="70;410;70" dur="6s" repeatCount="indefinite" />
-        <animate attributeName="y2" values="70;410;70" dur="6s" repeatCount="indefinite" />
-      </line>
+        <line x1="190" y1="70" x2="810" y2="70" stroke="var(--orange-glow)" stroke-width="2">
+          <animate attributeName="y1" values="70;410;70" dur="6s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="70;410;70" dur="6s" repeatCount="indefinite" />
+        </line>
 
-      <foreignObject x="190" y="70" width="620" height="340">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="ht-hero-content">
-          <p class="ol">HOME THEATRE</p>
-          <h1>Sound.<br>Light.<br><em style="color: var(--orange); font-style: italic;">Sensation.</em></h1>
-          <p class="ht-desc">Step into a world where every frame is a masterpiece and every note fills the room with purpose. Your private cinema awaits.</p>
-          <div class="btns">
-            <button class="btn-g" onclick="showPage('contact')" style="background: var(--orange); color: #000; border: none; box-shadow: 0 4px 15px var(--orange-dim);">Design My Theatre <span class="arrow-r">→</span></button>
-            <button class="btn-g" onclick="showPage('projects')" style="background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: #fff; border: 1px solid rgba(255,255,255,0.4);">See Projects <span class="arrow-r">→</span></button>
-          </div>
+        <rect x="230" y="445" width="540" height="40" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
+        <rect x="230" y="445" width="540" height="8" rx="2" fill="#0a0a0a" /> <rect x="260" y="455" width="140" height="18" rx="2" fill="#020202" stroke="#333" stroke-width="1.5" />
+        <circle cx="275" cy="464" r="2" fill="var(--orange)" opacity="0.8" />
+        <rect x="600" y="455" width="140" height="18" rx="2" fill="#020202" stroke="#333" stroke-width="1.5" />
+        <circle cx="615" cy="464" r="2" fill="var(--orange)" opacity="0.8" />
+        
+        <rect x="430" y="450" width="140" height="28" rx="3" fill="#050505" stroke="#444" stroke-width="1.5" />
+        <rect x="440" y="455" width="60" height="18" rx="2" fill="#000" stroke="#222" stroke-width="1" />
+        <rect x="445" y="465" width="4" height="6" fill="var(--orange)"><animate attributeName="height" values="2;6;3;8;2" dur="0.8s" repeatCount="indefinite" /><animate attributeName="y" values="469;465;468;463;469" dur="0.8s" repeatCount="indefinite" /></rect>
+        <rect x="451" y="462" width="4" height="9" fill="var(--orange)"><animate attributeName="height" values="5;9;4;7;5" dur="1.1s" repeatCount="indefinite" /><animate attributeName="y" values="466;462;467;464;466" dur="1.1s" repeatCount="indefinite" /></rect>
+        <rect x="457" y="464" width="4" height="7" fill="var(--orange)"><animate attributeName="height" values="8;3;9;4;8" dur="0.9s" repeatCount="indefinite" /><animate attributeName="y" values="463;468;462;467;463" dur="0.9s" repeatCount="indefinite" /></rect>
+        <rect x="463" y="467" width="4" height="4" fill="var(--orange)"><animate attributeName="height" values="3;7;2;6;3" dur="1.3s" repeatCount="indefinite" /><animate attributeName="y" values="468;464;469;465;468" dur="1.3s" repeatCount="indefinite" /></rect>
+        <circle cx="520" cy="464" r="8" fill="#0a0a0a" stroke="#555" stroke-width="1.5" /> 
+        <circle cx="545" cy="464" r="6" fill="#0a0a0a" stroke="#555" stroke-width="1.5" /> 
+        <circle cx="520" cy="464" r="6" fill="#000" /> 
+
+        <polygon points="65,480 70,470 130,470 135,480" fill="#020202" stroke="#2a2a2a" stroke-width="1"/>
+        <polygon points="75,480 78,485 81,480" fill="#666" />
+        <polygon points="119,480 122,485 125,480" fill="#666" />
+        <rect x="70" y="140" width="60" height="330" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
+        <rect x="73" y="143" width="54" height="324" rx="2" fill="#080808" /> <circle cx="100" cy="180" r="14" fill="#050505" stroke="#444" stroke-width="1.5" /> <circle cx="100" cy="180" r="6" fill="#1a1a1a" /> <circle cx="100" cy="240" r="20" fill="#030303" stroke="var(--orange-glow)" stroke-width="1.5" /> <circle cx="100" cy="240" r="16" fill="#0a0a0a" /> <circle cx="100" cy="240" r="4" fill="#020202" />
+        <circle cx="100" cy="320" r="24" fill="#030303" stroke="#444" stroke-width="2" /> <circle cx="100" cy="320" r="18" fill="#0a0a0a" /> <circle cx="100" cy="320" r="5" fill="#020202" />
+        <circle cx="100" cy="400" r="24" fill="#030303" stroke="#444" stroke-width="2" /> <circle cx="100" cy="400" r="18" fill="#0a0a0a" /> <circle cx="100" cy="400" r="5" fill="#020202" />
+
+        <polygon points="865,480 870,470 930,470 935,480" fill="#020202" stroke="#2a2a2a" stroke-width="1"/>
+        <polygon points="875,480 878,485 881,480" fill="#666" />
+        <polygon points="919,480 922,485 925,480" fill="#666" />
+        <rect x="870" y="140" width="60" height="330" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
+        <rect x="873" y="143" width="54" height="324" rx="2" fill="#080808" /> <circle cx="900" cy="180" r="14" fill="#050505" stroke="#444" stroke-width="1.5" /> 
+        <circle cx="900" cy="180" r="6" fill="#1a1a1a" /> 
+        <circle cx="900" cy="240" r="20" fill="#030303" stroke="var(--orange-glow)" stroke-width="1.5" /> 
+        <circle cx="900" cy="240" r="16" fill="#0a0a0a" /> 
+        <circle cx="900" cy="240" r="4" fill="#020202" />
+        <circle cx="900" cy="320" r="24" fill="#030303" stroke="#444" stroke-width="2" /> 
+        <circle cx="900" cy="320" r="18" fill="#0a0a0a" /> 
+        <circle cx="900" cy="320" r="5" fill="#020202" />
+        <circle cx="900" cy="400" r="24" fill="#030303" stroke="#444" stroke-width="2" /> 
+        <circle cx="900" cy="400" r="18" fill="#0a0a0a" /> 
+        <circle cx="900" cy="400" r="5" fill="#020202" />
+
+        <rect x="760" y="340" width="84" height="135" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
+        <rect x="764" y="344" width="76" height="127" rx="2" fill="#080808" /> <circle cx="802" cy="390" r="32" fill="#020202" stroke="#333" stroke-width="3" /> <circle cx="802" cy="390" r="24" fill="#0a0a0a" /> 
+        <circle cx="802" cy="390" r="8" fill="#000" /> 
+        <circle cx="802" cy="450" r="10" fill="#000" /> <circle cx="770" cy="355" r="2" fill="var(--orange)" /> <rect x="770" y="475" width="10" height="5" fill="#333" />
+        <rect x="824" y="475" width="10" height="5" fill="#333" />
+
+        <path d="M 180 600 L 180 540 Q 180 515 200 515 L 320 515 Q 340 515 340 540 L 340 600 Z" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
+        <path d="M 160 600 L 160 550 Q 160 530 175 530 L 205 530 Q 220 530 220 550 L 220 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <path d="M 300 600 L 300 550 Q 300 530 315 530 L 345 530 Q 360 530 360 550 L 360 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <ellipse cx="330" cy="545" rx="8" ry="4" fill="#000" stroke="#444" stroke-width="1.5" /> <path d="M 340 600 L 340 540 Q 340 515 360 515 L 640 515 Q 660 515 660 540 L 660 600 Z" fill="#020202" stroke="#2a2a2a" stroke-width="2" />
+        <path d="M 640 600 L 640 550 Q 640 530 655 530 L 685 530 Q 700 530 700 550 L 700 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <ellipse cx="670" cy="545" rx="8" ry="4" fill="#000" stroke="#444" stroke-width="1.5" /> <path d="M 660 600 L 660 540 Q 660 515 680 515 L 800 515 Q 820 515 820 540 L 820 600 Z" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
+        <path d="M 780 600 L 780 550 Q 780 530 795 530 L 825 530 Q 840 530 840 550 L 840 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <line x1="180" y1="595" x2="820" y2="595" stroke="var(--orange)" stroke-width="8" filter="url(#floor-glow)" opacity="0.25" />
+      </svg>
+      <div class="ht-hero-content">
+        <p class="ol">HOME THEATRE</p>
+        <h1>Sound.<br>Light.<br><em style="color: var(--orange); font-style: italic;">Sensation.</em></h1>
+        <p class="ht-desc">Step into a world where every frame is a masterpiece and every note fills the room with purpose. Your private cinema awaits.</p>
+        <div class="btns">
+          <button class="btn-g" onclick="showPage('contact')" style="background: var(--orange); color: #000; border: none; box-shadow: 0 4px 15px var(--orange-dim);">Design My Theatre <span class="arrow-r">→</span></button>
+          <button class="btn-g" onclick="showPage('projects')" style="background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: #fff; border: 1px solid rgba(255,255,255,0.4);">See Projects <span class="arrow-r">→</span></button>
         </div>
-      </foreignObject>
-
-      <rect x="230" y="445" width="540" height="40" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
-      <rect x="230" y="445" width="540" height="8" rx="2" fill="#0a0a0a" /> <rect x="260" y="455" width="140" height="18" rx="2" fill="#020202" stroke="#333" stroke-width="1.5" />
-      <circle cx="275" cy="464" r="2" fill="var(--orange)" opacity="0.8" />
-      <rect x="600" y="455" width="140" height="18" rx="2" fill="#020202" stroke="#333" stroke-width="1.5" />
-      <circle cx="615" cy="464" r="2" fill="var(--orange)" opacity="0.8" />
-      
-      <rect x="430" y="450" width="140" height="28" rx="3" fill="#050505" stroke="#444" stroke-width="1.5" />
-      <rect x="440" y="455" width="60" height="18" rx="2" fill="#000" stroke="#222" stroke-width="1" />
-      <rect x="445" y="465" width="4" height="6" fill="var(--orange)"><animate attributeName="height" values="2;6;3;8;2" dur="0.8s" repeatCount="indefinite" /><animate attributeName="y" values="469;465;468;463;469" dur="0.8s" repeatCount="indefinite" /></rect>
-      <rect x="451" y="462" width="4" height="9" fill="var(--orange)"><animate attributeName="height" values="5;9;4;7;5" dur="1.1s" repeatCount="indefinite" /><animate attributeName="y" values="466;462;467;464;466" dur="1.1s" repeatCount="indefinite" /></rect>
-      <rect x="457" y="464" width="4" height="7" fill="var(--orange)"><animate attributeName="height" values="8;3;9;4;8" dur="0.9s" repeatCount="indefinite" /><animate attributeName="y" values="463;468;462;467;463" dur="0.9s" repeatCount="indefinite" /></rect>
-      <rect x="463" y="467" width="4" height="4" fill="var(--orange)"><animate attributeName="height" values="3;7;2;6;3" dur="1.3s" repeatCount="indefinite" /><animate attributeName="y" values="468;464;469;465;468" dur="1.3s" repeatCount="indefinite" /></rect>
-      <circle cx="520" cy="464" r="8" fill="#0a0a0a" stroke="#555" stroke-width="1.5" /> 
-      <circle cx="545" cy="464" r="6" fill="#0a0a0a" stroke="#555" stroke-width="1.5" /> 
-      <circle cx="520" cy="464" r="6" fill="#000" /> 
-
-      <polygon points="65,480 70,470 130,470 135,480" fill="#020202" stroke="#2a2a2a" stroke-width="1"/>
-      <polygon points="75,480 78,485 81,480" fill="#666" />
-      <polygon points="119,480 122,485 125,480" fill="#666" />
-      <rect x="70" y="140" width="60" height="330" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
-      <rect x="73" y="143" width="54" height="324" rx="2" fill="#080808" /> <circle cx="100" cy="180" r="14" fill="#050505" stroke="#444" stroke-width="1.5" /> <circle cx="100" cy="180" r="6" fill="#1a1a1a" /> <circle cx="100" cy="240" r="20" fill="#030303" stroke="var(--orange-glow)" stroke-width="1.5" /> <circle cx="100" cy="240" r="16" fill="#0a0a0a" /> <circle cx="100" cy="240" r="4" fill="#020202" />
-      <circle cx="100" cy="320" r="24" fill="#030303" stroke="#444" stroke-width="2" /> <circle cx="100" cy="320" r="18" fill="#0a0a0a" /> <circle cx="100" cy="320" r="5" fill="#020202" />
-      <circle cx="100" cy="400" r="24" fill="#030303" stroke="#444" stroke-width="2" /> <circle cx="100" cy="400" r="18" fill="#0a0a0a" /> <circle cx="100" cy="400" r="5" fill="#020202" />
-
-      <polygon points="865,480 870,470 930,470 935,480" fill="#020202" stroke="#2a2a2a" stroke-width="1"/>
-      <polygon points="875,480 878,485 881,480" fill="#666" />
-      <polygon points="919,480 922,485 925,480" fill="#666" />
-      <rect x="870" y="140" width="60" height="330" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
-      <rect x="873" y="143" width="54" height="324" rx="2" fill="#080808" /> <circle cx="900" cy="180" r="14" fill="#050505" stroke="#444" stroke-width="1.5" /> 
-      <circle cx="900" cy="180" r="6" fill="#1a1a1a" /> 
-      <circle cx="900" cy="240" r="20" fill="#030303" stroke="var(--orange-glow)" stroke-width="1.5" /> 
-      <circle cx="900" cy="240" r="16" fill="#0a0a0a" /> 
-      <circle cx="900" cy="240" r="4" fill="#020202" />
-      <circle cx="900" cy="320" r="24" fill="#030303" stroke="#444" stroke-width="2" /> 
-      <circle cx="900" cy="320" r="18" fill="#0a0a0a" /> 
-      <circle cx="900" cy="320" r="5" fill="#020202" />
-      <circle cx="900" cy="400" r="24" fill="#030303" stroke="#444" stroke-width="2" /> 
-      <circle cx="900" cy="400" r="18" fill="#0a0a0a" /> 
-      <circle cx="900" cy="400" r="5" fill="#020202" />
-
-      <rect x="760" y="340" width="84" height="135" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
-      <rect x="764" y="344" width="76" height="127" rx="2" fill="#080808" /> <circle cx="802" cy="390" r="32" fill="#020202" stroke="#333" stroke-width="3" /> <circle cx="802" cy="390" r="24" fill="#0a0a0a" /> 
-      <circle cx="802" cy="390" r="8" fill="#000" /> 
-      <circle cx="802" cy="450" r="10" fill="#000" /> <circle cx="770" cy="355" r="2" fill="var(--orange)" /> <rect x="770" y="475" width="10" height="5" fill="#333" />
-      <rect x="824" y="475" width="10" height="5" fill="#333" />
-
-      <path d="M 180 600 L 180 540 Q 180 515 200 515 L 320 515 Q 340 515 340 540 L 340 600 Z" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
-      <path d="M 160 600 L 160 550 Q 160 530 175 530 L 205 530 Q 220 530 220 550 L 220 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <path d="M 300 600 L 300 550 Q 300 530 315 530 L 345 530 Q 360 530 360 550 L 360 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <ellipse cx="330" cy="545" rx="8" ry="4" fill="#000" stroke="#444" stroke-width="1.5" /> <path d="M 340 600 L 340 540 Q 340 515 360 515 L 640 515 Q 660 515 660 540 L 660 600 Z" fill="#020202" stroke="#2a2a2a" stroke-width="2" />
-      <path d="M 640 600 L 640 550 Q 640 530 655 530 L 685 530 Q 700 530 700 550 L 700 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <ellipse cx="670" cy="545" rx="8" ry="4" fill="#000" stroke="#444" stroke-width="1.5" /> <path d="M 660 600 L 660 540 Q 660 515 680 515 L 800 515 Q 820 515 820 540 L 820 600 Z" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
-      <path d="M 780 600 L 780 550 Q 780 530 795 530 L 825 530 Q 840 530 840 550 L 840 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <line x1="180" y1="595" x2="820" y2="595" stroke="var(--orange)" stroke-width="8" filter="url(#floor-glow)" opacity="0.25" />
-
-    </svg>
+      </div>
+    </div>
   </div>
 
   <div class="divider"></div>
