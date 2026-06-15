@@ -3,29 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qube Technologies — Luxury Home Theatres & Smart Automation</title>
+<title>Qube Technologies — Architectural Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ─── RESET & BASE ─────────────────────────────────── */
+/* ─── RESET & BASE (PREMIUM ORANGE PALETTE) ────────────── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-:root{
-  --or:#d46d41;
-  --or2:rgba(255,107,43,0.18);
-  --or3:rgba(255,107,43,0.06);
-  --gold:#C9A84C;
-  --black:#000;
-  --char:#090909;
-  --dark:#111;
-  --mid:#181818;
-  --surf:#141414;
-  --tp:rgba(250,250,248,1);
-  --ts:rgba(250,250,248,0.55);
-  --tm:rgba(250,250,248,0.28);
-  --tb:rgba(250,250,248,0.07);
+:root {
+  /* Sleek Orange Palette */
+  --orange: #FF6B00;
+  --orange-dim: rgba(255, 107, 0, 0.15);
+  --orange-glow: rgba(255, 107, 0, 0.4);
+  --black: #050505;
+  --char: #121212;
+  --dark: #1A1A1A;
+  --mid: #222222;
+  --surf: #181818;
+  --ivory: #F8F7F4;
+  --ivory-dim: rgba(248, 247, 244, 0.6);
+  --ivory-mute: rgba(248, 247, 244, 0.3);
+  
+  /* Legacy variables mapped to new palette for seamless sub-page integration */
+  --or: var(--orange);
+  --or2: var(--orange-dim);
+  --or3: rgba(255, 107, 0, 0.05);
+  --tp: var(--ivory);
+  --ts: var(--ivory-dim);
+  --tm: var(--ivory-mute);
+  --tb: rgba(248, 247, 244, 0.07);
 }
-body{background:var(--black);color:var(--tp);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none}
+
+body{background:var(--black);color:var(--ivory);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none}
 h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;letter-spacing:-0.02em}
 button{cursor:none;font-family:'Inter',sans-serif;border:none}
 a{text-decoration:none;cursor:none}
@@ -33,8 +42,8 @@ ul{list-style:none}
 em{font-style:italic}
 
 /* ─── CURSOR ─────────────────────────────────────── */
-#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--or);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .12s ease}
-#cur-ring{position:fixed;top:0;left:0;width:38px;height:38px;border:1px solid rgba(255,107,43,.35);border-radius:50%;pointer-events:none;z-index:9998;transition:transform .32s cubic-bezier(.25,.46,.45,.94)}
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .12s ease}
+#cur-ring{position:fixed;top:0;left:0;width:38px;height:38px;border:1px solid var(--orange-glow);border-radius:50%;pointer-events:none;z-index:9998;transition:transform .32s cubic-bezier(.25,.46,.45,.94)}
 
 /* ─── PAGE SYSTEM ────────────────────────────────── */
 .page{display:none;min-height:100vh;animation:pageIn .7s cubic-bezier(.25,.46,.45,.94) forwards}
@@ -42,703 +51,376 @@ em{font-style:italic}
 @keyframes pageIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
 /* ─── NAV ────────────────────────────────────────── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:26px 64px;transition:all .4s}
-nav.scrolled{background:rgba(0,0,0,.88);backdrop-filter:blur(24px);padding:16px 64px;border-bottom:.5px solid rgba(255,107,43,.12)}
-.nav-logo{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:500;letter-spacing:.14em;color:var(--tp)}
-.logo-hex{width:26px;height:26px;background:var(--or);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);flex-shrink:0;animation:hPulse 3s ease-in-out infinite}
-@keyframes hPulse{0%,100%{opacity:1}50%{opacity:.65}}
-.nav-links{display:flex;gap:36px}
-.nav-links a{font-size:12px;letter-spacing:.08em;color:var(--ts);transition:color .3s;font-weight:300}
-.nav-links a:hover,.nav-links a.active{color:var(--or)}
-.nav-cta{background:transparent;border:1px solid rgba(255,107,43,.45);color:var(--or);padding:9px 22px;font-size:12px;letter-spacing:.1em;font-weight:400;transition:all .3s}
-.nav-cta:hover{background:var(--or);color:#000}
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 26px 64px;
+  transition: all .4s;
+}
+nav.scrolled {
+  background: rgba(5,5,5,.88);
+  backdrop-filter: blur(24px);
+  padding: 16px 64px;
+  border-bottom: .5px solid var(--orange-dim);
+}
+.nav-logo {
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  color: var(--ivory);
+}
+.logo-img { height: 40px; width: auto; display: block; transition: opacity 0.3s ease; }
+.logo-img:hover { opacity: 0.8; }
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 36px;
+}
+.nav-links a { font-size: 12px; letter-spacing: .08em; color: var(--ts); transition: color .3s; font-weight: 300; }
+.nav-links a:hover, .nav-links a.active { color: var(--orange); }
+.nav-cta {
+  justify-self: end;
+  background: transparent;
+  border: 1px solid var(--orange-glow);
+  color: var(--orange);
+  padding: 9px 22px;
+  font-size: 12px;
+  letter-spacing: .1em;
+  font-weight: 400;
+  transition: all .3s;
+}
+.nav-cta:hover { background: var(--orange); color: #000; }
 
 /* ─── SHARED UTILITIES ───────────────────────────── */
-.lbl{font-size:10px;letter-spacing:.28em;color:var(--or);font-weight:400;display:flex;align-items:center;gap:14px;margin-bottom:18px}
-.lbl::before{content:'';display:block;width:28px;height:1px;background:var(--or)}
+.lbl{font-size:10px;letter-spacing:.28em;color:var(--orange);font-weight:400;display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.lbl::before{content:'';display:block;width:28px;height:1px;background:var(--orange)}
 .lbl-c{justify-content:center}
 .lbl-c::before{display:none}
-.lbl-c::after{content:'';display:block;width:28px;height:1px;background:var(--or)}
+.lbl-c::after{content:'';display:block;width:28px;height:1px;background:var(--orange)}
 
 .sec{position:relative;padding:130px 64px;overflow:hidden}
 .sec-narrow{max-width:1200px;margin:0 auto}
 
-.divider{width:1px;height:72px;background:linear-gradient(to bottom,transparent,var(--or),transparent);margin:0 auto}
+.divider{width:1px;height:72px;background:linear-gradient(to bottom,transparent,var(--orange),transparent);margin:0 auto}
 
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.25,.46,.45,.94),transform .85s cubic-bezier(.25,.46,.45,.94)}
 .reveal.vis{opacity:1;transform:none}
 .rd1{transition-delay:.1s}.rd2{transition-delay:.22s}.rd3{transition-delay:.36s}.rd4{transition-delay:.5s}
 
-.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--or);color:#000;padding:15px 38px;font-size:12px;letter-spacing:.1em;font-weight:500;border:none;transition:all .35s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(255,107,43,.38)}
-.btn-g{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ts);padding:15px 38px;font-size:12px;letter-spacing:.1em;font-weight:300;border:1px solid rgba(255,255,255,.14);transition:all .3s}
-.btn-g:hover{color:var(--tp);border-color:rgba(230,151,73,.35)}
+/* Refined Buttons */
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#000;padding:15px 38px;font-size:12px;letter-spacing:.1em;font-weight:500;border:none;transition:all .35s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 36px var(--orange-glow)}
+.btn-g {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--ivory);
+  padding: 15px 38px;
+  font-size: 11px;
+  letter-spacing: .15em;
+  font-weight: 400;
+  border: 1px solid var(--ivory-mute);
+  transition: all .4s cubic-bezier(.25,.46,.45,.94);
+  text-transform: uppercase;
+}
+.btn-g:hover {
+  background: var(--orange);
+  color: var(--black) !important;
+  border-color: var(--orange) !important;
+  box-shadow: 0 0 20px var(--orange-dim) !important;
+  text-shadow: none;
+}
 .arrow-r{font-size:16px;transition:transform .3s}
 .btn-p:hover .arrow-r,.btn-g:hover .arrow-r{transform:translateX(4px)}
 
-/* ─── GRID OVERLAY (hero bg) ─────────────────────── */
-.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,107,43,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,43,.04) 1px,transparent 1px);background-size:80px 80px;animation:gShift 22s linear infinite;pointer-events:none}
-@keyframes gShift{to{background-position:80px 80px}}
-
-.glow-b{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
-
 /* scroll hint */
-.scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;animation:fadeIn 1s 1.8s both}
+.scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;animation:fadeIn 1s 1.8s both; pointer-events: none;}
 .scroll-hint span{font-size:9px;letter-spacing:.22em;color:var(--tm)}
-.s-line{width:1px;height:46px;background:linear-gradient(to bottom,var(--or),transparent);animation:sPulse 2s ease-in-out infinite}
+.s-line{width:1px;height:46px;background:linear-gradient(to bottom,var(--orange),transparent);animation:sPulse 2s ease-in-out infinite}
 @keyframes sPulse{0%,100%{opacity:.3;transform:scaleY(.5);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 
 /* ══════════════════════════════════════════════════
-   PAGE 1 — HOME
+   HOME PAGE V2 — REACTIVE PARALLAX HERO (DESKTOP)
 ══════════════════════════════════════════════════ */
-#home-hero{position:relative;width:100%;height:100vh;background:var(--black);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero-content{position:relative;z-index:10;text-align:center;max-width:860px;padding:0 40px}
-.hero-ol{font-size:10px;letter-spacing:.26em;color:var(--or);font-weight:300;margin-bottom:26px;animation:fadeUp 1s .3s both}
-.hero-h1{font-size:clamp(60px,9vw,108px);line-height:1.02;margin-bottom:26px;animation:fadeUp 1s .6s both}
-.hero-h1 em{color:var(--or)}
-.hero-sub{font-size:16px;color:var(--ts);font-weight:300;line-height:1.78;max-width:500px;margin:0 auto 46px;letter-spacing:.01em;animation:fadeUp 1s .9s both}
-.hero-btns{display:flex;gap:18px;justify-content:center;animation:fadeUp 1s 1.1s both}
+.desktop-only { display: block; }
+.mobile-only { display: none; }
 
-/* Home — theatre section */
-.th-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
-.th-txt h2{font-size:clamp(38px,5vw,66px);line-height:1.08;margin-bottom:24px}
-.th-txt p{font-size:15px;color:var(--ts);font-weight:300;line-height:1.82;max-width:400px;margin-bottom:36px}
-.stat-row{display:flex;gap:36px}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--or);line-height:1;margin-bottom:5px}
-.stat-lbl{font-size:10px;letter-spacing:.16em;color:var(--tm);font-weight:400}
+#home-hero-v2 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: var(--black);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-/* Theatre visual card */
-.th-vis{position:relative;aspect-ratio:16/10;background:#0C0C0C;border:1px solid rgba(255,107,43,.18);overflow:hidden}
-.sc-glow{position:absolute;top:9%;left:4%;right:4%;bottom:19%;background:linear-gradient(135deg,#1a1a2e,#16213e 40%,#0f3460 70%,#e94560);opacity:.82;animation:scShimmer 4s ease-in-out infinite}
-@keyframes scShimmer{0%,100%{opacity:.75}50%{opacity:.95}}
-.sc-reflect{position:absolute;bottom:18%;left:4%;right:4%;height:4px;background:linear-gradient(to right,transparent,rgba(233,69,96,.28),transparent);filter:blur(2px)}
-.seat-row{position:absolute;bottom:0;left:0;right:0;height:19%;display:flex;align-items:flex-end;justify-content:center;gap:4px;padding:0 8%}
-.seat{flex:1;height:80%;background:#1a1a1a;border-radius:4px 4px 0 0;border-top:2px solid rgba(255,107,43,.25);transition:border-color .3s}
-.th-vis:hover .seat{border-color:rgba(255,107,43,.65)}
-.spk{position:absolute;width:4px;height:4px;background:rgba(255,107,43,.65);border-radius:50%;animation:spkP 1.5s ease-in-out infinite}
-.spk:nth-child(1){top:40%;left:2%}.spk:nth-child(2){top:40%;right:2%}.spk:nth-child(3){bottom:21%;left:50%}
-@keyframes spkP{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.9);opacity:1}}
-.fc{position:absolute;width:18px;height:18px;border-color:var(--or);border-style:solid;opacity:.45}
-.fc.tl{top:8px;left:8px;border-width:1px 0 0 1px}.fc.tr{top:8px;right:8px;border-width:1px 1px 0 0}
-.fc.bl{bottom:8px;left:8px;border-width:0 0 1px 1px}.fc.br{bottom:8px;right:8px;border-width:0 1px 1px 0}
+.parallax-layer {
+  position: absolute;
+  inset: -5%;
+  width: 110%;
+  height: 110%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  pointer-events: none;
+}
 
-/* Home — smart home preview */
-.ctrl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,107,43,.07);border:1px solid rgba(255,107,43,.13);max-width:820px;margin:0 auto}
-.ctrl-card{background:var(--surf);padding:34px 26px;transition:all .3s;position:relative;overflow:hidden}
-.ctrl-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,107,43,.09),transparent 70%);opacity:0;transition:opacity .3s}
-.ctrl-card:hover{background:var(--mid)}.ctrl-card:hover::before{opacity:1}
-.ctrl-card:hover .ci{color:var(--or);transform:scale(1.08)}
-.ci{font-size:26px;margin-bottom:14px;display:block;color:rgba(255,255,255,.42);transition:all .3s}
-.cn{font-size:12px;font-weight:500;letter-spacing:.07em;margin-bottom:6px}
-.cd{font-size:11px;color:var(--tm);font-weight:300;line-height:1.55}
-.tog{margin-top:18px;display:flex;align-items:center;justify-content:center}
-.ttrack{width:38px;height:19px;background:rgba(255,107,43,.18);border-radius:10px;position:relative;cursor:pointer;transition:background .3s}
-.ttrack.on{background:var(--or)}
-.tthumb{position:absolute;top:2.5px;left:2.5px;width:14px;height:14px;background:#fff;border-radius:50%;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
-.ttrack.on .tthumb{transform:translateX(19px)}
+/* Layer 1: Abstract Grid */
+.pl-bg {
+  background-image: 
+    linear-gradient(var(--orange-dim) 1px, transparent 1px),
+    linear-gradient(90deg, var(--orange-dim) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.3;
+}
 
-/* Home — why pillars */
+/* Layer 2: Floating Protocols */
+.protocol-node {
+  position: absolute;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--orange);
+  padding: 8px 16px;
+  border: 1px solid var(--orange-glow);
+  background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(4px);
+  border-radius: 2px;
+}
+.pn-1 { top: 20%; left: 15%; }
+.pn-2 { top: 75%; left: 25%; }
+.pn-3 { top: 15%; right: 20%; }
+.pn-4 { top: 65%; right: 15%; }
+
+/* Layer 3: Glassmorphism UI Elements */
+.glass-ui {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 4px;
+}
+.gui-climate { top: 30%; left: 10%; width: 200px; }
+.gui-audio { bottom: 25%; right: 10%; width: 240px; }
+
+/* Layer 4: Main Typography */
+.hero-content-v2 {
+  text-align: center;
+  z-index: 10;
+  pointer-events: all;
+}
+.hero-content-v2 h1 {
+  font-size: clamp(60px, 8vw, 110px);
+  line-height: 1.05;
+  margin-bottom: 24px;
+  color: var(--ivory);
+  animation: fadeUp 1s .5s both;
+}
+.hero-content-v2 h1 em {
+  color: var(--orange);
+  font-style: italic;
+}
+
+/* ─── DUAL EXPERIENCE SPLIT SECTION ──────────────── */
+.split-section {
+  display: flex;
+  height: 80vh;
+  width: 100%;
+  overflow: hidden;
+}
+.split-pane {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+.split-pane:hover {
+  flex: 1.4;
+}
+.split-pane:hover .pane-bg {
+  transform: scale(1.05);
+  opacity: 0.4;
+}
+.pane-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  transition: all 0.6s ease;
+  z-index: 0;
+}
+.pane-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px;
+}
+.pane-content h2 {
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+.pane-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--orange);
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* ─── WHY PILLARS V2 ─────────────────────────────── */
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;max-width:1200px;margin:0 auto}
 .why-l h2{font-size:clamp(36px,4.5vw,58px);line-height:1.12;margin-bottom:22px}
 .why-l p{font-size:14px;color:var(--ts);font-weight:300;line-height:1.82;max-width:360px}
 .pillars{display:flex;flex-direction:column;gap:1px}
 .pillar{padding:26px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;gap:22px;align-items:flex-start;transition:all .3s}
-.pillar:hover{padding-left:6px}.pillar:hover .pn{color:var(--or)}
+.pillar:hover{padding-left:6px}.pillar:hover .pn{color:var(--orange)}
 .pn{font-size:10px;color:var(--tm);padding-top:4px;min-width:22px;transition:color .3s;letter-spacing:.12em;font-family:'Cormorant Garamond',serif;font-size:14px}
 .pb h3{font-size:17px;font-weight:500;margin-bottom:7px;letter-spacing:-.01em}
 .pb p{font-size:13px;color:var(--ts);font-weight:300;line-height:1.72}
 
-/* Home — CTA final */
-#home-cta{background:var(--black);padding:170px 64px;text-align:center;position:relative;overflow:hidden}
-.cta-rings span{position:absolute;border:1px solid rgba(255,107,43,.07);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:ringP 6s ease-in-out infinite}
-.cta-rings span:nth-child(1){width:380px;height:380px}.cta-rings span:nth-child(2){width:600px;height:600px;animation-delay:1s}.cta-rings span:nth-child(3){width:820px;height:820px;animation-delay:2s}
-@keyframes ringP{0%,100%{opacity:.45}50%{opacity:.1}}
-.cta-glow2{position:absolute;width:500px;height:320px;background:radial-gradient(ellipse,rgba(255,107,43,.11),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)}
-#home-cta .ol{font-size:10px;letter-spacing:.26em;color:var(--or);margin-bottom:22px;position:relative;z-index:1}
-#home-cta h2{font-size:clamp(46px,7.5vw,96px);line-height:1.04;margin-bottom:22px;position:relative;z-index:1}
-#home-cta h2 em{color:var(--or)}
-#home-cta p{font-size:15px;color:var(--ts);font-weight:300;margin-bottom:48px;position:relative;z-index:1}
-#home-cta .btns{display:flex;gap:18px;justify-content:center;position:relative;z-index:1}
-.contact-line{margin-top:56px;font-size:12px;color:var(--tm);letter-spacing:.08em;position:relative;z-index:1}
-.contact-line .dot{color:var(--or)}
-
 /* ══════════════════════════════════════════════════
-   PAGE 2 — HOME THEATRE
+   SUB-PAGE STYLES (PRESERVED)
 ══════════════════════════════════════════════════ */
-#ht-hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;background:var(--black);overflow:hidden}
-.ht-hero-bg{position:absolute;inset:0;opacity:.5}
-.ht-hero-content{position:relative;z-index:10;text-align:center;max-width:820px;padding:0 40px}
-.ht-hero-content .ol{font-size:10px;letter-spacing:.26em;color:var(--or);margin-bottom:24px;animation:fadeUp 1s .3s both}
-.ht-hero-content h1{font-size:clamp(54px,8.5vw,102px);line-height:1.02;animation:fadeUp 1s .55s both}
-.ht-hero-content h1 em{color:var(--or)}
-.ht-hero-content p{font-size:16px;color:var(--ts);font-weight:300;line-height:1.78;max-width:520px;margin:22px auto 44px;animation:fadeUp 1s .8s both}
-.ht-hero-content .btns{display:flex;gap:16px;justify-content:center;animation:fadeUp 1s 1s both}
-
-/* Experience pillars */
-/* ─── INTERACTIVE EXPERIENCE ACCORDION ─── */
-.exp-accordion {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.exp-item {
-  background: #060606;
-  border: 1px solid rgba(255, 107, 43, 0.15);
-  border-radius: 4px;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  cursor: pointer;
-}
-
-.exp-item:hover {
-  background: #0a0a0a;
-  border-color: rgba(255, 107, 43, 0.35);
-}
-
-.exp-item.active {
-  background: #080808;
-  border-color: var(--or);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 107, 43, 0.08);
-}
-
-.exp-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 28px 36px;
-}
-
-.exp-head-left {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.exp-icon {
-  font-size: 26px;
-  color: var(--or);
-  opacity: 0.8;
-  transition: opacity 0.3s;
-}
-
-.exp-item:hover .exp-icon, .exp-item.active .exp-icon {
-  opacity: 1;
-}
-
-.exp-head h3 {
-  font-size: 24px;
-  margin: 0;
-  color: var(--tp);
-}
-
-.exp-toggle {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 107, 43, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--or);
-  font-size: 20px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.exp-item.active .exp-toggle {
-  transform: rotate(45deg);
-  background: var(--or);
-  color: #000;
-  border-color: var(--or);
-}
-
-/* CSS Grid trick for smooth height animation */
-.exp-body {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.exp-item.active .exp-body {
-  grid-template-rows: 1fr;
-}
-
-.exp-content {
-  overflow: hidden;
-}
-
-.exp-content-inner {
-  padding: 0 36px 36px 86px; /* 86px aligns text with the heading, bypassing the icon */
-}
-
-.exp-desc {
-  font-size: 15px;
-  color: var(--ts);
-  line-height: 1.75;
-  margin-bottom: 28px;
-  max-width: 700px;
-}
-
-.exp-data-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding-top: 24px;
-}
-
-.data-point h4 {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  color: var(--or);
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-.data-point p {
-  font-size: 13px;
-  color: #d1d1d1;
-  font-weight: 300;
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .exp-content-inner { padding: 0 24px 24px 24px; }
-  .exp-data-grid { grid-template-columns: 1fr; gap: 16px; }
-  .exp-head-left { gap: 16px; }
-  .exp-head { padding: 20px 24px; }
-}
-/* Screen tech showcase */
+/* Theatre */
+.exp-accordion{display:flex;flex-direction:column;gap:12px;max-width:960px;margin:0 auto}
+.exp-item{background:#060606;border:1px solid rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;transition:all .4s;cursor:pointer}
+.exp-item:hover{background:#0a0a0a;border-color:var(--orange-glow)}
+.exp-item.active{background:#080808;border-color:var(--orange);box-shadow:0 10px 30px rgba(0,0,0,0.5),0 0 15px var(--orange-dim)}
+.exp-head{display:flex;align-items:center;justify-content:space-between;padding:28px 36px}
+.exp-head-left{display:flex;align-items:center;gap:24px}
+.exp-icon{font-size:26px;color:var(--orange);opacity:0.8;transition:opacity .3s}
+.exp-item:hover .exp-icon,.exp-item.active .exp-icon{opacity:1}
+.exp-head h3{font-size:24px;margin:0;color:var(--tp)}
+.exp-toggle{width:32px;height:32px;border-radius:50%;border:1px solid var(--orange-glow);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:20px;transition:all .4s}
+.exp-item.active .exp-toggle{transform:rotate(45deg);background:var(--orange);color:#000;border-color:var(--orange)}
+.exp-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s}
+.exp-item.active .exp-body{grid-template-rows:1fr}
+.exp-content{overflow:hidden}
+.exp-content-inner{padding:0 36px 36px 86px}
+.exp-desc{font-size:15px;color:var(--ts);line-height:1.75;margin-bottom:28px;max-width:700px}
+.exp-data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid rgba(255,255,255,.06);padding-top:24px}
+.data-point h4{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.18em;color:var(--orange);margin-bottom:8px;font-weight:500}
+.data-point p{font-size:13px;color:#d1d1d1;font-weight:300;line-height:1.6}
 .screen-showcase{display:grid;grid-template-columns:1.2fr 1fr;gap:70px;align-items:center;max-width:1200px;margin:0 auto}
-.screen-visual{position:relative;aspect-ratio:16/9;background:#050505;border:1px solid rgba(255,107,43,.2);overflow:hidden}
+.screen-visual{position:relative;aspect-ratio:16/9;background:#050505;border:1px solid var(--orange-dim);overflow:hidden}
 .screen-img{position:absolute;inset:0;background:linear-gradient(135deg,#0d0d1a 0%,#1a0d26 30%,#0d1a26 60%,#1a0a05 100%);animation:scShimmer2 5s ease-in-out infinite}
 @keyframes scShimmer2{0%,100%{filter:brightness(.85)}50%{filter:brightness(1.1)}}
-.screen-scan{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,rgba(255,107,43,.4),transparent);animation:scan 3s linear infinite}
+.screen-scan{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--orange-glow),transparent);animation:scan 3s linear infinite}
 @keyframes scan{from{top:0}to{top:100%}}
 .screen-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.screen-play{width:64px;height:64px;border-radius:50%;border:1px solid rgba(255,107,43,.5);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--or);backdrop-filter:blur(8px);background:rgba(0,0,0,.3);transition:all .3s}
-.screen-play:hover{background:var(--or);color:#000;border-color:var(--or);transform:scale(1.1)}
+.screen-play{width:64px;height:64px;border-radius:50%;border:1px solid var(--orange-glow);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--orange);backdrop-filter:blur(8px);background:rgba(0,0,0,.3);transition:all .3s}
+.screen-play:hover{background:var(--orange);color:#000;border-color:var(--orange);transform:scale(1.1)}
 .screen-txt h2{font-size:clamp(34px,4vw,52px);line-height:1.12;margin-bottom:20px}
 .screen-txt p{font-size:14px;color:var(--ts);font-weight:300;line-height:1.82;margin-bottom:28px}
 .spec-list{display:flex;flex-direction:column;gap:14px;margin-bottom:34px}
 .spec-item{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ts);font-weight:300}
-.spec-dot{width:4px;height:4px;border-radius:50%;background:var(--or);flex-shrink:0}
+.spec-dot{width:4px;height:4px;border-radius:50%;background:var(--orange);flex-shrink:0}
+.imm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:30px;position:relative;z-index:2;max-width:1100px;margin:0 auto}
+.imm-card{position:relative;background:#030303;border:1px solid rgba(255,255,255,0.04);border-radius:8px;padding:70px 50px 50px;overflow:hidden;transition:all .6s;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:inset 0 0 40px rgba(0,0,0,0.8)}
+.imm-card:hover{border-color:var(--orange-glow);transform:translateY(-8px);box-shadow:0 30px 60px rgba(0,0,0,0.9),inset 0 0 0 1px var(--orange-dim)}
+.imm-bg{position:absolute;inset:0;z-index:0;opacity:0.3;transition:opacity .6s,transform .6s}
+.imm-card:hover .imm-bg{opacity:0.7;transform:scale(1.05)}
+.bg-beam{background:radial-gradient(circle at 50% -20%,var(--orange-dim) 0%,transparent 60%)}
+.bg-waves{background:repeating-radial-gradient(circle at 0% 100%,var(--orange-dim) 0,var(--orange-dim) 2px,transparent 3px,transparent 30px)}
+.bg-grid{background-image:linear-gradient(var(--orange-dim) 1px,transparent 1px),linear-gradient(90deg,var(--orange-dim) 1px,transparent 1px);background-size:40px 40px}
+.bg-focus{background:radial-gradient(circle at 80% 60%,var(--orange-dim) 0%,transparent 50%)}
+.imm-content{position:relative;z-index:1}
+.imm-num{font-family:'Cormorant Garamond',serif;font-size:100px;color:rgba(255,255,255,0.03);line-height:0.7;margin-bottom:20px;transition:color .6s,transform .6s;letter-spacing:-0.05em}
+.imm-card:hover .imm-num{color:var(--orange-dim);transform:translateX(10px)}
+.imm-content h3{font-size:30px;margin-bottom:16px;color:var(--tp);letter-spacing:-0.02em}
+.imm-content p{font-size:13px;color:var(--ts);line-height:1.85;margin-bottom:30px}
+.imm-tags{display:flex;flex-wrap:wrap;gap:10px}
+.imm-tag{font-size:9px;color:var(--orange);border:1px solid var(--orange-dim);padding:8px 14px;letter-spacing:0.16em;border-radius:30px;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);transition:background .3s,color .3s}
+.imm-card:hover .imm-tag{background:var(--orange-dim);color:#fff}
 
-/* ─── IMMERSIVE APPROACH SECTION ─── */
-.imm-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 30px;
-  position: relative;
-  z-index: 2;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.imm-card {
-  position: relative;
-  background: #030303;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 8px;
-  padding: 70px 50px 50px;
-  overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  min-height: 420px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
-}
-
-.imm-card:hover {
-  border-color: rgba(255, 107, 43, 0.35);
-  transform: translateY(-8px);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(255,107,43,0.1);
-}
-
-.imm-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.3;
-  transition: opacity 0.6s, transform 0.6s;
-}
-
-.imm-card:hover .imm-bg {
-  opacity: 0.7;
-  transform: scale(1.05);
-}
-
-/* 1. Cinematic Projector Beam Effect */
-.bg-beam {
-  background: radial-gradient(circle at 50% -20%, rgba(255,107,43,0.25) 0%, transparent 60%);
-}
-.bg-beam::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: conic-gradient(from 180deg at 50% -10%, rgba(255,107,43,0.1) 0deg, transparent 35deg, transparent 325deg, rgba(255,107,43,0.1) 360deg);
-}
-
-/* 2. Acoustic Waves Effect */
-.bg-waves {
-  background: repeating-radial-gradient(circle at 0% 100%, rgba(255,107,43,0.02) 0, rgba(255,107,43,0.02) 2px, transparent 3px, transparent 30px);
-}
-.bg-waves::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, #030303 90%);
-}
-
-/* 3. Precision Blueprint Grid Effect */
-.bg-grid {
-  background-image: 
-    linear-gradient(rgba(255,107,43,0.05) 1px, transparent 1px), 
-    linear-gradient(90deg, rgba(255,107,43,0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  background-position: center;
-}
-.bg-grid::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, #030303 80%);
-}
-
-/* 4. Focal Calibration Glow Effect */
-.bg-focus {
-  background: radial-gradient(circle at 80% 60%, rgba(255,107,43,0.15) 0%, transparent 50%);
-}
-.bg-focus::after {
-  content: '';
-  position: absolute;
-  top: 60%; left: 80%;
-  width: 120px; height: 120px;
-  border: 1px solid rgba(255,107,43,0.1);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.imm-content {
-  position: relative;
-  z-index: 1;
-}
-
-.imm-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 100px;
-  color: rgba(255, 255, 255, 0.03);
-  line-height: 0.7;
-  margin-bottom: 20px;
-  transition: color 0.6s, transform 0.6s;
-  letter-spacing: -0.05em;
-}
-
-.imm-card:hover .imm-num {
-  color: rgba(255, 107, 43, 0.15);
-  transform: translateX(10px);
-}
-
-.imm-content h3 {
-  font-size: 30px;
-  margin-bottom: 16px;
-  color: var(--tp);
-  letter-spacing: -0.02em;
-}
-
-.imm-content p {
-  font-size: 13px;
-  color: var(--ts);
-  line-height: 1.85;
-  margin-bottom: 30px;
-}
-
-.imm-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.imm-tag {
-  font-size: 9px;
-  color: var(--or);
-  border: 1px solid rgba(255, 107, 43, 0.25);
-  padding: 8px 14px;
-  letter-spacing: 0.16em;
-  border-radius: 30px;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  transition: background 0.3s, color 0.3s;
-}
-
-.imm-card:hover .imm-tag {
-  background: rgba(255, 107, 43, 0.08);
-  color: #fff;
-}
-
-@media (max-width: 768px) {
-  .imm-card { padding: 40px 30px 30px; min-height: 380px; }
-  .imm-num { font-size: 80px; }
-  .imm-content h3 { font-size: 26px; }
-}
-
-/* Package tiers */
-.pkg-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1100px;margin:0 auto;background:rgba(255,107,43,.06);border:1px solid rgba(255,107,43,.12)}
-.pkg{background:var(--surf);padding:46px 36px;position:relative;transition:background .3s}
-.pkg:hover{background:var(--mid)}
-.pkg.featured{background:var(--dark);border-top:2px solid var(--or)}
-.pkg-badge{display:inline-block;font-size:9px;letter-spacing:.2em;color:var(--or);border:1px solid rgba(255,107,43,.35);padding:5px 14px;margin-bottom:20px}
-.pkg h3{font-size:24px;margin-bottom:8px}
-.pkg .price{font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--or);margin-bottom:24px;line-height:1}
-.pkg .price span{font-family:'Inter',sans-serif;font-size:12px;color:var(--tm);letter-spacing:.06em;font-weight:300}
-.pkg-features{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
-.pf{font-size:12px;color:var(--ts);font-weight:300;display:flex;align-items:center;gap:10px}
-.pf::before{content:'—';color:var(--or);font-size:10px}
-
-/* ══════════════════════════════════════════════════
-   PAGE 3 — SMART HOME (REDESIGNED HERO)
-══════════════════════════════════════════════════ */
-#sh-hero{
-  position:relative;
-  height:100vh;
-  min-height:620px;
-  display:flex;
-  align-items:center;
-  background:var(--black);
-  overflow:hidden;
-}
-
-/* Floor plan fills entire background */
-.sh-fp-bg{
-  position:absolute;
-  top:0; bottom:0; right:0;
-  width:70%;
-  opacity:.55;
-  pointer-events:none;
-}
-.sh-node .node-ring,
-.sh-node .node-core{transition:all .25s cubic-bezier(.34,1.56,.64,1)}
-.sh-node:hover .node-ring{stroke-width:2.5;filter:drop-shadow(0 0 8px rgba(255,140,70,0.9))}
+/* Smart Home */
+#sh-hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:center;background:var(--black);overflow:hidden}
+.sh-hero-content{position:relative;z-index:10;padding:0 0 0 64px;max-width:440px;flex-shrink:0}
+.sh-hero-eyebrow{font-size:10px;letter-spacing:.26em;color:var(--orange);margin-bottom:24px;animation:fadeUp 1s .3s both;display:flex;align-items:center;gap:14px}
+.sh-hero-eyebrow::before{content:'';display:block;width:26px;height:1px;background:var(--orange)}
+.sh-hero-content h1{font-size:clamp(48px,5.5vw,78px);line-height:1.04;animation:fadeUp 1s .55s both}
+.sh-hero-content h1 em{color:var(--orange)}
+.sh-hero-content .sh-hero-sub{font-size:14px;color:var(--ts);font-weight:300;line-height:1.82;margin:22px 0 18px;max-width:360px;animation:fadeUp 1s .75s both}
+.sh-status-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;animation:fadeUp 1s .9s both}
+.sh-pill{display:flex;align-items:center;gap:6px;padding:5px 11px;background:var(--orange-dim);border:1px solid var(--orange-glow);border-radius:20px;font-size:10px;color:var(--orange);letter-spacing:.06em}
+.sh-pill-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:shPilse 2s ease-in-out infinite}
+@keyframes shPilse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+.sh-hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp 1s 1.05s both}
+.sh-fp-wrap{position:absolute;right:0;top:0;bottom:0;width:65%;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.sh-fp-wrap svg{width:100%;height:100%;max-height:100vh;pointer-events:all}
+.sh-node{cursor:pointer}
+.sh-node .node-ring,.sh-node .node-core{transition:all .25s}
+.sh-node:hover .node-ring{filter:drop-shadow(0 0 10px var(--orange-glow));stroke-width:2.5}
 .sh-node:hover .node-core{r:5.5;fill:#fff}
-.sh-node.node-active .node-ring{fill:rgba(255,140,70,0.7);stroke:#fff}
-.sh-node.node-active .node-core{fill:#fff;r:5}
-/* Left-anchored hero text */
-.sh-hero-content{
-  position:relative;
-  z-index:10;
-  padding:0 0 0 64px;
-  max-width:460px;
-  flex-shrink:0;
-}
-.sh-hero-content .ol{font-size:10px;letter-spacing:.26em;color:var(--or);margin-bottom:24px;animation:fadeUp 1s .3s both;display:flex;align-items:center;gap:14px}
-.sh-hero-content .ol::before{content:'';display:block;width:26px;height:1px;background:var(--or)}
-.sh-hero-content h1{font-size:clamp(52px,6.5vw,86px);line-height:1.02;animation:fadeUp 1s .55s both}
-.sh-hero-content h1 em{color:var(--or)}
-.sh-hero-content p{font-size:15px;color:var(--ts);font-weight:300;line-height:1.82;margin:24px 0 40px;max-width:380px;animation:fadeUp 1s .8s both}
-.sh-hero-content .btns{animation:fadeUp 1s 1s both;display:flex;gap:14px;flex-wrap:wrap}
-
-/* Floating node labels in hero */
-.sh-node-label{
-  position:absolute;
-  font-size:9px;
-  letter-spacing:.18em;
-  color:rgba(255,107,43,.75);
-  background:rgba(0,0,0,.72);
-  padding:5px 12px;
-  border:1px solid rgba(255,107,43,.22);
-  pointer-events:none;
-  white-space:nowrap;
-  z-index:5;
-}
-
-/* Floor plan animation */
-.fp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,107,43,.07);border:1px solid rgba(255,107,43,.12);max-width:1100px;margin:0 auto}
+.sh-node.node-active .node-ring{fill:var(--orange-glow);stroke:#fff}
+.sh-node.node-active .node-core{fill:#fff}
+.room-hit-area{cursor:pointer}
+.room-hl{transition:opacity .3s}
+.sh-room-card{position:absolute;bottom:40px;left:64px;background:rgba(6,6,8,.96);border:1px solid var(--orange-glow);border-radius:10px;padding:18px 22px;min-width:210px;z-index:20;pointer-events:none;transition:opacity .3s,transform .3s;opacity:0;transform:translateY(10px)}
+.sh-room-card.visible{opacity:1;transform:translateY(0)}
+.sh-rc-head{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.sh-rc-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0}
+.sh-rc-name{font-size:10px;letter-spacing:.2em;color:var(--orange);font-weight:500}
+.sh-rc-features{display:flex;flex-direction:column;gap:7px}
+.sh-rc-feat{font-size:12px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px}
+.sh-rc-feat::before{content:'';display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--orange-glow);flex-shrink:0}
+.sh-stat-widgets{position:absolute;bottom:32px;right:32px;display:flex;gap:10px;z-index:20}
+.sh-widget{background:rgba(6,6,8,.9);border:1px solid var(--orange-dim);border-radius:10px;padding:10px 16px;text-align:center;min-width:76px}
+.sh-widget-val{font-size:20px;font-weight:700;color:var(--orange);display:block;margin-bottom:2px;font-family:'Inter',sans-serif}
+.sh-widget-lbl{font-size:9px;letter-spacing:.16em;color:var(--orange-glow)}
+.sh-node-label{position:absolute;font-size:9px;letter-spacing:.18em;color:var(--orange);background:rgba(0,0,0,.72);padding:5px 12px;border:1px solid var(--orange-dim);pointer-events:none;white-space:nowrap;z-index:5}
+.fp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--orange-dim);border:1px solid var(--orange-dim);max-width:1100px;margin:0 auto}
 .fp-room{background:var(--surf);padding:44px 36px;position:relative;overflow:hidden;transition:background .3s}
 .fp-room:hover{background:var(--mid)}
 .fp-room h3{font-size:20px;margin-bottom:10px}
 .fp-room p{font-size:13px;color:var(--ts);font-weight:300;line-height:1.72;margin-bottom:20px}
 .room-controls{display:flex;flex-wrap:wrap;gap:10px}
 .rc{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ts);font-weight:300;background:rgba(255,255,255,.04);padding:7px 12px;border:1px solid rgba(255,255,255,.07);transition:all .3s}
-.rc:hover{border-color:rgba(255,107,43,.3);color:var(--or)}
-.rc-dot{width:6px;height:6px;border-radius:50%;background:var(--or);flex-shrink:0;animation:rcPulse 2s ease-in-out infinite}
+.rc:hover{border-color:var(--orange-glow);color:var(--orange)}
+.rc-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;animation:rcPulse 2s ease-in-out infinite}
 @keyframes rcPulse{0%,100%{opacity:.5}50%{opacity:1}}
-.room-num{position:absolute;top:24px;right:28px;font-family:'Cormorant Garamond',serif;font-size:52px;color:rgba(255,107,43,.06);line-height:1}
-
-/* Integration brands */
-.int-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1000px;margin:0 auto;background:rgba(255,107,43,.06);border:1px solid rgba(255,107,43,.12)}
+.room-num{position:absolute;top:24px;right:28px;font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--orange-dim);line-height:1}
+.int-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1000px;margin:0 auto;background:var(--orange-dim);border:1px solid var(--orange-dim)}
 .int-card{background:var(--surf);padding:32px;text-align:center;transition:background .3s;position:relative}
 .int-card:hover{background:var(--mid)}
 .int-card h4{font-size:15px;font-weight:400;margin-bottom:6px;letter-spacing:.06em}
 .int-card p{font-size:11px;color:var(--tm);font-weight:300}
 .int-icon{font-size:24px;margin-bottom:14px;opacity:.5;display:block;transition:opacity .3s}
 .int-card:hover .int-icon{opacity:1}
-
-/* Process timeline */
 .process-steps{display:flex;flex-direction:column;gap:0;max-width:700px;margin:0 auto;position:relative}
-.process-steps::before{content:'';position:absolute;left:20px;top:30px;bottom:30px;width:1px;background:linear-gradient(to bottom,transparent,var(--or),transparent)}
+.process-steps::before{content:'';position:absolute;left:20px;top:30px;bottom:30px;width:1px;background:linear-gradient(to bottom,transparent,var(--orange),transparent)}
 .ps{display:flex;gap:36px;align-items:flex-start;padding:32px 0 32px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 .ps:last-child{border-bottom:none}
-.ps-dot{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,107,43,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--or);background:var(--black);position:relative;z-index:1}
+.ps-dot{width:40px;height:40px;border-radius:50%;border:1px solid var(--orange-glow);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--orange);background:var(--black);position:relative;z-index:1}
 .ps-body h3{font-size:18px;margin-bottom:8px}
 .ps-body p{font-size:13px;color:var(--ts);font-weight:300;line-height:1.72}
 
-/* ══════════════════════════════════════════════════
-   PAGE 4 — PROJECTS / PORTFOLIO
-══════════════════════════════════════════════════ */
+/* Projects */
 #pj-hero{position:relative;height:60vh;min-height:480px;display:flex;align-items:flex-end;justify-content:flex-start;background:var(--black);overflow:hidden;padding:0 64px 80px}
 .pj-hero-content{position:relative;z-index:10;max-width:700px}
-.pj-hero-content .ol{font-size:10px;letter-spacing:.26em;color:var(--or);margin-bottom:24px;animation:fadeUp 1s .3s both}
+.pj-hero-content .ol{font-size:10px;letter-spacing:.26em;color:var(--orange);margin-bottom:24px;animation:fadeUp 1s .3s both}
 .pj-hero-content h1{font-size:clamp(50px,7vw,90px);line-height:1.02;animation:fadeUp 1s .55s both}
 .pj-hero-content p{font-size:15px;color:var(--ts);font-weight:300;margin-top:18px;animation:fadeUp 1s .75s both;max-width:480px;line-height:1.75}
-
-/* Filter bar */
-.filter-bar{display:flex;gap:0;overflow-x:auto;border-bottom:1px solid rgba(255,255,255,.06);padding:0 64px;scrollbar-width:none}
-.filter-btn{background:transparent;border:none;color:var(--tm);font-size:11px;letter-spacing:.12em;font-weight:400;padding:16px 24px;border-bottom:2px solid transparent;transition:all .3s;white-space:nowrap;flex-shrink:0}
-.filter-btn.active,.filter-btn:hover{color:var(--or);border-bottom-color:var(--or)}
-
-/* Project grid */
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:2px 64px;background:var(--black)}
-.proj-card{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surf);cursor:none}
-.proj-card.wide{grid-column:span 2}
-.proj-card.tall{grid-row:span 2;aspect-ratio:auto}
-.proj-bg{position:absolute;inset:0;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
-.proj-card:hover .proj-bg{transform:scale(1.06)}
-.proj-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 60%);opacity:0;transition:opacity .4s}
-.proj-card:hover .proj-overlay{opacity:1}
-.proj-info{position:absolute;bottom:0;left:0;right:0;padding:28px;transform:translateY(10px);opacity:0;transition:all .4s}
-.proj-card:hover .proj-info{transform:none;opacity:1}
-.proj-info h3{font-size:18px;margin-bottom:4px}
-.proj-info p{font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.1em;font-weight:300}
-.proj-tag{position:absolute;top:16px;left:16px;font-size:9px;letter-spacing:.2em;color:var(--or);border:1px solid rgba(255,107,43,.35);padding:5px 12px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px)}
-.pc1{background:linear-gradient(135deg,#0d0d1a,#1a0d26,#0d1a26,#e94560)}
-.pc2{background:linear-gradient(135deg,#0a0a0a,#1a1000,#0d0d00)}
-.pc3{background:linear-gradient(135deg,#0a1a0a,#001a10,#0a0a1a)}
-.pc4{background:linear-gradient(135deg,#1a0a00,#0a0000,#1a1a0a)}
-.pc5{background:linear-gradient(135deg,#00101a,#001a1a,#0a000d)}
-.pc6{background:linear-gradient(135deg,#0d000d,#1a0014,#000d1a)}
-.pc7{background:linear-gradient(135deg,#0a0a1a,#001020,#1a0a00)}
-.pc8{background:linear-gradient(135deg,#000a14,#100a00,#0a0014)}
-
-/* Testimonials */
-.testi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1100px;margin:0 auto;background:rgba(255,107,43,.06);border:1px solid rgba(255,107,43,.12)}
-.tc{background:var(--surf);padding:40px 32px}
-.tc:hover{background:var(--mid)}
-.qm{font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--or);opacity:.35;line-height:1;margin-bottom:6px}
-.tq{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;line-height:1.72;color:rgba(250,250,248,.78);margin-bottom:22px}
-.ta strong{display:block;font-size:12px;color:var(--ts);font-weight:400;margin-bottom:3px;letter-spacing:.06em}
-.ta span{font-size:11px;color:var(--tm);letter-spacing:.1em}
-.star-row{display:flex;gap:2px;margin-bottom:14px}
-.star{width:10px;height:10px;background:var(--or);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
-
-/* ══════════════════════════════════════════════════
-   PAGE 5 — ABOUT
-══════════════════════════════════════════════════ */
-#ab-hero{position:relative;height:80vh;display:flex;align-items:center;justify-content:center;background:var(--black);overflow:hidden;text-align:center}
-.ab-hero-content{position:relative;z-index:10;max-width:800px;padding:80px 40px 0}
-.ab-hero-content .ol{font-size:10px;letter-spacing:.26em;color:var(--or);margin-bottom:24px;animation:fadeUp 1s .3s both}
-.ab-hero-content h1{font-size:clamp(50px,7.5vw,96px);line-height:1.02;animation:fadeUp 1s .55s both}
-.ab-hero-content h1 em{color:var(--or)}
-.ab-hero-content p{font-size:16px;color:var(--ts);font-weight:300;line-height:1.8;margin:26px auto 0;max-width:540px;animation:fadeUp 1s .8s both}
-
-/* Manifesto */
-.manifesto{max-width:820px;margin:0 auto;text-align:center}
-.manifesto blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,44px);font-style:italic;line-height:1.4;color:var(--tp);margin-bottom:24px}
-.manifesto blockquote em{color:var(--or)}
-.manifesto cite{font-size:11px;letter-spacing:.2em;color:var(--tm);font-weight:300}
-
-/* Timeline */
-.timeline{position:relative;max-width:900px;margin:0 auto}
-.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,107,43,.25),transparent);transform:translateX(-50%)}
-.tl-item{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-bottom:60px;align-items:center}
-.tl-item:nth-child(odd) .tl-yr{text-align:right}.tl-item:nth-child(odd) .tl-body{text-align:left}
-.tl-item:nth-child(even) .tl-yr{order:2;text-align:left}.tl-item:nth-child(even) .tl-body{order:1;text-align:right}
-.tl-yr{font-family:'Cormorant Garamond',serif;font-size:56px;color:rgba(255,107,43,.15);line-height:1;font-weight:300;position:relative}
-.tl-yr::after{content:'';position:absolute;top:50%;width:30px;height:1px;background:rgba(255,107,43,.3)}
-.tl-item:nth-child(odd) .tl-yr::after{right:-45px}.tl-item:nth-child(even) .tl-yr::after{left:-45px}
-.tl-body h3{font-size:22px;margin-bottom:10px}
-.tl-body p{font-size:13px;color:var(--ts);font-weight:300;line-height:1.72}
-
-/* Team values */
-.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1100px;margin:0 auto;background:rgba(255,107,43,.06);border:1px solid rgba(255,107,43,.12)}
-.val-card{background:var(--surf);padding:44px 30px;text-align:center;transition:background .3s;position:relative;overflow:hidden}
-.val-card:hover{background:var(--mid)}
-.val-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--or);transform:scaleX(0);transition:transform .4s}
-.val-card:hover::after{transform:scaleX(1)}
-.val-icon{font-size:28px;margin-bottom:18px;display:block;opacity:.5;transition:opacity .3s}
-.val-card:hover .val-icon{opacity:1}
-.val-card h3{font-size:18px;margin-bottom:10px}
-.val-card p{font-size:12px;color:var(--ts);font-weight:300;line-height:1.68}
-
-/* Stats band */
-.stats-band{background:var(--surf);border-top:1px solid rgba(255,107,43,.12);border-bottom:1px solid rgba(255,107,43,.12);padding:60px 64px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
-.sb-item{text-align:center}
-.sb-num{font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--or);line-height:1;margin-bottom:8px}
-.sb-lbl{font-size:10px;letter-spacing:.2em;color:var(--tm);font-weight:300}
-
-/* ══════════════════════════════════════════════════
-   PAGE 6 — CONTACT
-══════════════════════════════════════════════════ */
-#ct-hero{position:relative;height:50vh;min-height:400px;display:flex;align-items:flex-end;background:var(--black);overflow:hidden;padding:0 64px 72px}
-.ct-hero-content{position:relative;z-index:10}
-.ct-hero-content .ol{font-size:10px;letter-spacing:.26em;color:var(--or);margin-bottom:22px;animation:fadeUp 1s .3s both}
-.ct-hero-content h1{font-size:clamp(48px,7vw,88px);line-height:1.02;animation:fadeUp 1s .55s both}
-.ct-hero-content h1 em{color:var(--or)}
-
-/* Contact layout */
-.ct-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;padding:100px 64px}
-.ct-info h2{font-size:clamp(30px,3.5vw,44px);margin-bottom:18px;line-height:1.2}
-.ct-info p{font-size:14px;color:var(--ts);font-weight:300;line-height:1.82;margin-bottom:40px;max-width:420px}
-.ct-methods{display:flex;flex-direction:column;gap:0}
-.ct-method{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;gap:18px;align-items:center;transition:padding-left .3s}
-.ct-method:hover{padding-left:6px}
-.ct-icon{width:38px;height:38px;border:1px solid rgba(255,107,43,.3);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:var(--or)}
-.ct-detail h4{font-size:12px;font-weight:400;letter-spacing:.1em;margin-bottom:3px}
-.ct-detail p{font-size:13px;color:var(--ts);font-weight:300}
-.ct-detail a{color:var(--ts);font-size:13px;font-weight:300;transition:color .3s}
-.ct-detail a:hover{color:var(--or)}
-
-/* Form */
-.ct-form{background:var(--surf);border:1px solid rgba(255,107,43,.12);padding:48px 42px}
-.ct-form h3{font-size:22px;margin-bottom:30px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
-.form-group label{font-size:10px;letter-spacing:.16em;color:var(--tm);font-weight:400}
-.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);color:var(--tp);padding:13px 16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;outline:none;transition:border-color .3s;resize:vertical;cursor:none}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(255,107,43,.45)}
-.form-group select option{background:#111;color:var(--tp)}
-.form-submit{width:100%;background:var(--or);color:#000;padding:15px;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.1em;font-weight:500;border:none;transition:all .35s;margin-top:8px;position:relative;overflow:hidden}
-.form-submit:hover{box-shadow:0 0 30px rgba(255,107,43,.4);transform:translateY(-1px)}
-.form-note{font-size:11px;color:var(--tm);font-weight:300;margin-top:14px;text-align:center;letter-spacing:.04em}
-
-/* Map placeholder */
-.map-strip{height:280px;background:var(--surf);border:1px solid rgba(255,107,43,.1);position:relative;overflow:hidden;margin:0 64px 0}
-.map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,107,43,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,43,.04) 1px,transparent 1px);background-size:40px 40px}
-.map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
-.map-pin-dot{width:14px;height:14px;background:var(--or);border-radius:50%;margin:0 auto 8px;box-shadow:0 0 0 6px rgba(255,107,43,.15),0 0 0 12px rgba(255,107,43,.07);animation:pinPulse 2s ease-in-out infinite}
-@keyframes pinPulse{0%,100%{box-shadow:0 0 0 6px rgba(255,107,43,.15),0 0 0 12px rgba(255,107,43,.07)}50%{box-shadow:0 0 0 10px rgba(255,107,43,.1),0 0 0 20px rgba(255,107,43,.04)}}
-.map-label{font-size:11px;letter-spacing:.16em;color:var(--ts);font-weight:300}
-
-/* ─── FOOTER (shared) ─────────────────────────── */
-footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:64px 64px 36px}
-.ft{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:56px}
-.fb h3{font-size:18px;font-weight:500;letter-spacing:.14em;margin-bottom:10px;display:flex;align-items:center;gap:10px}
-.fb p{font-size:13px;color:var(--tm);font-weight:300;line-height:1.75;max-width:270px}
-.flinks{display:flex;gap:72px}
-.fcol h4{font-size:10px;letter-spacing:.22em;color:var(--tm);font-weight:400;margin-bottom:18px}
-.fcol li{margin-bottom:11px}
-.fcol a{font-size:13px;color:var(--ts);font-weight:300;transition:color .3s}
-.fcol a:hover{color:var(--or)}
-.fb-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);padding-top:28px}
-.fb-bottom p{font-size:11px;color:var(--tm);font-weight:300;letter-spacing:.04em}
-.fb-bottom .acc{color:rgba(255,107,43,.65)}
-
-/* ─── SOCIAL PROOF TICKER ────────────────────── */
 .ticker-wrap{overflow:hidden;position:relative;padding:0}
 .ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
 .ticker-wrap::before{left:0;background:linear-gradient(to right,var(--char),transparent)}
@@ -746,83 +428,253 @@ footer{background:var(--char);border-top:1px solid rgba(255,107,43,.1);padding:6
 .ticker{display:flex;gap:52px;align-items:center;width:max-content;animation:tick 22s linear infinite}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .tbrand{padding:13px 28px;border:1px solid rgba(255,255,255,.07);font-size:12px;letter-spacing:.14em;font-weight:300;color:var(--tm);white-space:nowrap;transition:all .3s}
-.tbrand:hover{border-color:rgba(255,107,43,.3);color:var(--tp)}
+.tbrand:hover{border-color:var(--orange-glow);color:var(--tp)}
+.testi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1100px;margin:0 auto;background:var(--orange-dim);border:1px solid var(--orange-dim)}
+.tc{background:var(--surf);padding:40px 32px}
+.tc:hover{background:var(--mid)}
+.qm{font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--orange);opacity:.35;line-height:1;margin-bottom:6px}
+.tq{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;line-height:1.72;color:rgba(250,250,248,.78);margin-bottom:22px}
+.ta strong{display:block;font-size:12px;color:var(--ts);font-weight:400;margin-bottom:3px;letter-spacing:.06em}
+.ta span{font-size:11px;color:var(--tm);letter-spacing:.1em}
+.star-row{display:flex;gap:2px;margin-bottom:14px}
+.star{width:10px;height:10px;background:var(--orange);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
 
-/* ─── NEON BUTTON SYSTEM ────────────────────────── */
-.nav-cta:hover{background:#FF5F1F!important;color:#000!important;border-color:#FF5F1F!important;box-shadow:0 0 15px #FF5F1F,0 0 30px rgba(255,95,31,.4)!important;font-weight:600}
-.btn-p:hover{background:#FF5F1F!important;color:#000!important;transform:translateY(-3px);box-shadow:0 0 10px #FF5F1F,0 0 25px #FF5F1F,0 0 50px rgba(255,95,31,.5)!important}
-.btn-g:hover{background:rgba(255,95,31,.08)!important;color:#FF5F1F!important;border-color:#FF5F1F!important;box-shadow:0 0 20px rgba(255,95,31,.25)!important;text-shadow:0 0 8px rgba(255,95,31,.5)}
-.filter-btn:hover,.filter-btn.active{color:#FF5F1F!important;border-bottom-color:#FF5F1F!important;text-shadow:0 0 10px rgba(255,95,31,.4)}
-.form-submit:hover{background:#FF5F1F!important;color:#000!important;box-shadow:0 0 25px #FF5F1F!important;transform:scale(1.01)}
+/* About */
+#ab-hero{position:relative;height:80vh;display:flex;align-items:center;justify-content:center;background:var(--black);overflow:hidden;text-align:center}
+.ab-hero-content{position:relative;z-index:10;max-width:800px;padding:80px 40px 0}
+.ab-hero-content .ol{font-size:10px;letter-spacing:.26em;color:var(--orange);margin-bottom:24px;animation:fadeUp 1s .3s both}
+.ab-hero-content h1{font-size:clamp(50px,7.5vw,96px);line-height:1.02;animation:fadeUp 1s .55s both}
+.ab-hero-content h1 em{color:var(--orange)}
+.ab-hero-content p{font-size:16px;color:var(--ts);font-weight:300;line-height:1.8;margin:26px auto 0;max-width:540px;animation:fadeUp 1s .8s both}
+.manifesto{max-width:820px;margin:0 auto;text-align:center}
+.manifesto blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,44px);font-style:italic;line-height:1.4;color:var(--tp);margin-bottom:24px}
+.manifesto blockquote em{color:var(--orange)}
+.manifesto cite{font-size:11px;letter-spacing:.2em;color:var(--tm);font-weight:300}
+.timeline{position:relative;max-width:900px;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--orange-glow),transparent);transform:translateX(-50%)}
+.tl-item{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-bottom:60px;align-items:center}
+.tl-item:nth-child(odd) .tl-yr{text-align:right}.tl-item:nth-child(odd) .tl-body{text-align:left}
+.tl-item:nth-child(even) .tl-yr{order:2;text-align:left}.tl-item:nth-child(even) .tl-body{order:1;text-align:right}
+.tl-yr{font-family:'Cormorant Garamond',serif;font-size:56px;color:var(--orange-dim);line-height:1;font-weight:300;position:relative}
+.tl-yr::after{content:'';position:absolute;top:50%;width:30px;height:1px;background:var(--orange-glow)}
+.tl-item:nth-child(odd) .tl-yr::after{right:-45px}.tl-item:nth-child(even) .tl-yr::after{left:-45px}
+.tl-body h3{font-size:22px;margin-bottom:10px}
+.tl-body p{font-size:13px;color:var(--ts);font-weight:300;line-height:1.72}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1100px;margin:0 auto;background:var(--orange-dim);border:1px solid var(--orange-dim)}
+.val-card{background:var(--surf);padding:44px 30px;text-align:center;transition:background .3s;position:relative;overflow:hidden}
+.val-card:hover{background:var(--mid)}
+.val-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transition:transform .4s}
+.val-card:hover::after{transform:scaleX(1)}
+.val-icon{font-size:28px;margin-bottom:18px;display:block;opacity:.5;transition:opacity .3s}
+.val-card:hover .val-icon{opacity:1}
+.val-card h3{font-size:18px;margin-bottom:10px}
+.val-card p{font-size:12px;color:var(--ts);font-weight:300;line-height:1.68}
+.stats-band{background:var(--surf);border-top:1px solid var(--orange-dim);border-bottom:1px solid var(--orange-dim);padding:60px 64px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.sb-item{text-align:center}
+.sb-num{font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--orange);line-height:1;margin-bottom:8px}
+.sb-lbl{font-size:10px;letter-spacing:.2em;color:var(--tm);font-weight:300}
+
+/* Contact */
+#ct-hero{position:relative;height:50vh;min-height:400px;display:flex;align-items:flex-end;background:var(--black);overflow:hidden;padding:0 64px 72px}
+.ct-hero-content{position:relative;z-index:10}
+.ct-hero-content .ol{font-size:10px;letter-spacing:.26em;color:var(--orange);margin-bottom:22px;animation:fadeUp 1s .3s both}
+.ct-hero-content h1{font-size:clamp(48px,7vw,88px);line-height:1.02;animation:fadeUp 1s .55s both}
+.ct-hero-content h1 em{color:var(--orange)}
+.ct-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;padding:100px 64px}
+.ct-info h2{font-size:clamp(30px,3.5vw,44px);margin-bottom:18px;line-height:1.2}
+.ct-info p{font-size:14px;color:var(--ts);font-weight:300;line-height:1.82;margin-bottom:40px;max-width:420px}
+.ct-methods{display:flex;flex-direction:column;gap:0}
+.ct-method{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;gap:18px;align-items:center;transition:padding-left .3s}
+.ct-method:hover{padding-left:6px}
+.ct-icon{width:38px;height:38px;border:1px solid var(--orange-glow);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:var(--orange)}
+.ct-detail h4{font-size:12px;font-weight:400;letter-spacing:.1em;margin-bottom:3px}
+.ct-detail p{font-size:13px;color:var(--ts);font-weight:300}
+.ct-detail a{color:var(--ts);font-size:13px;font-weight:300;transition:color .3s}
+.ct-detail a:hover{color:var(--orange)}
+.ct-form{background:var(--surf);border:1px solid var(--orange-dim);padding:48px 42px}
+.ct-form h3{font-size:22px;margin-bottom:30px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.form-group label{font-size:10px;letter-spacing:.16em;color:var(--tm);font-weight:400}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);color:var(--tp);padding:13px 16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;outline:none;transition:border-color .3s;resize:vertical;cursor:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange-glow)}
+.form-group select option{background:#111;color:var(--tp)}
+.form-submit{width:100%;background:var(--orange);color:#000;padding:15px;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.1em;font-weight:500;border:none;transition:all .35s;margin-top:8px;position:relative;overflow:hidden}
+.form-submit:hover{box-shadow:0 0 30px var(--orange-glow);transform:translateY(-1px)}
+.form-note{font-size:11px;color:var(--tm);font-weight:300;margin-top:14px;text-align:center;letter-spacing:.04em}
+.map-strip{height:280px;background:var(--surf);border:1px solid var(--orange-dim);position:relative;overflow:hidden;margin:0 64px 0}
+.map-grid{position:absolute;inset:0;background-image:linear-gradient(var(--orange-dim) 1px,transparent 1px),linear-gradient(90deg,var(--orange-dim) 1px,transparent 1px);background-size:40px 40px}
+.map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.map-pin-dot{width:14px;height:14px;background:var(--orange);border-radius:50%;margin:0 auto 8px;box-shadow:0 0 0 6px var(--orange-dim),0 0 0 12px var(--orange-dim);animation:pinPulse 2s ease-in-out infinite}
+@keyframes pinPulse{0%,100%{box-shadow:0 0 0 6px var(--orange-dim),0 0 0 12px var(--orange-dim)}50%{box-shadow:0 0 0 10px var(--orange-dim),0 0 0 20px rgba(255,107,0,.04)}}
+.map-label{font-size:11px;letter-spacing:.16em;color:var(--ts);font-weight:300}
+
+/* Footer Shared */
+footer{background:var(--char);border-top:1px solid var(--orange-dim);padding:64px 64px 36px}
+.ft{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:56px}
+.fb h3{font-size:18px;font-weight:500;letter-spacing:.14em;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.fb p{font-size:13px;color:var(--tm);font-weight:300;line-height:1.75;max-width:270px}
+.flinks{display:flex;gap:72px}
+.fcol h4{font-size:10px;letter-spacing:.22em;color:var(--tm);font-weight:400;margin-bottom:18px}
+.fcol li{margin-bottom:11px}
+.fcol a{font-size:13px;color:var(--ts);font-weight:300;transition:color .3s}
+.fcol a:hover{color:var(--orange)}
+.fb-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);padding-top:28px}
+.fb-bottom p{font-size:11px;color:var(--tm);font-weight:300;letter-spacing:.04em}
+.fb-bottom .acc{color:var(--orange)}
+.footer-logo-wrapper { display: flex; align-items: center; gap: 10px; text-transform: uppercase; font-weight: bold; }
+.footer-logo-img { width: 50px; height: auto; display: inline-block; }
+@media (max-width: 480px) { .footer-logo-wrapper { justify-content: center; } }
+
+/* Shared overriding transition */
 button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.45,.94)!important}
-.nav-logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
 
-.logo-img {
-  /* Adjust height to fit your nav bar's design */
-  height: 40px; 
-  width: auto; /* Keeps the aspect ratio perfect */
-  display: block;
+/* CTA Shared Style */
+#home-cta{background:var(--black);padding:170px 64px;text-align:center;position:relative;overflow:hidden}
+.cta-rings span{position:absolute;border:1px solid var(--orange-dim);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:ringP 6s ease-in-out infinite}
+.cta-rings span:nth-child(1){width:380px;height:380px}.cta-rings span:nth-child(2){width:600px;height:600px;animation-delay:1s}.cta-rings span:nth-child(3){width:820px;height:820px;animation-delay:2s}
+@keyframes ringP{0%,100%{opacity:.45}50%{opacity:.1}}
+.cta-glow2{position:absolute;width:500px;height:320px;background:radial-gradient(ellipse,var(--orange-dim),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)}
+#home-cta .ol{font-size:10px;letter-spacing:.26em;color:var(--orange);margin-bottom:22px;position:relative;z-index:1}
+#home-cta h2{font-size:clamp(46px,7.5vw,96px);line-height:1.04;margin-bottom:22px;position:relative;z-index:1}
+#home-cta h2 em{color:var(--orange)}
+#home-cta p{font-size:15px;color:var(--ts);font-weight:300;margin-bottom:48px;position:relative;z-index:1}
+#home-cta .btns{display:flex;gap:18px;justify-content:center;position:relative;z-index:1}
+
+/* Glow Blobs */
+@keyframes bFloat {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(18px,-13px) scale(1.04); }
+  66% { transform: translate(-9px,9px) scale(0.97); }
+}
+.glow-b{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+
+/* ─── DESKTOP/MOBILE DISPLAY UTILS ──────────────── */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+/* ─── RESPONSIVE & MOBILE ADAPTATIONS ──────────────── */
+@media (max-width: 992px) {
+  /* Disable Custom Cursor on Mobile */
+  #cur, #cur-ring { display: none !important; }
+  body, a, button, select, input, textarea, .split-pane, .exp-item, .sh-node, .room-hit-area, .btn-p, .btn-g { cursor: auto !important; }
+  a, button, .split-pane, .exp-item, .sh-node, .room-hit-area, .btn-p, .btn-g { cursor: pointer !important; }
+
+  /* Display Toggles */
+  .desktop-only { display: none !important; }
+  .mobile-only { display: flex !important; }
+
+  /* Navigation & Hamburger Menu */
+  nav, nav.scrolled { padding: 16px 24px; display: flex; justify-content: space-between; }
+  .hamburger { display: flex; flex-direction: column; gap: 6px; background: transparent; border: none; cursor: pointer; z-index: 102; padding: 5px; }
+  .hamburger span { width: 30px; height: 2px; background: var(--ivory); transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1); pointer-events: none; }
+  .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); background: var(--orange); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background: var(--orange); }
   
-  /* Optional: adds a smooth transition if you change opacity on hover */
-  transition: opacity 0.3s ease;
-}
+  .nav-links { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(5,5,5,0.98); backdrop-filter: blur(20px); flex-direction: column; justify-content: center; align-items: center; gap: 30px; transform: translateY(-100%); transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); z-index: 101; padding: 20px; }
+  .nav-links.open { transform: translateY(0); }
+  .nav-links a { font-size: 22px; font-weight: 400; letter-spacing: 0.15em; }
+  .nav-cta { display: none; }
 
-.logo-img:hover {
-  opacity: 0.8;
-}
-/* Container to keep the logo and text on the same line */
-.footer-logo-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between logo and text */
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.footer-logo-img {
-  width: 50px;   /* Slightly larger than the old 20px for better clarity */
-  height: auto;  /* Maintain aspect ratio */
-  display: inline-block;
-}
-
-/* Ensure the text doesn't wrap weirdly on mobile */
-@media (max-width: 480px) {
-  .footer-logo-wrapper {
-    justify-content: center; /* Centers the logo/text if your footer is center-aligned on mobile */
+  /* Dedicated Mobile Hero */
+  #home-hero-mobile {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 24px;
+    overflow: hidden;
+    text-align: center;
+    background: var(--black);
   }
-}
-.proj-bg {
-  width: 100%;
-  height: 100%;
-  background-size: cover;      /* Fills the area */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat;
-  transition: transform 0.5s ease; /* For a nice hover effect */
+  .m-hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .m-glow-1 { position: absolute; top: 10%; left: -20%; width: 250px; height: 250px; background: var(--orange-dim); filter: blur(60px); border-radius: 50%; animation: floatM1 8s infinite alternate; }
+  .m-glow-2 { position: absolute; bottom: 20%; right: -20%; width: 200px; height: 200px; background: var(--orange-glow); filter: blur(70px); border-radius: 50%; animation: floatM2 10s infinite alternate; opacity: 0.5; }
+  @keyframes floatM1 { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(30px) scale(1.1); } }
+  @keyframes floatM2 { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(-40px) scale(1.2); } }
+  
+  .m-hero-content { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%; }
+  .m-tag { font-size: 10px; letter-spacing: 0.28em; color: var(--orange); margin-bottom: 20px; display: block; }
+  .m-hero-content h1 { font-size: clamp(38px, 12vw, 64px); line-height: 1.05; margin-bottom: 20px; }
+  .m-hero-content p { font-size: 14px; color: var(--ivory-dim); margin-bottom: 30px; line-height: 1.6; max-width: 320px; }
+  .m-glass-stack { display: flex; gap: 12px; width: 100%; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+  .m-gui { padding: 15px; min-width: 140px; text-align: left; position: relative !important; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; }
+
+  /* Global Layout Adjustments */
+  .sec { padding: 80px 24px; }
+  .sec-narrow { padding: 0; }
+  #home-cta { padding: 100px 24px; }
+  
+  /* Sections & Grids */
+  .split-section { flex-direction: column; height: auto; }
+  .split-pane { padding: 80px 24px; min-height: 40vh; }
+  .why-grid, .screen-showcase { grid-template-columns: 1fr; gap: 50px; }
+  .imm-grid { grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); gap: 20px; }
+  .imm-card { min-height: 320px; padding: 40px 30px; }
+  
+  /* Smart Home Hero Reset */
+  #sh-hero { flex-direction: column; justify-content: center; align-items: flex-start; height: auto; padding: 120px 24px 80px; }
+  .sh-hero-content { padding: 0; max-width: 100%; }
+  .sh-fp-wrap { position: relative; width: 100%; height: auto; margin-top: 40px; }
+  .sh-node-label { display: none !important; }
+  .sh-stat-widgets { position: relative; bottom: auto; right: auto; margin-top: 30px; justify-content: flex-start; flex-wrap: wrap; }
+  .sh-room-card { left: 24px; bottom: auto; top: 120px; }
+
+  /* Data Grids & Components */
+  .fp-grid, .values-grid, .stats-band, .testi-row { grid-template-columns: 1fr; gap: 16px; }
+  .int-row { grid-template-columns: 1fr 1fr; }
+  .exp-data-grid { grid-template-columns: 1fr; gap: 16px; }
+  .exp-content-inner { padding: 0 20px 30px 20px; }
+  .exp-head { padding: 20px; }
+  .exp-head-left { gap: 12px; }
+  .exp-head h3 { font-size: 18px; }
+
+  /* Timeline */
+  .timeline::before { left: 20px; transform: none; }
+  .tl-item, .tl-item:nth-child(odd), .tl-item:nth-child(even) { grid-template-columns: 1fr; gap: 10px; text-align: left; }
+  .tl-item .tl-yr, .tl-item:nth-child(even) .tl-yr { order: 1; text-align: left; padding-left: 60px; font-size: 38px; }
+  .tl-item .tl-body, .tl-item:nth-child(even) .tl-body { order: 2; text-align: left; padding-left: 60px; }
+  .tl-item:nth-child(odd) .tl-yr::after, .tl-item:nth-child(even) .tl-yr::after { left: 0; right: auto; width: 40px; }
+
+  /* Contact & Footer */
+  .ct-layout { grid-template-columns: 1fr; padding: 60px 24px; gap: 50px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .map-strip { margin: 0 24px; }
+  footer { padding: 60px 24px 30px; }
+  .ft { flex-direction: column; gap: 50px; }
+  .flinks { flex-wrap: wrap; gap: 40px; }
+  .fb-bottom { flex-direction: column; gap: 14px; text-align: center; }
+  
+  /* Hero Overrides */
+  .ab-hero-content { padding: 120px 24px 40px; }
+  #pj-hero { padding: 120px 24px 60px; align-items: flex-end; }
+  #ct-hero { padding: 120px 24px 60px; }
 }
 
-/* Optional hover effect */
-.proj-card:hover .proj-bg {
-  transform: scale(1.05);
+@media (max-width: 480px) {
+  .sh-hero-content h1 { font-size: 42px; }
+  .btn-p, .btn-g { padding: 12px 24px; font-size: 10px; }
+  .sh-status-pills { flex-direction: column; align-items: flex-start; }
 }
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
-<!-- ═══════ NAV ═══════ -->
 <nav id="nav">
  <a class="nav-logo" href="#" onclick="showPage('home');return false">
     <img src="images /logo/qube-logo.png" alt="Company Logo" class="logo-img">
   </a>
+  <button class="hamburger mobile-only" id="hamburger" aria-label="Toggle Mobile Menu">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#" onclick="showPage('home');return false" id="nl-home">Home</a></li>
+    <li><a href="#" onclick="showPage('home');return false" id="nl-home" class="active">Home</a></li>
     <li><a href="#" onclick="showPage('theatre');return false" id="nl-theatre">Home Theatre</a></li>
     <li><a href="#" onclick="showPage('smarthome');return false" id="nl-smarthome">Smart Home</a></li>
     <li><a href="#" onclick="showPage('projects');return false" id="nl-projects">Projects</a></li>
@@ -831,144 +683,128 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
   <button class="nav-cta" onclick="showPage('contact')">Start a Conversation</button>
 </nav>
 
-<!-- ════════════════════════════════════════════════════
-     PAGE: HOME
-════════════════════════════════════════════════════ -->
 <div class="page active" id="page-home">
 
-  <!-- Hero -->
-  <div id="home-hero">
-    <div class="grid-bg"></div>
-    <div class="glow-b" style="width:420px;height:300px;background:rgba(255,107,43,.11);top:28%;left:18%;animation:bFloat 8s ease-in-out infinite"></div>
-    <div class="glow-b" style="width:280px;height:200px;background:rgba(255,107,43,.07);top:52%;right:14%;animation:bFloat 11s ease-in-out infinite reverse"></div>
-    <div style="position:absolute;inset:0;opacity:.55;pointer-events:none">
-      <svg viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
-        <defs>
-          <linearGradient id="sGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#1a1a2e"/>
-            <stop offset="40%" style="stop-color:#0a1628"/>
-            <stop offset="80%" style="stop-color:#1a0a05"/>
-            <stop offset="100%" style="stop-color:#050505"/>
-          </linearGradient>
-        </defs>
-        <polygon points="100,480 900,480 820,340 180,340" fill="#0A0A0A" stroke="rgba(255,107,43,0.1)" stroke-width="0.5"/>
-        <rect x="180" y="60" width="640" height="280" fill="#080808" stroke="rgba(255,107,43,0.07)" stroke-width="0.5"/>
-        <polygon points="100,480 180,340 180,60 100,140" fill="#060606" stroke="rgba(255,107,43,0.05)" stroke-width="0.5"/>
-        <rect x="258" y="78" width="484" height="264" fill="none" stroke="rgba(255,107,43,0.22)" stroke-width="1" rx="2"/>
-        <rect x="260" y="80" width="480" height="260" fill="url(#sGrad)" rx="1" opacity="0.9">
-          <animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite"/>
-        </rect>
-        <ellipse cx="500" cy="420" rx="200" ry="40" fill="rgba(255,107,43,0.04)"/>
-        <rect x="225" y="130" width="28" height="180" fill="#0D0D0D" stroke="rgba(255,107,43,0.13)" stroke-width="0.5" rx="2"/>
-        <circle cx="239" cy="185" r="10" fill="#111" stroke="rgba(255,107,43,0.25)" stroke-width="0.5"/>
-        <rect x="747" y="130" width="28" height="180" fill="#0D0D0D" stroke="rgba(255,107,43,0.13)" stroke-width="0.5" rx="2"/>
-        <circle cx="761" cy="185" r="10" fill="#111" stroke="rgba(255,107,43,0.25)" stroke-width="0.5"/>
-        <rect x="330" y="390" width="80" height="50" fill="#141414" stroke="rgba(255,107,43,0.08)" stroke-width="0.5" rx="4"/>
-        <rect x="335" y="378" width="70" height="20" fill="#1a1a1a" stroke="rgba(255,107,43,0.08)" stroke-width="0.5" rx="3"/>
-        <rect x="440" y="390" width="80" height="50" fill="#141414" stroke="rgba(255,107,43,0.08)" stroke-width="0.5" rx="4"/>
-        <rect x="445" y="378" width="70" height="20" fill="#1a1a1a" stroke="rgba(255,107,43,0.08)" stroke-width="0.5" rx="3"/>
-        <rect x="550" y="390" width="80" height="50" fill="#141414" stroke="rgba(255,107,43,0.08)" stroke-width="0.5" rx="4"/>
-        <rect x="555" y="378" width="70" height="20" fill="#1a1a1a" stroke="rgba(255,107,43,0.08)" stroke-width="0.5" rx="3"/>
-        <circle cx="239" cy="185" r="3" fill="rgba(255,107,43,0.7)"><animate attributeName="r" values="3;5;3" dur="1.5s" repeatCount="indefinite"/></circle>
-        <circle cx="761" cy="185" r="3" fill="rgba(255,107,43,0.7)"><animate attributeName="r" values="3;5;3" dur="1.5s" begin="0.75s" repeatCount="indefinite"/></circle>
-      </svg>
+  <!-- ─── DESKTOP PARALLAX HERO ─── -->
+  <div id="home-hero-v2" class="desktop-only">
+    <div class="parallax-layer pl-bg" data-speed="0.02"></div>
+    
+    <div class="parallax-layer" data-speed="0.04">
+      <div class="protocol-node pn-1">KNX PROTOCOL</div>
+      <div class="protocol-node pn-2">MATTER / THREAD</div>
+      <div class="protocol-node pn-3">DALI LIGHTING</div>
+      <div class="protocol-node pn-4">ZIGBEE MESH</div>
     </div>
-    <div class="hero-content">
-      <p class="hero-ol">HYDERABAD · EST. 2016</p>
-      <h1 class="hero-h1">Your Home.<br><em>Reimagined.</em></h1>
-      <p class="hero-sub">We don't install systems. We craft intelligent living experiences that you feel in every room, every moment.</p>
-      <div class="hero-btns">
-        <button class="btn-g" onclick="showPage('contact')">Experience It <span class="arrow-r">→</span></button>
-        <button class="btn-g" onclick="showPage('projects')">View Our Work <span class="arrow-r">→</span></button>
+
+    <div class="parallax-layer" data-speed="0.07">
+      <div class="glass-ui gui-climate">
+        <div style="font-size: 10px; color: var(--orange); margin-bottom: 8px; letter-spacing: 2px;">CLIMATE SYNC</div>
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--orange-dim); padding-bottom: 8px;">
+          <span style="font-size: 24px;">21.5°</span>
+          <span style="font-size: 12px; color: var(--ivory-dim); align-self: flex-end;">AUTO</span>
+        </div>
+      </div>
+      <div class="glass-ui gui-audio">
+        <div style="font-size: 10px; color: var(--orange); margin-bottom: 8px; letter-spacing: 2px;">DOLBY ATMOS GRID</div>
+        <div style="display: flex; gap: 4px; height: 30px; align-items: flex-end;">
+          <div style="flex: 1; background: var(--orange); height: 40%; opacity: 0.5;"></div>
+          <div style="flex: 1; background: var(--orange); height: 80%; opacity: 0.8;"></div>
+          <div style="flex: 1; background: var(--orange); height: 100%;"></div>
+          <div style="flex: 1; background: var(--orange); height: 60%; opacity: 0.6;"></div>
+          <div style="flex: 1; background: var(--orange); height: 30%; opacity: 0.4;"></div>
+        </div>
       </div>
     </div>
-    <div class="scroll-hint"><span>SCROLL</span><div class="s-line"></div></div>
+
+    <div class="hero-content-v2 reveal">
+      <p class="lbl lbl-c">QUBE TECHNOLOGIES</p>
+      <h1>Architectural<br><em>Intelligence.</em></h1>
+      <p style="color: var(--ivory-dim); max-width: 500px; margin: 0 auto 40px; font-weight: 300; line-height: 1.8;">
+        Fusing reference-grade home cinemas with sovereign automation ecosystems. Crafted for Hyderabad's finest estates.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center;">
+        <button class="btn-g" onclick="showPage('contact')">Commission a Project <span class="arrow-r">→</span></button>
+      </div>
+    </div>
+    
+    <div class="scroll-hint"><span>DISCOVER</span><div class="s-line"></div></div>
   </div>
 
-  <!-- Theatre preview -->
-  <section class="sec" style="background:var(--char)">
-    <div class="th-layout">
-      <div class="th-txt reveal">
-        <p class="lbl">HOME THEATRE</p>
-        <h2>Cinema.<br>In Your<br><em style="color:var(--or)">Living Room.</em></h2>
-        <p>Every seat is the best seat. Dolby Atmos acoustics, reference-grade visuals, and lighting that knows when to disappear — all tailored to your space.</p>
-        <div class="stat-row" style="margin-bottom:34px">
-          <div><div class="stat-num">100<sup style="font-size:.45em">+</sup></div><div class="stat-lbl">SPACES CRAFTED</div></div>
-          <div><div class="stat-num">8</div><div class="stat-lbl">YEARS MASTERY</div></div>
-          <div><div class="stat-num">∞</div><div class="stat-lbl">POSSIBILITIES</div></div>
-        </div>
-        <button class="btn-g" onclick="showPage('theatre')">Explore Home Theatre <span class="arrow-r">→</span></button>
-      </div>
-      <div class="th-vis reveal rd2">
-        <div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
-        <div class="sc-glow"></div>
-        <div class="sc-reflect"></div>
-        <div class="seat-row">
-          <div class="seat"></div><div class="seat"></div><div class="seat"></div>
-          <div class="seat"></div><div class="seat"></div><div class="seat"></div>
-        </div>
-        <div class="spk"></div><div class="spk"></div><div class="spk"></div>
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
-          <div style="font-size:9px;letter-spacing:.22em;color:rgba(255,107,43,.6);margin-bottom:6px">NOW PLAYING</div>
-          <div style="width:100px;height:1px;background:linear-gradient(to right,transparent,rgba(255,107,43,.4),transparent);margin:0 auto"></div>
-        </div>
-      </div>
+  <!-- ─── MOBILE DYNAMIC HERO ─── -->
+  <div id="home-hero-mobile" class="mobile-only">
+    <div class="m-hero-bg">
+      <div class="m-glow-1"></div>
+      <div class="m-glow-2"></div>
+      <div class="pl-bg" style="position:absolute;inset:0;opacity:0.3;"></div>
     </div>
-  </section>
+    <div class="m-hero-content">
+      <span class="m-tag reveal">QUBE TECHNOLOGIES</span>
+      <h1 class="reveal rd1">Architectural<br><em>Intelligence.</em></h1>
+      <p class="reveal rd2">Fusing reference-grade home cinemas with sovereign automation ecosystems.</p>
+      
+      <div class="m-glass-stack reveal rd3">
+        <div class="glass-ui m-gui">
+          <div style="font-size: 9px; color: var(--orange); margin-bottom: 4px; letter-spacing: 2px;">CLIMATE</div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <span style="font-size: 20px;">21.5°</span>
+            <span style="font-size: 10px; color: var(--ivory-dim);">AUTO</span>
+          </div>
+        </div>
+        <div class="glass-ui m-gui">
+          <div style="font-size: 9px; color: var(--orange); margin-bottom: 4px; letter-spacing: 2px;">AUDIO</div>
+          <div style="display: flex; gap: 3px; height: 20px; align-items: flex-end; margin-top: 5px;">
+            <div style="flex: 1; background: var(--orange); height: 40%; opacity: 0.5;"></div>
+            <div style="flex: 1; background: var(--orange); height: 80%; opacity: 0.8;"></div>
+            <div style="flex: 1; background: var(--orange); height: 100%;"></div>
+            <div style="flex: 1; background: var(--orange); height: 60%; opacity: 0.6;"></div>
+            <div style="flex: 1; background: var(--orange); height: 30%; opacity: 0.4;"></div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="btn-g reveal rd4" onclick="showPage('contact')" style="margin-top: 40px; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px);">Commission a Project <span class="arrow-r">→</span></button>
+    </div>
+  </div>
 
   <div class="divider"></div>
 
-  <!-- Smart home preview -->
-  <section class="sec" style="background:var(--black);text-align:center">
-    <div class="reveal" style="margin-bottom:60px">
-      <p class="lbl lbl-c">SMART LIVING</p>
-      <h2 style="font-size:clamp(36px,5vw,66px);margin-bottom:18px">Your Home<br>Knows You.</h2>
-      <p style="font-size:16px;color:var(--ts);font-weight:300;max-width:480px;margin:0 auto 60px;line-height:1.78">Curtains that greet the morning. Lights that follow your mood. A home that responds before you reach the switch.</p>
+  <section class="split-section reveal rd1">
+    
+    <div class="split-pane" onclick="showPage('theatre')">
+      <div class="pane-bg" style="background: radial-gradient(circle at center, var(--char), var(--black));"></div>
+      <div class="pane-content">
+        <span class="pane-tag">THE QUBE CINEMA</span>
+        <h2>Reference-Grade<br>Acoustics</h2>
+        <p style="font-size: 13px; color: var(--ivory-dim); max-width: 280px; margin: 0 auto 30px;">Bespoke acoustic treatments and precision-calibrated projection for the purist.</p>
+        <span style="font-size: 11px; color: var(--orange); letter-spacing: 2px;">EXPLORE THEATRES ➝</span>
+      </div>
     </div>
-    <div class="ctrl-grid reveal rd1">
-      <div class="ctrl-card"><span class="ci">☀</span><div class="cn">AMBIENCE</div><div class="cd">Scenes that shift with your day.</div><div class="tog"><div class="ttrack on" onclick="this.classList.toggle('on')"><div class="tthumb"></div></div></div></div>
-      <div class="ctrl-card"><span class="ci">❐</span><div class="cn">CLIMATE</div><div class="cd">Perfect temperature, always.</div><div class="tog"><div class="ttrack on" onclick="this.classList.toggle('on')"><div class="tthumb"></div></div></div></div>
-      <div class="ctrl-card"><span class="ci">◫</span><div class="cn">SHADING</div><div class="cd">Motorised screens that dance with the sun.</div><div class="tog"><div class="ttrack" onclick="this.classList.toggle('on')"><div class="tthumb"></div></div></div></div>
-      <div class="ctrl-card"><span class="ci">⋈</span><div class="cn">SECURITY</div><div class="cd">Peace of mind in every corner.</div><div class="tog"><div class="ttrack on" onclick="this.classList.toggle('on')"><div class="tthumb"></div></div></div></div>
-      <div class="ctrl-card"><span class="ci">♫</span><div class="cn">AUDIO</div><div class="cd">Whole-home sound that moves with you.</div><div class="tog"><div class="ttrack on" onclick="this.classList.toggle('on')"><div class="tthumb"></div></div></div></div>
-      <div class="ctrl-card"><span class="ci">⬡</span><div class="cn">ONE TOUCH</div><div class="cd">Every system. One scene. Total harmony.</div><div class="tog"><div class="ttrack" onclick="this.classList.toggle('on')"><div class="tthumb"></div></div></div></div>
+
+    <div class="split-pane" onclick="showPage('smarthome')">
+      <div class="pane-bg" style="background: radial-gradient(circle at center, #1a1a1a, var(--black)); border-left: 1px solid var(--orange-dim);"></div>
+      <div class="pane-content">
+        <span class="pane-tag">POWERED BY XEROVOLT</span>
+        <h2>Sovereign<br>Automation</h2>
+        <p style="font-size: 13px; color: var(--ivory-dim); max-width: 280px; margin: 0 auto 30px;">Local execution, secure architectures, and elegant hardware logic engineered by Xerovolt.</p>
+        <span style="font-size: 11px; color: var(--orange); letter-spacing: 2px;">EXPLORE SYSTEMS ➝</span>
+      </div>
     </div>
-    <div style="margin-top:44px" class="reveal rd2">
-      <button class="btn-g" onclick="showPage('smarthome')">Explore Smart Home <span class="arrow-r">→</span></button>
-    </div>
+
   </section>
 
-  <div class="divider"></div>
-
-  <!-- Why Qube -->
-  <section class="sec" style="background:var(--black)">
+  <section class="sec" style="background: var(--black);">
     <div class="why-grid">
       <div class="why-l reveal">
-        <p class="lbl">WHY QUBE</p>
-        <h2>Four Pillars<br>One Vision.</h2>
-        <p>Since 2016, we have transformed over a hundred homes across Hyderabad — not by selling products, but by understanding how you want to live.</p>
+        <p class="lbl">THE PHILOSOPHY</p>
+        <h2>Technology<br>That Disappears.</h2>
+        <p>Your living space should not feel like a server room. We orchestrate complex arrays of IoT protocols and AV distribution so all you experience is absolute harmony.</p>
       </div>
       <div class="pillars reveal rd2">
-        <div class="pillar"><span class="pn">01</span><div class="pb"><h3>Precision</h3><p>Every cable, every angle, every acoustic panel placed with obsessive care. We see what others ignore.</p></div></div>
-        <div class="pillar"><span class="pn">02</span><div class="pb"><h3>Integration</h3><p>Your theatre, your lighting, your climate — one intelligence. Seamlessly unified.</p></div></div>
-        <div class="pillar"><span class="pn">03</span><div class="pb"><h3>Reliability</h3><p>Systems that simply work, every time. And when they don't, we are there before you call.</p></div></div>
-        <div class="pillar"><span class="pn">04</span><div class="pb"><h3>Experience</h3><p>We measure success not in watts or pixels, but in how your home makes you feel.</p></div></div>
+        <div class="pillar"><span class="pn">01</span><div class="pb"><h3>Aesthetic Integration</h3><p>Flush-mounted interfaces, invisible speakers, and motorized masks that honor your interior design.</p></div></div>
+        <div class="pillar"><span class="pn">02</span><div class="pb"><h3>Sovereign Control</h3><p>Prioritizing local network execution over cloud reliance for ultimate speed, privacy, and reliability.</p></div></div>
+        <div class="pillar"><span class="pn">03</span><div class="pb"><h3>Acoustic Purity</h3><p>Mathematical modeling of your room dynamics to defeat standing waves and deliver studio-quality sound.</p></div></div>
       </div>
     </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section id="home-cta">
-    <div class="cta-rings"><span></span><span></span><span></span></div>
-    <div class="cta-glow2"></div>
-    <p class="ol reveal">THE NEXT CHAPTER</p>
-    <h2 class="reveal rd1">Let's Build Your<br><em>Dream Space.</em></h2>
-    <p class="reveal rd2">Every extraordinary home started with one conversation.</p>
-    <div class="btns reveal rd3">
-      <button class="btn-g" onclick="showPage('contact')">Start a Conversation <span class="arrow-r">→</span></button>
-      <button class="btn-g" onclick="showPage('projects')">View Our Work <span class="arrow-r">→</span></button>
-    </div>
-    <div class="contact-line reveal rd4"><span class="dot">●</span> &nbsp;Hyderabad, India &nbsp;·&nbsp; info@qubetechnologies.in &nbsp;·&nbsp; +91 98765 43210</div>
   </section>
 
   <footer>
@@ -978,45 +814,38 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
         <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
         QUBE TECHNOLOGIES
       </h3>
-        <p>Crafting intelligent living experiences in Hyderabad since 2016. Where technology disappears into beauty.</p>
+        <p>Architectural intelligence and cinematic perfection in Hyderabad since 2016.</p>
       </div>
       <div class="flinks">
-        <div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li><li><a href="#" onclick="showPage('smarthome');return false">Lighting Control</a></li><li><a href="#" onclick="showPage('smarthome');return false">Acoustic Design</a></li></ul></div>
-        <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
+        <div class="fcol"><h4>EXPERIENCES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li></ul></div>
+        <div class="fcol"><h4>FIRM</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Portfolio</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
       </div>
     </div>
-    <div class="fb-bottom"><p>© 2024 Qube Technologies. All rights reserved.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
+    <div class="fb-bottom"><p>© 2026 Qube Technologies.</p><p>Engineering Elegance</p></div>
   </footer>
 </div>
 
-<!-- ════════════════════════════════════════════════════
-     PAGE: HOME THEATRE
-════════════════════════════════════════════════════ -->
 <div class="page" id="page-theatre">
-  
   <div id="ht-hero" style="background-color: var(--black); display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; position: relative; margin: 0;">
+    <div style="position: absolute; width: 60vw; height: 50vh; background: radial-gradient(circle, var(--orange-dim) 0%, rgba(0,0,0,0) 70%); top: 10%; z-index: 0; filter: blur(50px);"></div>
+    <div style="position: absolute; width: 40vw; height: 40vh; background: radial-gradient(circle, var(--ivory-mute) 0%, rgba(0,0,0,0) 70%); bottom: 10%; right: 10%; z-index: 0; filter: blur(40px);"></div>
     
-    <div style="position: absolute; width: 60vw; height: 50vh; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, rgba(0,0,0,0) 70%); top: 10%; z-index: 0; filter: blur(50px);"></div>
-    <div style="position: absolute; width: 40vw; height: 40vh; background: radial-gradient(circle, rgba(250,250,248,0.04) 0%, rgba(0,0,0,0) 70%); bottom: 10%; right: 10%; z-index: 0; filter: blur(40px);"></div>
-<svg viewBox="0 0 1000 600" style="width: 100%; max-width: 1200px; position: relative; z-index: 1;">
+    <svg viewBox="0 0 1000 600" style="width: 100%; max-width: 1200px; position: relative; z-index: 1;">
       <defs>
         <filter id="tv-glow" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="30" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
-        
         <filter id="floor-glow" x="-20%" y="-50%" width="140%" height="200%">
           <feGaussianBlur stdDeviation="8" result="blur" />
         </filter>
-
         <linearGradient id="movie-screen" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" style="stop-color:var(--char)" />
-          <stop offset="50%" style="stop-color:var(--or3)" />
-          <stop offset="100%" style="stop-color:var(--or)" />
+          <stop offset="50%" style="stop-color:var(--orange-dim)" />
+          <stop offset="100%" style="stop-color:var(--orange)" />
           <animate attributeName="x1" values="0%; 100%; 0%" dur="15s" repeatCount="indefinite" />
           <animate attributeName="y1" values="0%; 100%; 0%" dur="20s" repeatCount="indefinite" />
         </linearGradient>
-
         <linearGradient id="panel-grad" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stop-color="#020202" />
           <stop offset="50%" stop-color="#080808" />
@@ -1024,25 +853,25 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
         </linearGradient>
       </defs>
 
-      <rect x="20" y="40" width="120" height="420" rx="4" fill="url(#panel-grad)" stroke="rgba(255,107,43,0.2)" stroke-width="1.5" />
-      <line x1="20" y1="120" x2="140" y2="120" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
-      <line x1="20" y1="200" x2="140" y2="200" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
-      <line x1="20" y1="280" x2="140" y2="280" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
-      <line x1="20" y1="360" x2="140" y2="360" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
+      <rect x="20" y="40" width="120" height="420" rx="4" fill="url(#panel-grad)" stroke="var(--orange-dim)" stroke-width="1.5" />
+      <line x1="20" y1="120" x2="140" y2="120" stroke="var(--orange-dim)" stroke-width="2" />
+      <line x1="20" y1="200" x2="140" y2="200" stroke="var(--orange-dim)" stroke-width="2" />
+      <line x1="20" y1="280" x2="140" y2="280" stroke="var(--orange-dim)" stroke-width="2" />
+      <line x1="20" y1="360" x2="140" y2="360" stroke="var(--orange-dim)" stroke-width="2" />
       
-      <rect x="860" y="40" width="120" height="420" rx="4" fill="url(#panel-grad)" stroke="rgba(255,107,43,0.2)" stroke-width="1.5" />
-      <line x1="860" y1="120" x2="980" y2="120" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
-      <line x1="860" y1="200" x2="980" y2="200" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
-      <line x1="860" y1="280" x2="980" y2="280" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
-      <line x1="860" y1="360" x2="980" y2="360" stroke="rgba(255,107,43,0.15)" stroke-width="2" />
+      <rect x="860" y="40" width="120" height="420" rx="4" fill="url(#panel-grad)" stroke="var(--orange-dim)" stroke-width="1.5" />
+      <line x1="860" y1="120" x2="980" y2="120" stroke="var(--orange-dim)" stroke-width="2" />
+      <line x1="860" y1="200" x2="980" y2="200" stroke="var(--orange-dim)" stroke-width="2" />
+      <line x1="860" y1="280" x2="980" y2="280" stroke="var(--orange-dim)" stroke-width="2" />
+      <line x1="860" y1="360" x2="980" y2="360" stroke="var(--orange-dim)" stroke-width="2" />
 
       <line x1="0" y1="485" x2="1000" y2="485" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
       
-      <line x1="250" y1="480" x2="750" y2="480" stroke="var(--or)" stroke-width="5" filter="url(#floor-glow)" opacity="0.4">
+      <line x1="250" y1="480" x2="750" y2="480" stroke="var(--orange)" stroke-width="5" filter="url(#floor-glow)" opacity="0.4">
         <animate attributeName="opacity" values="0.3; 0.6; 0.3" dur="6s" repeatCount="indefinite" />
       </line>
 
-      <rect x="180" y="60" width="640" height="360" fill="var(--or)" opacity="0.25" filter="url(#tv-glow)">
+      <rect x="180" y="60" width="640" height="360" fill="var(--orange)" opacity="0.25" filter="url(#tv-glow)">
         <animate attributeName="opacity" values="0.15; 0.35; 0.15" dur="4s" repeatCount="indefinite" />
       </rect>
 
@@ -1051,35 +880,35 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
 
       <rect x="190" y="70" width="620" height="340" rx="4" fill="url(#movie-screen)" />
 
-      <line x1="190" y1="70" x2="810" y2="70" stroke="rgba(255,107,43,0.3)" stroke-width="2">
+      <line x1="190" y1="70" x2="810" y2="70" stroke="var(--orange-glow)" stroke-width="2">
         <animate attributeName="y1" values="70;410;70" dur="6s" repeatCount="indefinite" />
         <animate attributeName="y2" values="70;410;70" dur="6s" repeatCount="indefinite" />
       </line>
 
       <foreignObject x="190" y="70" width="620" height="340">
         <div xmlns="http://www.w3.org/1999/xhtml" class="ht-hero-content" style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--tp); padding: 20px; box-sizing: border-box; position: relative; z-index: 10;">
-          <p class="ol" style="margin: 0 0 10px 0; font-size: 14px; letter-spacing: 2px; color: var(--or); font-family: 'Inter', sans-serif; font-weight: 500;">HOME THEATRE</p>
-          <h1 style="margin: 0 0 15px 0; font-size: 46px; line-height: 1.1; font-family: 'Cormorant Garamond', serif; font-weight: 400; text-shadow: 0 4px 12px rgba(0,0,0,0.8);">Sound.<br>Light.<br><em style="color: var(--or); font-style: italic;">Sensation.</em></h1>
+          <p class="ol" style="margin: 0 0 10px 0; font-size: 14px; letter-spacing: 2px; color: var(--orange); font-family: 'Inter', sans-serif; font-weight: 500;">HOME THEATRE</p>
+          <h1 style="margin: 0 0 15px 0; font-size: 46px; line-height: 1.1; font-family: 'Cormorant Garamond', serif; font-weight: 400; text-shadow: 0 4px 12px rgba(0,0,0,0.8);">Sound.<br>Light.<br><em style="color: var(--orange); font-style: italic;">Sensation.</em></h1>
           <p style="margin: 0 0 25px 0; font-size: 15px; max-width: 80%; color: #fff; line-height: 1.5; font-family: 'Inter', sans-serif; font-weight: 400; text-shadow: 0 2px 6px rgba(0,0,0,0.8);">Step into a world where every frame is a masterpiece and every note fills the room with purpose. Your private cinema awaits.</p>
-          <div class="btns" style="display: flex; gap: 15px;">
-            <button class="btn-g" onclick="showPage('contact')" style="padding: 12px 24px; background: var(--or); color: #000; border: none; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0.1em; font-size: 12px; cursor: pointer; border-radius: 2px; box-shadow: 0 4px 15px rgba(255,107,43,0.3);">Design My Theatre <span class="arrow-r">→</span></button>
-            <button class="btn-g" onclick="showPage('projects')" style="padding: 12px 24px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: #fff; border: 1px solid rgba(255,255,255,0.4); font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.1em; font-size: 12px; cursor: pointer; border-radius: 2px;">See Projects <span class="arrow-r">→</span></button>
+          <div class="btns" style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+            <button class="btn-g" onclick="showPage('contact')" style="padding: 12px 24px; background: var(--orange); color: #000; border: none; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0.1em; font-size: 12px; border-radius: 2px; box-shadow: 0 4px 15px var(--orange-dim);">Design My Theatre <span class="arrow-r">→</span></button>
+            <button class="btn-g" onclick="showPage('projects')" style="padding: 12px 24px; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); color: #fff; border: 1px solid rgba(255,255,255,0.4); font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.1em; font-size: 12px; border-radius: 2px;">See Projects <span class="arrow-r">→</span></button>
           </div>
         </div>
       </foreignObject>
 
       <rect x="230" y="445" width="540" height="40" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
       <rect x="230" y="445" width="540" height="8" rx="2" fill="#0a0a0a" /> <rect x="260" y="455" width="140" height="18" rx="2" fill="#020202" stroke="#333" stroke-width="1.5" />
-      <circle cx="275" cy="464" r="2" fill="var(--or)" opacity="0.8" />
+      <circle cx="275" cy="464" r="2" fill="var(--orange)" opacity="0.8" />
       <rect x="600" y="455" width="140" height="18" rx="2" fill="#020202" stroke="#333" stroke-width="1.5" />
-      <circle cx="615" cy="464" r="2" fill="var(--or)" opacity="0.8" />
+      <circle cx="615" cy="464" r="2" fill="var(--orange)" opacity="0.8" />
       
       <rect x="430" y="450" width="140" height="28" rx="3" fill="#050505" stroke="#444" stroke-width="1.5" />
       <rect x="440" y="455" width="60" height="18" rx="2" fill="#000" stroke="#222" stroke-width="1" />
-      <rect x="445" y="465" width="4" height="6" fill="var(--or)"><animate attributeName="height" values="2;6;3;8;2" dur="0.8s" repeatCount="indefinite" /><animate attributeName="y" values="469;465;468;463;469" dur="0.8s" repeatCount="indefinite" /></rect>
-      <rect x="451" y="462" width="4" height="9" fill="var(--or)"><animate attributeName="height" values="5;9;4;7;5" dur="1.1s" repeatCount="indefinite" /><animate attributeName="y" values="466;462;467;464;466" dur="1.1s" repeatCount="indefinite" /></rect>
-      <rect x="457" y="464" width="4" height="7" fill="var(--or)"><animate attributeName="height" values="8;3;9;4;8" dur="0.9s" repeatCount="indefinite" /><animate attributeName="y" values="463;468;462;467;463" dur="0.9s" repeatCount="indefinite" /></rect>
-      <rect x="463" y="467" width="4" height="4" fill="var(--or)"><animate attributeName="height" values="3;7;2;6;3" dur="1.3s" repeatCount="indefinite" /><animate attributeName="y" values="468;464;469;465;468" dur="1.3s" repeatCount="indefinite" /></rect>
+      <rect x="445" y="465" width="4" height="6" fill="var(--orange)"><animate attributeName="height" values="2;6;3;8;2" dur="0.8s" repeatCount="indefinite" /><animate attributeName="y" values="469;465;468;463;469" dur="0.8s" repeatCount="indefinite" /></rect>
+      <rect x="451" y="462" width="4" height="9" fill="var(--orange)"><animate attributeName="height" values="5;9;4;7;5" dur="1.1s" repeatCount="indefinite" /><animate attributeName="y" values="466;462;467;464;466" dur="1.1s" repeatCount="indefinite" /></rect>
+      <rect x="457" y="464" width="4" height="7" fill="var(--orange)"><animate attributeName="height" values="8;3;9;4;8" dur="0.9s" repeatCount="indefinite" /><animate attributeName="y" values="463;468;462;467;463" dur="0.9s" repeatCount="indefinite" /></rect>
+      <rect x="463" y="467" width="4" height="4" fill="var(--orange)"><animate attributeName="height" values="3;7;2;6;3" dur="1.3s" repeatCount="indefinite" /><animate attributeName="y" values="468;464;469;465;468" dur="1.3s" repeatCount="indefinite" /></rect>
       <circle cx="520" cy="464" r="8" fill="#0a0a0a" stroke="#555" stroke-width="1.5" /> 
       <circle cx="545" cy="464" r="6" fill="#0a0a0a" stroke="#555" stroke-width="1.5" /> 
       <circle cx="520" cy="464" r="6" fill="#000" /> 
@@ -1088,7 +917,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
       <polygon points="75,480 78,485 81,480" fill="#666" />
       <polygon points="119,480 122,485 125,480" fill="#666" />
       <rect x="70" y="140" width="60" height="330" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
-      <rect x="73" y="143" width="54" height="324" rx="2" fill="#080808" /> <circle cx="100" cy="180" r="14" fill="#050505" stroke="#444" stroke-width="1.5" /> <circle cx="100" cy="180" r="6" fill="#1a1a1a" /> <circle cx="100" cy="240" r="20" fill="#030303" stroke="rgba(255,107,43,0.5)" stroke-width="1.5" /> <circle cx="100" cy="240" r="16" fill="#0a0a0a" /> <circle cx="100" cy="240" r="4" fill="#020202" />
+      <rect x="73" y="143" width="54" height="324" rx="2" fill="#080808" /> <circle cx="100" cy="180" r="14" fill="#050505" stroke="#444" stroke-width="1.5" /> <circle cx="100" cy="180" r="6" fill="#1a1a1a" /> <circle cx="100" cy="240" r="20" fill="#030303" stroke="var(--orange-glow)" stroke-width="1.5" /> <circle cx="100" cy="240" r="16" fill="#0a0a0a" /> <circle cx="100" cy="240" r="4" fill="#020202" />
       <circle cx="100" cy="320" r="24" fill="#030303" stroke="#444" stroke-width="2" /> <circle cx="100" cy="320" r="18" fill="#0a0a0a" /> <circle cx="100" cy="320" r="5" fill="#020202" />
       <circle cx="100" cy="400" r="24" fill="#030303" stroke="#444" stroke-width="2" /> <circle cx="100" cy="400" r="18" fill="#0a0a0a" /> <circle cx="100" cy="400" r="5" fill="#020202" />
 
@@ -1098,7 +927,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
       <rect x="870" y="140" width="60" height="330" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
       <rect x="873" y="143" width="54" height="324" rx="2" fill="#080808" /> <circle cx="900" cy="180" r="14" fill="#050505" stroke="#444" stroke-width="1.5" /> 
       <circle cx="900" cy="180" r="6" fill="#1a1a1a" /> 
-      <circle cx="900" cy="240" r="20" fill="#030303" stroke="rgba(255,107,43,0.5)" stroke-width="1.5" /> 
+      <circle cx="900" cy="240" r="20" fill="#030303" stroke="var(--orange-glow)" stroke-width="1.5" /> 
       <circle cx="900" cy="240" r="16" fill="#0a0a0a" /> 
       <circle cx="900" cy="240" r="4" fill="#020202" />
       <circle cx="900" cy="320" r="24" fill="#030303" stroke="#444" stroke-width="2" /> 
@@ -1111,13 +940,13 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
       <rect x="760" y="340" width="84" height="135" rx="4" fill="#030303" stroke="#2a2a2a" stroke-width="2.5" />
       <rect x="764" y="344" width="76" height="127" rx="2" fill="#080808" /> <circle cx="802" cy="390" r="32" fill="#020202" stroke="#333" stroke-width="3" /> <circle cx="802" cy="390" r="24" fill="#0a0a0a" /> 
       <circle cx="802" cy="390" r="8" fill="#000" /> 
-      <circle cx="802" cy="450" r="10" fill="#000" /> <circle cx="770" cy="355" r="2" fill="rgba(255,107,43,1)" /> <rect x="770" y="475" width="10" height="5" fill="#333" />
+      <circle cx="802" cy="450" r="10" fill="#000" /> <circle cx="770" cy="355" r="2" fill="var(--orange)" /> <rect x="770" y="475" width="10" height="5" fill="#333" />
       <rect x="824" y="475" width="10" height="5" fill="#333" />
 
       <path d="M 180 600 L 180 540 Q 180 515 200 515 L 320 515 Q 340 515 340 540 L 340 600 Z" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
       <path d="M 160 600 L 160 550 Q 160 530 175 530 L 205 530 Q 220 530 220 550 L 220 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <path d="M 300 600 L 300 550 Q 300 530 315 530 L 345 530 Q 360 530 360 550 L 360 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <ellipse cx="330" cy="545" rx="8" ry="4" fill="#000" stroke="#444" stroke-width="1.5" /> <path d="M 340 600 L 340 540 Q 340 515 360 515 L 640 515 Q 660 515 660 540 L 660 600 Z" fill="#020202" stroke="#2a2a2a" stroke-width="2" />
       <path d="M 640 600 L 640 550 Q 640 530 655 530 L 685 530 Q 700 530 700 550 L 700 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <ellipse cx="670" cy="545" rx="8" ry="4" fill="#000" stroke="#444" stroke-width="1.5" /> <path d="M 660 600 L 660 540 Q 660 515 680 515 L 800 515 Q 820 515 820 540 L 820 600 Z" fill="#030303" stroke="#2a2a2a" stroke-width="2" />
-      <path d="M 780 600 L 780 550 Q 780 530 795 530 L 825 530 Q 840 530 840 550 L 840 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <line x1="180" y1="595" x2="820" y2="595" stroke="var(--or)" stroke-width="8" filter="url(#floor-glow)" opacity="0.25" />
+      <path d="M 780 600 L 780 550 Q 780 530 795 530 L 825 530 Q 840 530 840 550 L 840 600 Z" fill="#050505" stroke="#333" stroke-width="2" /> <line x1="180" y1="595" x2="820" y2="595" stroke="var(--orange)" stroke-width="8" filter="url(#floor-glow)" opacity="0.25" />
 
     </svg>
   </div>
@@ -1130,11 +959,10 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
         <div class="screen-img"></div>
         <div class="screen-scan"></div>
         <div class="screen-overlay"><div class="screen-play">▷</div></div>
-        <div class="fc tl"></div><div class="fc tr"></div><div class="fc bl"></div><div class="fc br"></div>
       </div>
       <div class="screen-txt reveal rd2">
         <p class="lbl">DISPLAY EXCELLENCE</p>
-        <h2>The Screen<br>Disappears.<br><em style="color:var(--or)">The Story Stays.</em></h2>
+        <h2>The Screen<br>Disappears.<br><em style="color:var(--orange)">The Story Stays.</em></h2>
         <p>We partner with the world's finest display manufacturers to bring you screens that honour every pixel of the content you love.</p>
         <div class="spec-list">
           <div class="spec-item"><span class="spec-dot"></span>4K & 8K native resolution options</div>
@@ -1148,190 +976,182 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     </div>
   </section>
 
-<div class="divider"></div>
-
-<section class="sec" style="background:var(--char)">
-  <div class="sec-narrow">
-    <div style="text-align:center;margin-bottom:56px" class="reveal">
-      <p class="lbl lbl-c">THE EXPERIENCE</p>
-      <h2 style="font-size:clamp(36px,4.5vw,58px)">Precision Engineering.<br><em style="color:var(--or)">Perfectly Orchestrated.</em></h2>
-    </div>
-
-    <div class="exp-accordion reveal rd1">
-      
-      <div class="exp-item active" onclick="toggleExpCard(this)">
-        <div class="exp-head">
-          <div class="exp-head-left">
-            <span class="exp-icon">◉</span>
-            <h3>Cinematic Projection</h3>
-          </div>
-          <span class="exp-toggle">+</span>
-        </div>
-        <div class="exp-body">
-          <div class="exp-content">
-            <div class="exp-content-inner">
-              <p class="exp-desc">We are authorized dealers for a curated portfolio of world-class projectors, ensuring you get the perfect match for your room's throw distance, screen size, and ambient light. As a premier seller of trusted brands, we deliver uncompromising visual fidelity directly to your home.</p>
-              <div class="exp-data-grid">
-                <div class="data-point">
-                  <h4>AUTHORIZED DEALER</h4>
-                  <p>Direct sales and expert calibration.</p>
-                </div>
-                <div class="data-point">
-                  <h4>RESOLUTION & HDR</h4>
-                  <p>Native 4K and 8K options with dynamic HDR10+ frame-by-frame tone mapping.</p>
-                </div>
-                <div class="data-point">
-                  <h4>LIGHT ENGINE</h4>
-                  <p>Laser phosphor and advanced lamp options, ensures consistent performance.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="exp-item" onclick="toggleExpCard(this)">
-        <div class="exp-head">
-          <div class="exp-head-left">
-            <span class="exp-icon">◈</span>
-            <h3>Reference-Grade Audio</h3>
-          </div>
-          <span class="exp-toggle">+</span>
-        </div>
-        <div class="exp-body">
-          <div class="exp-content">
-            <div class="exp-content-inner">
-              <p class="exp-desc">Sound that doesn't just fill the room, but maps to its physical space. We design custom multi-channel layouts that place every whisper and explosion exactly where the director intended.</p>
-              <div class="exp-data-grid">
-                <div class="data-point">
-                  <h4>IMMERSIVE FORMATS</h4>
-                  <p>Full decoding and spatial rendering for Dolby Atmos, DTS:X, and IMAX Enhanced tracks.</p>
-                </div>
-                <div class="data-point">
-                  <h4>SYSTEM ARCHITECTURE</h4>
-                  <p>Scalable configurations from precise 5.1.2 setups to massive 11.4.6 dedicated theatre grids.</p>
-                </div>
-                <div class="data-point">
-                  <h4>DSP CALIBRATION</h4>
-                  <p>Multi-point microphone measurement ensuring time-alignment and phase coherence across all seats.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="exp-item" onclick="toggleExpCard(this)">
-        <div class="exp-head">
-          <div class="exp-head-left">
-            <span class="exp-icon">◎</span>
-            <h3>Acoustic Engineering</h3>
-          </div>
-          <span class="exp-toggle">+</span>
-        </div>
-        <div class="exp-body">
-          <div class="exp-content">
-            <div class="exp-content-inner">
-              <p class="exp-desc">The room itself is your most critical audio component. We physically tune your space using advanced modeling to eliminate distortion, standing waves, and echo, ensuring pristine audio clarity.</p>
-              <div class="exp-data-grid">
-                <div class="data-point">
-                  <h4>BASS MANAGEMENT</h4>
-                  <p>Calculated low-frequency corner trapping to absorb standing waves and tighten bass response.</p>
-                </div>
-                <div class="data-point">
-                  <h4>REFLECTION CONTROL</h4>
-                  <p>Broadband absorption panels placed precisely at first-reflection points to stop sound smearing.</p>
-                </div>
-                <div class="data-point">
-                  <h4>SPATIAL DIFFUSION</h4>
-                  <p>Geometric rear-wall diffusers that scatter sound waves, creating a massive, natural soundstage.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
   <div class="divider"></div>
 
-<section class="sec" style="background:var(--char); position: relative; overflow: hidden;">
-  <!-- Subtle ambient background glow for the whole section -->
-  <div style="position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,107,43,0.03) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;"></div>
+  <section class="sec" style="background:var(--char)">
+    <div class="sec-narrow">
+      <div style="text-align:center;margin-bottom:56px" class="reveal">
+        <p class="lbl lbl-c">THE EXPERIENCE</p>
+        <h2 style="font-size:clamp(36px,4.5vw,58px)">Precision Engineering.<br><em style="color:var(--orange)">Perfectly Orchestrated.</em></h2>
+      </div>
 
-  <div class="sec-narrow">
-    <div style="text-align:center;margin-bottom:70px" class="reveal">
-      <p class="lbl lbl-c">OUR APPROACH</p>
-      <h2 style="font-size:clamp(38px,5vw,64px)">The Right Gear.<br><em style="color:var(--or)">The Perfect Setup.</em></h2>
+      <div class="exp-accordion reveal rd1">
+        <div class="exp-item active" onclick="toggleExpCard(this)">
+          <div class="exp-head">
+            <div class="exp-head-left">
+              <span class="exp-icon">◉</span>
+              <h3>Cinematic Projection</h3>
+            </div>
+            <span class="exp-toggle">+</span>
+          </div>
+          <div class="exp-body">
+            <div class="exp-content">
+              <div class="exp-content-inner">
+                <p class="exp-desc">We are authorized dealers for a curated portfolio of world-class projectors, ensuring you get the perfect match for your room's throw distance, screen size, and ambient light. As a premier seller of trusted brands, we deliver uncompromising visual fidelity directly to your home.</p>
+                <div class="exp-data-grid">
+                  <div class="data-point">
+                    <h4>AUTHORIZED DEALER</h4>
+                    <p>Direct sales and expert calibration.</p>
+                  </div>
+                  <div class="data-point">
+                    <h4>RESOLUTION & HDR</h4>
+                    <p>Native 4K and 8K options with dynamic HDR10+ frame-by-frame tone mapping.</p>
+                  </div>
+                  <div class="data-point">
+                    <h4>LIGHT ENGINE</h4>
+                    <p>Laser phosphor and advanced lamp options, ensures consistent performance.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-item" onclick="toggleExpCard(this)">
+          <div class="exp-head">
+            <div class="exp-head-left">
+              <span class="exp-icon">◈</span>
+              <h3>Reference-Grade Audio</h3>
+            </div>
+            <span class="exp-toggle">+</span>
+          </div>
+          <div class="exp-body">
+            <div class="exp-content">
+              <div class="exp-content-inner">
+                <p class="exp-desc">Sound that doesn't just fill the room, but maps to its physical space. We design custom multi-channel layouts that place every whisper and explosion exactly where the director intended.</p>
+                <div class="exp-data-grid">
+                  <div class="data-point">
+                    <h4>IMMERSIVE FORMATS</h4>
+                    <p>Full decoding and spatial rendering for Dolby Atmos, DTS:X, and IMAX Enhanced tracks.</p>
+                  </div>
+                  <div class="data-point">
+                    <h4>SYSTEM ARCHITECTURE</h4>
+                    <p>Scalable configurations from precise 5.1.2 setups to massive 11.4.6 dedicated theatre grids.</p>
+                  </div>
+                  <div class="data-point">
+                    <h4>DSP CALIBRATION</h4>
+                    <p>Multi-point microphone measurement ensuring time-alignment and phase coherence across all seats.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-item" onclick="toggleExpCard(this)">
+          <div class="exp-head">
+            <div class="exp-head-left">
+              <span class="exp-icon">◎</span>
+              <h3>Acoustic Engineering</h3>
+            </div>
+            <span class="exp-toggle">+</span>
+          </div>
+          <div class="exp-body">
+            <div class="exp-content">
+              <div class="exp-content-inner">
+                <p class="exp-desc">The room itself is your most critical audio component. We physically tune your space using advanced modeling to eliminate distortion, standing waves, and echo, ensuring pristine audio clarity.</p>
+                <div class="exp-data-grid">
+                  <div class="data-point">
+                    <h4>BASS MANAGEMENT</h4>
+                    <p>Calculated low-frequency corner trapping to absorb standing waves and tighten bass response.</p>
+                  </div>
+                  <div class="data-point">
+                    <h4>REFLECTION CONTROL</h4>
+                    <p>Broadband absorption panels placed precisely at first-reflection points to stop sound smearing.</p>
+                  </div>
+                  <div class="data-point">
+                    <h4>SPATIAL DIFFUSION</h4>
+                    <p>Geometric rear-wall diffusers that scatter sound waves, creating a massive, natural soundstage.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="imm-grid reveal rd1">
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="sec" style="background:var(--char); position: relative; overflow: hidden;">
+    <div style="position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, var(--orange-dim) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;"></div>
+
+    <div class="sec-narrow">
+      <div style="text-align:center;margin-bottom:70px" class="reveal">
+        <p class="lbl lbl-c">OUR APPROACH</p>
+        <h2 style="font-size:clamp(38px,5vw,64px)">The Right Gear.<br><em style="color:var(--orange)">The Perfect Setup.</em></h2>
+      </div>
       
-      <!-- Card 1: Equipment Supply -->
-      <div class="imm-card">
-        <div class="imm-bg bg-beam"></div>
-        <div class="imm-content">
-          <div class="imm-num">01</div>
-          <h3>Premium Equipment Supply</h3>
-          <p>As authorized dealers for top-tier brands, we don't just sell boxes. We curate the perfect combination of projectors, screens, and AV components tailored exactly to your room's dimensions and viewing habits.</p>
-          <div class="imm-tags">
-            <span class="imm-tag">AUTHORIZED DEALERS</span>
-            <span class="imm-tag">CURATED SELECTION</span>
-            <span class="imm-tag">GENUINE WARRANTY</span>
+      <div class="imm-grid reveal rd1">
+        <div class="imm-card">
+          <div class="imm-bg bg-beam"></div>
+          <div class="imm-content">
+            <div class="imm-num">01</div>
+            <h3>Premium Equipment Supply</h3>
+            <p>As authorized dealers for top-tier brands, we don't just sell boxes. We curate the perfect combination of projectors, screens, and AV components tailored exactly to your room's dimensions and viewing habits.</p>
+            <div class="imm-tags">
+              <span class="imm-tag">AUTHORIZED DEALERS</span>
+              <span class="imm-tag">CURATED SELECTION</span>
+              <span class="imm-tag">GENUINE WARRANTY</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="imm-card">
+          <div class="imm-bg bg-waves"></div>
+          <div class="imm-content">
+            <div class="imm-num">02</div>
+            <h3>Acoustic Treatment Setup</h3>
+            <p>The best equipment sounds average in a poor room. We supply and install specialized acoustic panels, diffusers, and bass traps designed to eliminate echoes, control reflections, and tighten low-end frequencies.</p>
+            <div class="imm-tags">
+              <span class="imm-tag">BASS TRAPPING</span>
+              <span class="imm-tag">REFLECTION CONTROL</span>
+              <span class="imm-tag">SOUND DIFFUSION</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="imm-card">
+          <div class="imm-bg bg-grid"></div>
+          <div class="imm-content">
+            <div class="imm-num">03</div>
+            <h3>Professional Installation</h3>
+            <p>From precise screen mounting to seamless, invisible cable management in your AV racks, our installation team ensures your home theatre looks as clean as the picture on the screen. No clutter, just pure entertainment.</p>
+            <div class="imm-tags">
+              <span class="imm-tag">CLEAN AESTHETICS</span>
+              <span class="imm-tag">PRECISE MOUNTING</span>
+              <span class="imm-tag">INVISIBLE CABLING</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="imm-card">
+          <div class="imm-bg bg-focus"></div>
+          <div class="imm-content">
+            <div class="imm-num">04</div>
+            <h3>Precision Calibration</h3>
+            <p>Our job doesn't end at wiring. We meticulously tune your audio receivers using advanced DSP to ensure every seat is the sweet spot, and calibrate your projectors for reference-grade color accuracy and contrast.</p>
+            <div class="imm-tags">
+              <span class="imm-tag">DSP TUNING</span>
+              <span class="imm-tag">COLOR ACCURACY</span>
+              <span class="imm-tag">REFERENCE AUDIO</span>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Card 2: Acoustic Treatment -->
-      <div class="imm-card">
-        <div class="imm-bg bg-waves"></div>
-        <div class="imm-content">
-          <div class="imm-num">02</div>
-          <h3>Acoustic Treatment Setup</h3>
-          <p>The best equipment sounds average in a poor room. We supply and install specialized acoustic panels, diffusers, and bass traps designed to eliminate echoes, control reflections, and tighten low-end frequencies.</p>
-          <div class="imm-tags">
-            <span class="imm-tag">BASS TRAPPING</span>
-            <span class="imm-tag">REFLECTION CONTROL</span>
-            <span class="imm-tag">SOUND DIFFUSION</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3: Professional Installation -->
-      <div class="imm-card">
-        <div class="imm-bg bg-grid"></div>
-        <div class="imm-content">
-          <div class="imm-num">03</div>
-          <h3>Professional Installation</h3>
-          <p>From precise screen mounting to seamless, invisible cable management in your AV racks, our installation team ensures your home theatre looks as clean as the picture on the screen. No clutter, just pure entertainment.</p>
-          <div class="imm-tags">
-            <span class="imm-tag">CLEAN AESTHETICS</span>
-            <span class="imm-tag">PRECISE MOUNTING</span>
-            <span class="imm-tag">INVISIBLE CABLING</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4: Precision Calibration -->
-      <div class="imm-card">
-        <div class="imm-bg bg-focus"></div>
-        <div class="imm-content">
-          <div class="imm-num">04</div>
-          <h3>Precision Calibration</h3>
-          <p>Our job doesn't end at wiring. We meticulously tune your audio receivers using advanced DSP to ensure every seat is the sweet spot, and calibrate your projectors for reference-grade color accuracy and contrast.</p>
-          <div class="imm-tags">
-            <span class="imm-tag">DSP TUNING</span>
-            <span class="imm-tag">COLOR ACCURACY</span>
-            <span class="imm-tag">REFERENCE AUDIO</span>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
   <div class="divider"></div>
   <footer>
@@ -1345,442 +1165,252 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
         <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li></ul></div>
       </div>
     </div>
-    <div class="fb-bottom"><p>© 2024 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
+    <div class="fb-bottom"><p>© 2026 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
   </footer>
 </div>
-<!-- ════════════════════════════════════════════════════
-     PAGE: SMART HOME  ← QUBE BRANDED HERO
-════════════════════════════════════════════════════ -->
+
 <div class="page" id="page-smarthome">
-
-  <!-- ── HERO ── -->
   <div id="sh-hero">
-    <!-- Subtle grid overlay -->
     <div class="grid-bg" style="background-size:60px 60px"></div>
+    <div class="glow-b" style="width:340px;height:240px;background:var(--orange-dim);top:15%;right:20%;animation:bFloat 9s ease-in-out infinite;filter:blur(80px)"></div>
+    <div class="glow-b" style="width:220px;height:160px;background:var(--orange-dim);bottom:14%;right:36%;animation:bFloat 13s ease-in-out infinite reverse;filter:blur(80px)"></div>
 
-    <!-- Glow blobs -->
-    <div class="glow-b" style="width:380px;height:260px;background:rgba(255,107,43,.10);top:15%;right:18%;animation:bFloat 9s ease-in-out infinite;filter:blur(80px)"></div>
-    <div class="glow-b" style="width:250px;height:180px;background:rgba(233,69,96,.06);bottom:12%;right:34%;animation:bFloat 12s ease-in-out infinite reverse;filter:blur(80px)"></div>
-    <div class="glow-b" style="width:200px;height:140px;background:rgba(255,107,43,.06);top:42%;right:8%;animation:bFloat 7s ease-in-out infinite;animation-delay:2s;filter:blur(80px)"></div>
+    <div class="sh-fp-wrap">
+      <svg id="sh-fp-svg" viewBox="0 0 580 520" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="var(--orange-glow)"/>
+            <stop offset="100%" stop-color="rgba(255,107,43,0)"/>
+          </radialGradient>
+        </defs>
 
-    <!-- Full-bleed floor plan SVG (right 70%) -->
-   <!-- Full-bleed floor plan SVG (right 70%) -->
-<svg class="sh-fp-bg" viewBox="0 0 600 560" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,107,43,0.45)"/>
-      <stop offset="100%" stop-color="rgba(255,107,43,0)"/>
-    </radialGradient>
-    <radialGradient id="rg2" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="rgba(233,69,96,0.35)"/>
-      <stop offset="100%" stop-color="rgba(233,69,96,0)"/>
-    </radialGradient>
-  </defs>
+        <rect x="20" y="20" width="540" height="480" fill="var(--orange-dim)" stroke="var(--orange-glow)" stroke-width="1.5"/>
+        <line x1="240" y1="20" x2="240" y2="300" stroke="var(--orange-glow)" stroke-width="1"/>
+        <line x1="20" y1="300" x2="560" y2="300" stroke="var(--orange-glow)" stroke-width="1"/>
+        <line x1="240" y1="370" x2="240" y2="500" stroke="var(--orange-glow)" stroke-width="1"/>
+        <line x1="420" y1="300" x2="420" y2="500" stroke="var(--orange-dim)" stroke-width="1"/>
 
-  <!-- Outer shell -->
-  <rect x="30" y="30" width="540" height="500" fill="rgba(255,107,43,0.04)" stroke="rgba(255,107,43,0.7)" stroke-width="1.5"/>
+        <path d="M240 140 Q260 140 260 120" fill="none" stroke="var(--orange-glow)" stroke-width="1"/>
+        <path d="M240 370 Q260 370 260 350" fill="none" stroke="var(--orange-glow)" stroke-width="1"/>
+        <path d="M420 370 Q440 370 440 350" fill="none" stroke="var(--orange-glow)" stroke-width="1"/>
 
-  <!-- Internal walls -->
-  <line x1="250" y1="30" x2="250" y2="310" stroke="rgba(255,107,43,0.6)" stroke-width="1.2"/>
-  <line x1="30" y1="310" x2="570" y2="310" stroke="rgba(255,107,43,0.6)" stroke-width="1.2"/>
-  <line x1="250" y1="390" x2="250" y2="530" stroke="rgba(255,107,43,0.6)" stroke-width="1.2"/>
-  <line x1="430" y1="310" x2="430" y2="530" stroke="rgba(255,107,43,0.5)" stroke-width="1.2"/>
+        <rect id="hl-living"  x="20"  y="20"  width="220" height="280" fill="var(--orange-dim)" stroke="var(--orange)" stroke-width="1.5" rx="1" class="room-hl" opacity="0"/>
+        <rect id="hl-master"  x="240" y="20"  width="320" height="280" fill="var(--orange-dim)" stroke="var(--orange)" stroke-width="1.5" rx="1" class="room-hl" opacity="0"/>
+        <rect id="hl-kitchen" x="20"  y="300" width="220" height="200" fill="var(--orange-dim)" stroke="var(--orange)" stroke-width="1.5" rx="1" class="room-hl" opacity="0"/>
+        <rect id="hl-office"  x="240" y="300" width="180" height="200" fill="var(--orange-dim)" stroke="var(--orange)" stroke-width="1.5" rx="1" class="room-hl" opacity="0"/>
+        <rect id="hl-bath"    x="420" y="300" width="140" height="200" fill="var(--orange-dim)" stroke="var(--orange)" stroke-width="1.5" rx="1" class="room-hl" opacity="0"/>
 
-  <!-- Door arcs -->
-  <path d="M250 150 Q272 150 272 128" fill="none" stroke="rgba(255,107,43,0.6)" stroke-width="1"/>
-  <path d="M250 385 Q272 385 272 363" fill="none" stroke="rgba(255,107,43,0.6)" stroke-width="1"/>
-  <path d="M430 385 Q452 385 452 363" fill="none" stroke="rgba(255,107,43,0.6)" stroke-width="1"/>
+        <text x="130" y="166" fill="var(--orange)" font-family="Inter,sans-serif" font-size="8" letter-spacing="3" text-anchor="middle">LIVING ROOM</text>
+        <text x="400" y="166" fill="var(--orange)" font-family="Inter,sans-serif" font-size="8" letter-spacing="3" text-anchor="middle">MASTER SUITE</text>
+        <text x="130" y="406" fill="var(--orange)" font-family="Inter,sans-serif" font-size="8" letter-spacing="3" text-anchor="middle">KITCHEN</text>
+        <text x="330" y="406" fill="var(--orange)" font-family="Inter,sans-serif" font-size="8" letter-spacing="3" text-anchor="middle">OFFICE</text>
+        <text x="490" y="406" fill="var(--orange)" font-family="Inter,sans-serif" font-size="8" letter-spacing="3" text-anchor="middle">BATH</text>
 
-  <!-- Room labels -->
-  <text x="140" y="178" fill="rgba(255,150,80,0.95)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">LIVING ROOM</text>
-  <text x="410" y="178" fill="rgba(255,150,80,0.95)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">MASTER SUITE</text>
-  <text x="140" y="435" fill="rgba(255,150,80,0.95)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">KITCHEN</text>
-  <text x="340" y="435" fill="rgba(255,150,80,0.95)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">OFFICE</text>
-  <text x="500" y="435" fill="rgba(255,150,80,0.95)" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">BATH</text>
+        <rect x="40" y="38" width="155" height="14" fill="var(--orange-dim)" stroke="var(--orange-glow)" stroke-width="1"/>
+        <rect x="40" y="58" width="140" height="70" fill="none" stroke="var(--orange-glow)" stroke-width="1" rx="2"/>
+        <rect x="44" y="62" width="132" height="62" fill="var(--orange-dim)" rx="1"/>
+        <rect x="48" y="138" width="120" height="22" fill="none" stroke="var(--orange-glow)" stroke-width="1" rx="1"/>
+        <rect x="80" y="194" width="80" height="46" fill="none" stroke="var(--orange-glow)" stroke-width="1" rx="1"/>
 
-  <!-- Furniture — Living Room sofa + TV -->
-  <rect x="58" y="62" width="140" height="78" fill="none" stroke="rgba(255,107,43,0.5)" stroke-width="1.2" rx="2"/>
-  <rect x="63" y="67" width="130" height="68" fill="rgba(255,107,43,0.15)" rx="1"/>
-  <rect x="68" y="155" width="120" height="28" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1.2" rx="1"/>
-  <rect x="88" y="198" width="80" height="48" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1.2" rx="1"/>
-  <rect x="58" y="38" width="170" height="18" fill="rgba(255,107,43,0.2)" stroke="rgba(255,107,43,0.6)" stroke-width="1"/>
+        <rect x="275" y="44" width="120" height="100" fill="none" stroke="var(--orange-glow)" stroke-width="1" rx="2"/>
+        <rect x="280" y="48" width="110" height="92" fill="var(--orange-dim)" rx="1"/>
+        <rect x="415" y="52" width="100" height="78" fill="none" stroke="var(--orange-glow)" stroke-width="1" rx="1"/>
+        <circle cx="395" cy="220" r="26" fill="none" stroke="var(--orange-glow)" stroke-width="1"/>
 
-  <!-- Furniture — Master Bedroom -->
-  <rect x="290" y="58" width="130" height="110" fill="none" stroke="rgba(255,107,43,0.5)" stroke-width="1.2" rx="2"/>
-  <rect x="295" y="63" width="120" height="100" fill="rgba(255,107,43,0.15)" rx="1"/>
-  <rect x="435" y="65" width="100" height="88" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1.2" rx="1"/>
-  <circle cx="410" cy="232" r="30" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1.2"/>
+        <rect x="30" y="316" width="180" height="36" fill="none" stroke="var(--orange-glow)" stroke-width="1"/>
+        <rect x="30" y="356" width="75" height="52" fill="none" stroke="var(--orange-glow)" stroke-width="1" rx="1"/>
+        <circle cx="156" cy="376" r="22" fill="none" stroke="var(--orange-glow)" stroke-width="1"/>
 
-  <!-- Furniture — Kitchen -->
-  <rect x="45" y="328" width="180" height="40" fill="none" stroke="rgba(255,107,43,0.45)" stroke-width="1.2"/>
-  <rect x="45" y="372" width="80" height="58" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1.2" rx="1"/>
-  <circle cx="170" cy="396" r="25" fill="none" stroke="rgba(255,107,43,0.45)" stroke-width="1.2"/>
-  <circle cx="198" cy="390" r="17" fill="none" stroke="rgba(255,107,43,0.4)" stroke-width="1"/>
+        <rect x="258" y="320" width="124" height="62" fill="none" stroke="var(--orange-glow)" stroke-width="1" rx="1"/>
+        <rect x="262" y="324" width="116" height="54" fill="var(--orange-dim)"/>
 
-  <!-- Furniture — Office desk -->
-  <rect x="272" y="340" width="130" height="68" fill="none" stroke="rgba(255,107,43,0.45)" stroke-width="1.2" rx="1"/>
-  <rect x="278" y="346" width="118" height="56" fill="rgba(255,107,43,0.12)"/>
+        <ellipse cx="130" cy="170" rx="85" ry="55" fill="url(#rg1)" opacity="0.8"/>
+        <ellipse cx="400" cy="165" rx="105" ry="65" fill="url(#rg1)" opacity="0.75"/>
+        <ellipse cx="130" cy="420" rx="85" ry="55" fill="url(#rg1)" opacity="0.6"/>
+        <ellipse cx="330" cy="420" rx="68" ry="48" fill="url(#rg1)" opacity="0.5"/>
 
-  <!-- Room glow fills -->
-  <ellipse cx="140" cy="175" rx="90" ry="60" fill="url(#rg1)" opacity="0.9"/>
-  <ellipse cx="410" cy="170" rx="110" ry="70" fill="url(#rg2)" opacity="0.85"/>
-  <ellipse cx="140" cy="430" rx="90" ry="58" fill="url(#rg1)" opacity="0.7"/>
-  <ellipse cx="340" cy="430" rx="70" ry="50" fill="url(#rg1)" opacity="0.6"/>
+        <rect id="room-living"  x="20"  y="20"  width="220" height="280" fill="transparent" style="cursor:pointer"/>
+        <rect id="room-master"  x="240" y="20"  width="320" height="280" fill="transparent" style="cursor:pointer"/>
+        <rect id="room-kitchen" x="20"  y="300" width="220" height="200" fill="transparent" style="cursor:pointer"/>
+        <rect id="room-office"  x="240" y="300" width="180" height="200" fill="transparent" style="cursor:pointer"/>
+        <rect id="room-bath"    x="420" y="300" width="140" height="200" fill="transparent" style="cursor:pointer"/>
 
-  <!-- Central hub (kept, no spokes) -->
-  <circle cx="300" cy="267" r="18" fill="rgba(255,107,43,0.25)" stroke="rgba(255,107,43,0.9)" stroke-width="1.5">
-    <animate attributeName="r" values="18;24;18" dur="3.2s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.6;1;0.6" dur="3.2s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="300" cy="267" r="7" fill="rgba(255,150,80,0.8)" stroke="rgba(255,180,120,1)" stroke-width="1"/>
-  <circle cx="300" cy="267" r="3" fill="#ff8c4d"/>
-  <text x="300" y="293" fill="rgba(255,160,90,1)" font-family="Inter,sans-serif" font-size="8" letter-spacing="2" text-anchor="middle">QUBE CORE</text>
+        <circle cx="290" cy="255" r="18" fill="var(--orange-dim)" stroke="var(--orange)" stroke-width="1.5">
+          <animate attributeName="r" values="18;24;18" dur="3.2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="3.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="290" cy="255" r="7" fill="var(--orange)" stroke="#fff" stroke-width="1"/>
+        <circle cx="290" cy="255" r="3" fill="#fff"/>
+        <text x="290" y="278" fill="var(--orange)" font-family="Inter,sans-serif" font-size="7" letter-spacing="2" text-anchor="middle">QUBE CORE</text>
 
-  <!-- Smart device nodes — REACTIVE (clickable, hover/active states) -->
-  <g class="sh-node" data-room="LIVING ROOM" style="cursor:pointer">
-    <circle class="node-ring" cx="140" cy="102" r="8" fill="rgba(255,107,43,0.4)" stroke="rgba(255,160,90,1)" stroke-width="1.2">
-      <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
-    </circle>
-    <circle class="node-core" cx="140" cy="102" r="3.5" fill="#ffb380"/>
-    <circle class="node-hit" cx="140" cy="102" r="20" fill="transparent"/>
-  </g>
+        <g class="sh-node" id="node-living" data-room="living" style="cursor:pointer">
+          <circle class="node-ring" cx="130" cy="92" r="9" fill="var(--orange-glow)" stroke="var(--orange)" stroke-width="1.3"><animate attributeName="r" values="9;14;9" dur="2.2s" repeatCount="indefinite"/></circle>
+          <circle class="node-core" cx="130" cy="92" r="4" fill="var(--ivory)"/>
+          <circle class="room-hit-area" cx="130" cy="92" r="24" fill="transparent"/>
+        </g>
+        <g class="sh-node" id="node-master" data-room="master" style="cursor:pointer">
+          <circle class="node-ring" cx="400" cy="108" r="9" fill="var(--orange-glow)" stroke="var(--orange)" stroke-width="1.3"><animate attributeName="r" values="9;13;9" dur="2.6s" begin="0.5s" repeatCount="indefinite"/></circle>
+          <circle class="node-core" cx="400" cy="108" r="4" fill="var(--ivory)"/>
+          <circle class="room-hit-area" cx="400" cy="108" r="24" fill="transparent"/>
+        </g>
+        <g class="sh-node" id="node-kitchen" data-room="kitchen" style="cursor:pointer">
+          <circle class="node-ring" cx="130" cy="376" r="9" fill="var(--orange-glow)" stroke="var(--orange)" stroke-width="1.3"><animate attributeName="r" values="9;12;9" dur="3s" begin="1s" repeatCount="indefinite"/></circle>
+          <circle class="node-core" cx="130" cy="376" r="4" fill="var(--ivory)"/>
+          <circle class="room-hit-area" cx="130" cy="376" r="24" fill="transparent"/>
+        </g>
+        <g class="sh-node" id="node-office" data-room="office" style="cursor:pointer">
+          <circle class="node-ring" cx="330" cy="412" r="9" fill="var(--orange-glow)" stroke="var(--orange)" stroke-width="1.3"><animate attributeName="r" values="8;12;8" dur="2.4s" begin="1.4s" repeatCount="indefinite"/></circle>
+          <circle class="node-core" cx="330" cy="412" r="4" fill="var(--ivory)"/>
+          <circle class="room-hit-area" cx="330" cy="412" r="24" fill="transparent"/>
+        </g>
+        <g class="sh-node" id="node-bath" data-room="bath" style="cursor:pointer">
+          <circle class="node-ring" cx="490" cy="388" r="7" fill="var(--orange-glow)" stroke="var(--orange)" stroke-width="1.1"><animate attributeName="r" values="7;10;7" dur="3.4s" begin="2s" repeatCount="indefinite"/></circle>
+          <circle class="node-core" cx="490" cy="388" r="3.5" fill="var(--ivory)"/>
+          <circle class="room-hit-area" cx="490" cy="388" r="20" fill="transparent"/>
+        </g>
 
-  <g class="sh-node" data-room="MASTER SUITE" style="cursor:pointer">
-    <circle class="node-ring" cx="410" cy="122" r="8" fill="rgba(255,107,43,0.35)" stroke="rgba(255,150,80,0.95)" stroke-width="1.2">
-      <animate attributeName="r" values="8;12;8" dur="2.5s" begin="0.6s" repeatCount="indefinite"/>
-    </circle>
-    <circle class="node-core" cx="410" cy="122" r="3.5" fill="#ffaa70"/>
-    <circle class="node-hit" cx="410" cy="122" r="20" fill="transparent"/>
-  </g>
+        <line x1="20" y1="36" x2="20" y2="20" stroke="var(--orange)" stroke-width="2"/>
+        <line x1="20" y1="20" x2="36" y2="20" stroke="var(--orange)" stroke-width="2"/>
+        <line x1="560" y1="36" x2="560" y2="20" stroke="var(--orange)" stroke-width="2"/>
+        <line x1="544" y1="20" x2="560" y2="20" stroke="var(--orange)" stroke-width="2"/>
+        <line x1="20" y1="484" x2="20" y2="500" stroke="var(--orange)" stroke-width="2"/>
+        <line x1="20" y1="500" x2="36" y2="500" stroke="var(--orange)" stroke-width="2"/>
+        <line x1="560" y1="484" x2="560" y2="500" stroke="var(--orange)" stroke-width="2"/>
+        <line x1="544" y1="500" x2="560" y2="500" stroke="var(--orange)" stroke-width="2"/>
 
-  <g class="sh-node" data-room="KITCHEN" style="cursor:pointer">
-    <circle class="node-ring" cx="140" cy="393" r="8" fill="rgba(255,107,43,0.35)" stroke="rgba(255,140,70,0.9)" stroke-width="1.2">
-      <animate attributeName="r" values="8;11;8" dur="3s" begin="1s" repeatCount="indefinite"/>
-    </circle>
-    <circle class="node-core" cx="140" cy="393" r="3.5" fill="#ff9c60"/>
-    <circle class="node-hit" cx="140" cy="393" r="20" fill="transparent"/>
-  </g>
+        <line x1="440" y1="490" x2="555" y2="490" stroke="var(--orange)" stroke-width="1"/>
+        <line x1="440" y1="486" x2="440" y2="494" stroke="var(--orange)" stroke-width="1"/>
+        <line x1="555" y1="486" x2="555" y2="494" stroke="var(--orange)" stroke-width="1"/>
+        <text x="498" y="485" fill="var(--orange)" font-family="Inter,sans-serif" font-size="7" text-anchor="middle" letter-spacing="1">QUBE BLUEPRINT</text>
 
-  <g class="sh-node" data-room="OFFICE" style="cursor:pointer">
-    <circle class="node-ring" cx="340" cy="432" r="8" fill="rgba(255,107,43,0.3)" stroke="rgba(255,130,60,0.85)" stroke-width="1.2">
-      <animate attributeName="r" values="8;11;8" dur="2.3s" begin="1.5s" repeatCount="indefinite"/>
-    </circle>
-    <circle class="node-core" cx="340" cy="432" r="3.5" fill="#ff8f55"/>
-    <circle class="node-hit" cx="340" cy="432" r="20" fill="transparent"/>
-  </g>
+        <line x1="20" y1="20" x2="560" y2="20" stroke="var(--orange-glow)" stroke-width="1.2">
+          <animate attributeName="y1" values="20;500;20" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="y2" values="20;500;20" dur="6s" repeatCount="indefinite"/>
+        </line>
+      </svg>
+    </div>
 
-  <g class="sh-node" data-room="BATH" style="cursor:pointer">
-    <circle class="node-ring" cx="500" cy="402" r="6" fill="rgba(255,107,43,0.3)" stroke="rgba(255,120,55,0.8)" stroke-width="1">
-      <animate attributeName="r" values="6;9;6" dur="3.5s" begin="2s" repeatCount="indefinite"/>
-    </circle>
-    <circle class="node-core" cx="500" cy="402" r="2.5" fill="#ff8050"/>
-    <circle class="node-hit" cx="500" cy="402" r="18" fill="transparent"/>
-  </g>
+    <div class="sh-node-label" style="top:16%;right:10%">QUBE SYSTEM ACTIVE</div>
+    <div class="sh-node-label" style="bottom:22%;right:18%">WIRELESS MESH · OPTIMIZED</div>
 
-  <!-- Corner frame marks -->
-  <line x1="30" y1="50" x2="30" y2="30" stroke="#ff7a3d" stroke-width="2"/>
-  <line x1="30" y1="30" x2="50" y2="30" stroke="#ff7a3d" stroke-width="2"/>
-  <line x1="570" y1="50" x2="570" y2="30" stroke="#ff7a3d" stroke-width="2"/>
-  <line x1="550" y1="30" x2="570" y2="30" stroke="#ff7a3d" stroke-width="2"/>
-  <line x1="30" y1="510" x2="30" y2="530" stroke="#ff7a3d" stroke-width="2"/>
-  <line x1="30" y1="530" x2="50" y2="530" stroke="#ff7a3d" stroke-width="2"/>
-  <line x1="570" y1="510" x2="570" y2="530" stroke="#ff7a3d" stroke-width="2"/>
-  <line x1="550" y1="530" x2="570" y2="530" stroke="#ff7a3d" stroke-width="2"/>
-
-  <!-- Scale bar -->
-  <line x1="460" y1="518" x2="560" y2="518" stroke="#ff7a3d" stroke-width="1.2"/>
-  <line x1="460" y1="514" x2="460" y2="522" stroke="#ff7a3d" stroke-width="1.2"/>
-  <line x1="560" y1="514" x2="560" y2="522" stroke="#ff7a3d" stroke-width="1.2"/>
-  <text x="510" y="513" fill="#ff7a3d" font-family="Inter,sans-serif" font-size="8" text-anchor="middle" letter-spacing="1">QUBE BLUEPRINT</text>
-
-  <!-- Animated scan line -->
-  <line x1="30" y1="30" x2="570" y2="30" stroke="rgba(255,150,80,0.5)" stroke-width="1.5">
-    <animate attributeName="y1" values="30;530;30" dur="6s" repeatCount="indefinite"/>
-    <animate attributeName="y2" values="30;530;30" dur="6s" repeatCount="indefinite"/>
-  </line>
-</svg>
-
-    <!-- Floating status labels -->
-    <div class="sh-node-label" style="top:16%;right:11%">QUBE SYSTEM ACTIVE</div>
-    <div class="sh-node-label" style="bottom:20%;right:19%">WIRELESS MESH · OPTIMIZED</div>
-
-    <!-- Left-anchored hero copy -->
     <div class="sh-hero-content">
-      <p class="ol">WIRED & WIRELESS AUTOMATION BY QUBE</p>
-      <h1>Intelligent Living.<br><em>Designed by Qube.</em></h1>
-      <p>Your home, orchestrated by industry-leading intelligence. Whether building new or upgrading a finished home, Qube Technologies integrates every system seamlessly — wired or wireless.</p>
-      <div class="btns">
+      <p class="sh-hero-eyebrow">WIRED & WIRELESS AUTOMATION BY QUBE</p>
+      <h1>Intelligent<br>Living.<br><em>By Qube.</em></h1>
+      <p class="sh-hero-sub">Tap a room on the blueprint to explore its smart features. Every system, one intelligence.</p>
+
+      <div class="sh-status-pills">
+        <div class="sh-pill"><div class="sh-pill-dot"></div>Qube Core Active</div>
+        <div class="sh-pill"><div class="sh-pill-dot" style="animation-delay:.6s"></div>5 Rooms Online</div>
+        <div class="sh-pill"><div class="sh-pill-dot" style="animation-delay:1.2s"></div>Mesh Optimized</div>
+      </div>
+
+      <div class="sh-hero-btns">
         <button class="btn-g" onclick="showPage('contact')">Automate With Qube <span class="arrow-r">→</span></button>
-        <button class="btn-g" onclick="showPage('projects')">View Qube Projects <span class="arrow-r">→</span></button>
+        <button class="btn-g" onclick="showPage('projects')">View Projects <span class="arrow-r">→</span></button>
       </div>
     </div>
-    <div class="scroll-hint"><span>SCROLL</span><div class="s-line"></div></div>
+
+    <div class="sh-room-card" id="sh-room-card">
+      <div class="sh-rc-head">
+        <div class="sh-rc-dot"></div>
+        <span class="sh-rc-name" id="sh-rc-name">LIVING ROOM</span>
+      </div>
+      <div class="sh-rc-features" id="sh-rc-features"></div>
+    </div>
+
+    <div class="sh-stat-widgets">
+      <div class="sh-widget"><span class="sh-widget-val" id="sw-temp">24°</span><span class="sh-widget-lbl">TEMP</span></div>
+      <div class="sh-widget"><span class="sh-widget-val" id="sw-dev">12</span><span class="sh-widget-lbl">DEVICES</span></div>
+      <div class="sh-widget"><span class="sh-widget-val" id="sw-sc">3</span><span class="sh-widget-lbl">SCENES</span></div>
+    </div>
   </div>
 
-  <!-- Room by room -->
   <section class="sec" style="background:var(--char)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:56px" class="reveal">
         <p class="lbl lbl-c">THE QUBE EXPERIENCE</p>
-        <h2 style="font-size:clamp(34px,4.5vw,58px)">Intelligence In<br><em style="color:var(--or)">Every Corner.</em></h2>
+        <h2 style="font-size:clamp(34px,4.5vw,58px)">Intelligence In<br><em style="color:var(--orange)">Every Corner.</em></h2>
       </div>
       <div class="fp-grid reveal rd1">
-        <div class="fp-room">
-          <span class="room-num">01</span>
-          <h3>Living Room</h3>
-          <p>Curated scene-based lighting, ultra-quiet automated curtains, and multi-room acoustic perfection. A single tap on your Qube interface sets the mood.</p>
-          <div class="room-controls">
-            <div class="rc"><span class="rc-dot"></span>Qube Scene Mode</div>
-            <div class="rc"><span class="rc-dot"></span>Smart Curtains</div>
-            <div class="rc"><span class="rc-dot"></span>High-Fidelity Audio</div>
-          </div>
-        </div>
-        <div class="fp-room">
-          <span class="room-num">02</span>
-          <h3>Master Suite</h3>
-          <p>Wake up to a gradual, simulated sunrise. Fall asleep in absolute darkness. Climate instinctively adjusts through the night for restorative sleep.</p>
-          <div class="room-controls">
-            <div class="rc"><span class="rc-dot"></span>Sunrise Wake</div>
-            <div class="rc"><span class="rc-dot"></span>Adaptive Climate</div>
-            <div class="rc"><span class="rc-dot"></span>Privacy Mode</div>
-          </div>
-        </div>
-        <div class="fp-room">
-          <span class="room-num">03</span>
-          <h3>Culinary Space</h3>
-          <p>Hands-free environment control while you cook. Integrated smart displays keep your recipes, lighting, and ventilation perfectly synced.</p>
-          <div class="room-controls">
-            <div class="rc"><span class="rc-dot"></span>Voice Control</div>
-            <div class="rc"><span class="rc-dot"></span>Task Lighting</div>
-            <div class="rc"><span class="rc-dot"></span>Exhaust Auto</div>
-          </div>
-        </div>
-        <div class="fp-room">
-          <span class="room-num">04</span>
-          <h3>Home Office</h3>
-          <p>Activate Focus Mode to dim distractions, optimize lighting for video conferencing, and engage a whole-home Do Not Disturb protocol.</p>
-          <div class="room-controls">
-            <div class="rc"><span class="rc-dot"></span>Focus Mode</div>
-            <div class="rc"><span class="rc-dot"></span>Conference Light</div>
-            <div class="rc"><span class="rc-dot"></span>DND Protocol</div>
-          </div>
-        </div>
+        <div class="fp-room"><span class="room-num">01</span><h3>Living Room</h3><p>Curated scene-based lighting, ultra-quiet automated curtains, and multi-room acoustic perfection.</p><div class="room-controls"><div class="rc"><span class="rc-dot"></span>Qube Scene Mode</div><div class="rc"><span class="rc-dot"></span>Smart Curtains</div><div class="rc"><span class="rc-dot"></span>High-Fidelity Audio</div></div></div>
+        <div class="fp-room"><span class="room-num">02</span><h3>Master Suite</h3><p>Wake up to a gradual simulated sunrise. Climate instinctively adjusts through the night for restorative sleep.</p><div class="room-controls"><div class="rc"><span class="rc-dot"></span>Sunrise Wake</div><div class="rc"><span class="rc-dot"></span>Adaptive Climate</div><div class="rc"><span class="rc-dot"></span>Privacy Mode</div></div></div>
+        <div class="fp-room"><span class="room-num">03</span><h3>Culinary Space</h3><p>Hands-free environment control while you cook. Integrated smart displays keep recipes and ventilation synced.</p><div class="room-controls"><div class="rc"><span class="rc-dot"></span>Voice Control</div><div class="rc"><span class="rc-dot"></span>Task Lighting</div><div class="rc"><span class="rc-dot"></span>Exhaust Auto</div></div></div>
+        <div class="fp-room"><span class="room-num">04</span><h3>Home Office</h3><p>Activate Focus Mode to dim distractions, optimize lighting for video conferencing, and engage a whole-home DND.</p><div class="room-controls"><div class="rc"><span class="rc-dot"></span>Focus Mode</div><div class="rc"><span class="rc-dot"></span>Conference Light</div><div class="rc"><span class="rc-dot"></span>DND Protocol</div></div></div>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- Integrations -->
   <section class="sec" style="background:var(--black)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:56px" class="reveal">
         <p class="lbl lbl-c">QUBE PARTNERS</p>
-        <h2 style="font-size:clamp(32px,4vw,52px)">Wired & Wireless<br><em style="color:var(--or)">Perfection.</em></h2>
+        <h2 style="font-size:clamp(32px,4vw,52px)">Wired & Wireless<br><em style="color:var(--orange)">Perfection.</em></h2>
       </div>
-      <!-- Added a 5th card specifically for Wireless to balance out the message -->
-      <div class="int-row reveal rd1" style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
+      <div class="int-row reveal rd1" style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;">
         <div class="int-card"><span class="int-icon">◈</span><h4>CRESTRON</h4><p>Commercial-grade control</p></div>
         <div class="int-card"><span class="int-icon">◉</span><h4>LUTRON</h4><p>Lighting perfection</p></div>
         <div class="int-card"><span class="int-icon">◎</span><h4>CONTROL4</h4><p>Unified automation</p></div>
-        <div class="int-card"><span class="int-icon">⚬</span><h4> RTI</h4><p>Wired Automation</p></div>
+        <div class="int-card"><span class="int-icon">⚬</span><h4>RTI</h4><p>Wired Automation</p></div>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- Our process -->
   <section class="sec" style="background:var(--char)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:64px" class="reveal">
         <p class="lbl lbl-c">THE QUBE PROCESS</p>
-        <h2 style="font-size:clamp(32px,4vw,52px)">From Concept<br><em style="color:var(--or)">To Reality.</em></h2>
+        <h2 style="font-size:clamp(32px,4vw,52px)">From Concept<br><em style="color:var(--orange)">To Reality.</em></h2>
       </div>
       <div class="process-steps reveal rd1">
-        <div class="ps"><div class="ps-dot">1</div><div class="ps-body"><h3>Discovery</h3><p>We spend time understanding how you live — your rhythms, routines, and aesthetic goals. Every Qube home is inherently unique.</p></div></div>
-        <div class="ps"><div class="ps-dot">2</div><div class="ps-body"><h3>Architecture</h3><p>Qube engineers create a master blueprint tailored to your space, designing a robust hybrid network of wired and wireless technologies.</p></div></div>
-        <div class="ps"><div class="ps-dot">3</div><div class="ps-body"><h3>Deployment</h3><p>Whether installing fresh cabling in a new build or deploying non-intrusive wireless modules in a finished home, our certified specialists execute with absolute precision.</p></div></div>
-        <div class="ps"><div class="ps-dot">4</div><div class="ps-body"><h3>Onboarding</h3><p>We ensure you and your family are completely fluent and comfortable with navigating your new intelligent living space.</p></div></div>
-        <div class="ps"><div class="ps-dot">5</div><div class="ps-body"><h3>Qube Care Support</h3><p>Proactive remote monitoring, scheduled maintenance, and a dedicated rapid-response team. Qube is always just a call away.</p></div></div>
+        <div class="ps"><div class="ps-dot">1</div><div class="ps-body"><h3>Discovery</h3><p>We spend time understanding how you live — your rhythms, routines, and aesthetic goals.</p></div></div>
+        <div class="ps"><div class="ps-dot">2</div><div class="ps-body"><h3>Architecture</h3><p>Qube engineers create a master blueprint designing a robust hybrid network of wired and wireless technologies.</p></div></div>
+        <div class="ps"><div class="ps-dot">3</div><div class="ps-body"><h3>Deployment</h3><p>Whether installing fresh cabling in a new build or deploying wireless modules in a finished home, our specialists execute with precision.</p></div></div>
+        <div class="ps"><div class="ps-dot">4</div><div class="ps-body"><h3>Onboarding</h3><p>We ensure you and your family are completely comfortable navigating your new intelligent living space.</p></div></div>
+        <div class="ps"><div class="ps-dot">5</div><div class="ps-body"><h3>Qube Care Support</h3><p>Proactive remote monitoring, scheduled maintenance, and a dedicated rapid-response team.</p></div></div>
       </div>
-      <div style="text-align:center;margin-top:52px" class="reveal rd2">
-        <button class="btn-g" onclick="showPage('contact')">Begin Your Journey <span class="arrow-r">→</span></button>
-      </div>
+      <div style="text-align:center;margin-top:52px" class="reveal rd2"><button class="btn-g" onclick="showPage('contact')">Begin Your Journey <span class="arrow-r">→</span></button></div>
     </div>
   </section>
 
   <footer>
-    <div class="ft">
-      <div class="fb"> <h3 class="footer-logo-wrapper">
-        <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
-        QUBE TECHNOLOGIES
-      </h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
-      <div class="flinks">
-        <div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li></ul></div>
-        <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
-      </div>
-    </div>
+    <div class="ft"><div class="fb"><h3 class="footer-logo-wrapper"><img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">QUBE TECHNOLOGIES</h3><p>Crafting intelligent living experiences in Hyderabad since 2016.</p></div>
+    <div class="flinks"><div class="fcol"><h4>SERVICES</h4><ul><li><a href="#" onclick="showPage('theatre');return false">Home Theatre</a></li><li><a href="#" onclick="showPage('smarthome');return false">Smart Automation</a></li></ul></div><div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div></div></div>
     <div class="fb-bottom"><p>© 2026 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
   </footer>
 </div>
-<!-- ════════════════════════════════════════════════════
-     PAGE: PROJECTS
-════════════════════════════════════════════════════ -->
+
 <div class="page" id="page-projects">
-  
-  <!-- ==========================================
-       HERO SECTION
-  =========================================== -->
   <div id="pj-hero">
     <div class="grid-bg"></div>
-    <div class="glow-b" style="width:500px;height:350px;background:rgba(255,107,43,.08);top:0%;left:30%;animation:bFloat 9s ease-in-out infinite"></div>
+    <div class="glow-b" style="width:500px;height:350px;background:var(--orange-dim);top:0%;left:30%;animation:bFloat 9s ease-in-out infinite"></div>
     <div class="pj-hero-content">
       <p class="ol">OUR PROJECTS</p>
-      <h1>100+ Lives<br><em style="color:var(--or)">Transformed.</em></h1>
+      <h1>100+ Lives<br><em style="color:var(--orange)">Transformed.</em></h1>
       <p>From intimate home theatres to whole-home automation across Hyderabad's most prestigious addresses.</p>
     </div>
   </div>
 
-  <!-- ==========================================
-       DUAL VERTICAL VIDEO SHOWREEL SECTION
-  =========================================== -->
   <section class="sec" style="background:var(--black); padding-top: 80px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.05);">
     <div class="sec-narrow">
       <div style="text-align:center; margin-bottom:56px" class="reveal">
         <p class="lbl lbl-c">OUR SHOWREEL</p>
-        <h2 style="font-size:clamp(32px,4vw,52px)">Experience the <br><em style="color:var(--or)">Transformation.</em></h2>
+        <h2 style="font-size:clamp(32px,4vw,52px)">Experience the <br><em style="color:var(--orange)">Transformation.</em></h2>
       </div>
-      
-      <!-- Video Flex Container -->
       <div class="reveal rd1" style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; align-items: center;">
-        
-        <!-- Video 1 (Smart Home / Intercom) -->
         <div class="media-container" style="position:relative; width:100%; max-width:320px; border-radius:24px; overflow:hidden; aspect-ratio:9/16; background:#0a0a0a; box-shadow:0 25px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
-          <video 
-            src="videos/@qubetechnologies_ - R⤓Download.MP4" 
-            autoplay 
-            loop 
-            muted 
-            playsinline 
-            style="width: 100%; height: 100%; object-fit: cover;">
-          </video>
+          <video src="videos/@qubetechnologies_ - R⤓Download.MP4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
         </div>
-
-        <!-- Video 2 (Home Theatre / Villa) -->
         <div class="media-container" style="position:relative; width:100%; max-width:320px; border-radius:24px; overflow:hidden; aspect-ratio:9/16; background:#0a0a0a; box-shadow:0 25px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);">
-          <video 
-            src="videos/@qubetechnologies_ - R⤓Download 2.MP4" 
-            autoplay 
-            loop 
-            muted 
-            playsinline 
-            style="width: 100%; height: 100%; object-fit: cover;">
-          </video>
+          <video src="videos/@qubetechnologies_ - R⤓Download 2.MP4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       PROJECTS GALLERY & FILTERS
-  =========================================== -->
-  <!-- <section style="padding-top: 60px; padding-bottom: 80px; background:var(--bg-color);">
-    <div class="filter-bar reveal">
-      <button class="filter-btn active" onclick="setFilter(this,'all')">ALL PROJECTS</button>
-      <button class="filter-btn" onclick="setFilter(this,'theatre')">HOME THEATRE</button>
-      <button class="filter-btn" onclick="setFilter(this,'automation')">SMART AUTOMATION</button>
-      <button class="filter-btn" onclick="setFilter(this,'complete')">FULL HOME</button>
-    </div>
-
-    <div class="proj-grid reveal rd1" id="projGrid">
-      
-      <div class="proj-card wide" data-cat="theatre complete">
-        <div class="proj-bg pc1" style="background-image: url('images/projects/krishnamurthy-theatre.jpg');"></div>
-        <div class="proj-overlay"></div>
-        <div class="proj-tag">HOME THEATRE</div>
-        <div class="proj-info">
-          <h3>The Krishnamurthy Residence</h3>
-          <p>JUBILEE HILLS · 9.4.6 ATMOS · 200" SCREEN</p>
-        </div>
-      </div>
-
-      <div class="proj-card" data-cat="automation">
-        <div class="proj-bg pc2" style="background-image: url('images/projects/villa-serenity.jpeg');"></div>
-        <div class="proj-overlay"></div>
-        <div class="proj-tag">SMART HOME</div>
-        <div class="proj-info">
-          <h3>Villa Serenity</h3>
-          <p>BANJARA HILLS · FULL AUTOMATION</p>
-        </div>
-      </div>
-
-      <div class="proj-card" data-cat="theatre">
-        <div class="proj-bg pc3" style="background-image: url('images/projects/reddy-theatre.jpeg');"></div>
-        <div class="proj-overlay"></div>
-        <div class="proj-tag">HOME THEATRE</div>
-        <div class="proj-info">
-          <h3>The Reddy Estate</h3>
-          <p>KOKAPET · 7.2.4 DOLBY</p>
-        </div>
-      </div>
-
-      <div class="proj-card" data-cat="complete">
-        <div class="proj-bg pc4" style="background-image: url('images/projects/achibowli-penthouse.jpeg');"></div>
-        <div class="proj-overlay"></div>
-        <div class="proj-tag">FULL HOME</div>
-        <div class="proj-info">
-          <h3>Gachibowli Penthouse</h3>
-          <p>GACHIBOWLI · 3,200 SQ FT</p>
-        </div>
-      </div>
-
-      <div class="proj-card wide" data-cat="automation complete">
-        <div class="proj-bg pc5" style="background-image: url('images/projects/narsingi-automation.jpeg');"></div>
-        <div class="proj-overlay"></div>
-        <div class="proj-tag">SMART HOME</div>
-        <div class="proj-info">
-          <h3>Narsingi Heights</h3>
-          <p>NARSINGI · CRESTRON · 5,000 SQ FT</p>
-        </div>
-      </div>
-
-      <div class="proj-card" data-cat="theatre">
-        <div class="proj-bg pc6" style="background-image: url('images/projects/mehta-cinema.jpeg');"></div>
-        <div class="proj-overlay"></div>
-        <div class="proj-tag">HOME THEATRE</div>
-        <div class="proj-info">
-          <h3>The Mehta Cinema Room</h3>
-          <p>HITECH CITY · REFERENCE GRADE</p>
-        </div>
-      </div>
-
-      <div class="proj-card" data-cat="automation">
-        <div class="proj-bg pc7" style="background-image: url('images/projects/kondapur-villa.jpeg');"></div>
-        <div class="proj-overlay"></div>
-        <div class="proj-tag">SMART HOME</div>
-        <div class="proj-info">
-          <h3>Kondapur Villa</h3>
-          <p>KONDAPUR · LUTRON · 4,800 SQ FT</p>
-        </div>
-      </div>
-
-      <div class="proj-card" data-cat="complete theatre">
-        <div class="proj-bg pc8" style="background-image: url('images/projects/madhapur-smart.jpeg');"></div>
-        <div class="proj-overlay"></div>
-        <div class="proj-tag">FULL HOME</div>
-        <div class="proj-info">
-          <h3>Madhapur Residence</h3>
-          <p>MADHAPUR · 360° SMART + THEATRE</p>
-        </div>
-      </div>
-    </div>
-  </section>-->
-
-  <!-- ==========================================
-       TRUSTED BRANDS
-  =========================================== -->
   <section class="sec" style="background:var(--char);padding-top:80px;padding-bottom:80px">
     <div style="text-align:center;margin-bottom:44px" class="reveal">
       <p class="lbl lbl-c">TRUSTED BRANDS</p>
@@ -1793,14 +1423,11 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     </div>
   </section>
 
-  <!-- ==========================================
-       CLIENT STORIES
-  =========================================== -->
   <section class="sec" style="background:var(--black)">
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:56px" class="reveal">
         <p class="lbl lbl-c">CLIENT STORIES</p>
-        <h2 style="font-size:clamp(32px,4vw,52px)">Words From<br><em style="color:var(--or)">Those Who Live It.</em></h2>
+        <h2 style="font-size:clamp(32px,4vw,52px)">Words From<br><em style="color:var(--orange)">Those Who Live It.</em></h2>
       </div>
       <div class="testi-row reveal rd1">
         <div class="tc">
@@ -1825,9 +1452,6 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     </div>
   </section>
 
-  <!-- ==========================================
-       CALL TO ACTION
-  =========================================== -->
   <section id="home-cta" style="padding:120px 64px">
     <div class="cta-rings"><span></span><span></span><span></span></div>
     <div class="cta-glow2"></div>
@@ -1839,14 +1463,11 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     </div>
   </section>
 
-  <!-- ==========================================
-       FOOTER
-  =========================================== -->
   <footer>
     <div class="ft">
       <div class="fb">
         <h3 class="footer-logo-wrapper">
-          <img src="images/logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
+          <img src="images /logo/qube-logo.png" alt="Qube Logo" class="footer-logo-img">
           QUBE TECHNOLOGIES
         </h3>
         <p>Crafting intelligent living experiences in Hyderabad since 2016.</p>
@@ -1869,20 +1490,16 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
       </div>
     </div>
     <div class="fb-bottom">
-      <p>© 2024 Qube Technologies.</p>
+      <p>© 2026 Qube Technologies.</p>
       <p>Designed with <span class="acc">♥</span> in Hyderabad</p>
     </div>
   </footer>
-  
 </div>
 
-<!-- ════════════════════════════════════════════════════
-     PAGE: ABOUT
-════════════════════════════════════════════════════ -->
 <div class="page" id="page-about">
   <div id="ab-hero">
     <div class="grid-bg"></div>
-    <div class="glow-b" style="width:500px;height:350px;background:rgba(255,107,43,.10);top:20%;left:20%;animation:bFloat 9s ease-in-out infinite"></div>
+    <div class="glow-b" style="width:500px;height:350px;background:var(--orange-dim);top:20%;left:20%;animation:bFloat 9s ease-in-out infinite"></div>
     <div class="ab-hero-content">
       <p class="ol">OUR STORY</p>
       <h1>We Craft<br><em>Intelligent</em><br>Living.</h1>
@@ -1912,7 +1529,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:70px" class="reveal">
         <p class="lbl lbl-c">OUR JOURNEY</p>
-        <h2 style="font-size:clamp(32px,4vw,52px)">Eight Years of<br><em style="color:var(--or)">Crafting Dreams.</em></h2>
+        <h2 style="font-size:clamp(32px,4vw,52px)">Eight Years of<br><em style="color:var(--orange)">Crafting Dreams.</em></h2>
       </div>
       <div class="timeline reveal rd1">
         <div class="tl-item">
@@ -1932,7 +1549,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
           <div class="tl-body"><h3>50 Projects Milestone</h3><p>Crossed 50 completed projects. Refined our end-to-end methodology: design, installation, and lifetime support under one roof.</p></div>
         </div>
         <div class="tl-item">
-          <div class="tl-yr">2024</div>
+          <div class="tl-yr">2026</div>
           <div class="tl-body"><h3>100+ Homes & Beyond</h3><p>Over a hundred extraordinary living spaces across Hyderabad. The journey continues — each project more ambitious than the last.</p></div>
         </div>
       </div>
@@ -1945,7 +1562,7 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
     <div class="sec-narrow">
       <div style="text-align:center;margin-bottom:56px" class="reveal">
         <p class="lbl lbl-c">WHAT WE BELIEVE</p>
-        <h2 style="font-size:clamp(32px,4vw,52px)">Principles That<br><em style="color:var(--or)">Guide Every Project.</em></h2>
+        <h2 style="font-size:clamp(32px,4vw,52px)">Principles That<br><em style="color:var(--orange)">Guide Every Project.</em></h2>
       </div>
       <div class="values-grid reveal rd1">
         <div class="val-card"><span class="val-icon">◉</span><h3>Obsessive Craft</h3><p>We agonise over details others don't see. The finish matters as much as the function.</p></div>
@@ -1981,20 +1598,17 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
         <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('projects');return false">Projects</a></li><li><a href="#" onclick="showPage('contact');return false">Contact</a></li></ul></div>
       </div>
     </div>
-    <div class="fb-bottom"><p>© 2024 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
+    <div class="fb-bottom"><p>© 2026 Qube Technologies.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
   </footer>
 </div>
 
-<!-- ════════════════════════════════════════════════════
-     PAGE: CONTACT
-════════════════════════════════════════════════════ -->
 <div class="page" id="page-contact">
   <div id="ct-hero">
     <div class="grid-bg"></div>
-    <div class="glow-b" style="width:400px;height:300px;background:rgba(255,107,43,.09);top:10%;right:10%;animation:bFloat 9s ease-in-out infinite"></div>
+    <div class="glow-b" style="width:400px;height:300px;background:var(--orange-dim);top:10%;right:10%;animation:bFloat 9s ease-in-out infinite"></div>
     <div class="ct-hero-content">
       <p class="ol">GET IN TOUCH</p>
-      <h1>Let's Build<br><em>Something</em><br><em style="color:var(--or)">Extraordinary.</em></h1>
+      <h1>Let's Build<br><em>Something</em><br><em style="color:var(--orange)">Extraordinary.</em></h1>
     </div>
   </div>
 
@@ -2060,9 +1674,9 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
       <h2 style="font-size:clamp(28px,3.5vw,44px);margin-bottom:16px">Follow Our Journey</h2>
       <p style="font-size:14px;color:var(--ts);font-weight:300;margin-bottom:36px">Behind the scenes, projects in progress, and homes transformed.</p>
       <div style="display:flex;gap:14px;justify-content:center">
-        <a href="#" style="border:1px solid rgba(255,107,43,.3);color:var(--or);padding:12px 26px;font-size:12px;letter-spacing:.12em;font-weight:300;transition:all .3s" onmouseover="this.style.background='rgba(255,107,43,.1)'" onmouseout="this.style.background='transparent'">INSTAGRAM</a>
-        <a href="#" style="border:1px solid rgba(255,107,43,.3);color:var(--or);padding:12px 26px;font-size:12px;letter-spacing:.12em;font-weight:300;transition:all .3s" onmouseover="this.style.background='rgba(255,107,43,.1)'" onmouseout="this.style.background='transparent'">YOUTUBE</a>
-        <a href="#" style="border:1px solid rgba(255,107,43,.3);color:var(--or);padding:12px 26px;font-size:12px;letter-spacing:.12em;font-weight:300;transition:all .3s" onmouseover="this.style.background='rgba(255,107,43,.1)'" onmouseout="this.style.background='transparent'">LINKEDIN</a>
+        <a href="#" style="border:1px solid var(--orange-dim);color:var(--orange);padding:12px 26px;font-size:12px;letter-spacing:.12em;font-weight:300;transition:all .3s" onmouseover="this.style.background='var(--orange-dim)'" onmouseout="this.style.background='transparent'">INSTAGRAM</a>
+        <a href="#" style="border:1px solid var(--orange-dim);color:var(--orange);padding:12px 26px;font-size:12px;letter-spacing:.12em;font-weight:300;transition:all .3s" onmouseover="this.style.background='var(--orange-dim)'" onmouseout="this.style.background='transparent'">YOUTUBE</a>
+        <a href="#" style="border:1px solid var(--orange-dim);color:var(--orange);padding:12px 26px;font-size:12px;letter-spacing:.12em;font-weight:300;transition:all .3s" onmouseover="this.style.background='var(--orange-dim)'" onmouseout="this.style.background='transparent'">LINKEDIN</a>
       </div>
     </div>
   </section>
@@ -2078,18 +1692,9 @@ button,a,.btn-g,.nav-cta,.form-submit{transition:all .4s cubic-bezier(.25,.46,.4
         <div class="fcol"><h4>COMPANY</h4><ul><li><a href="#" onclick="showPage('about');return false">Our Story</a></li><li><a href="#" onclick="showPage('projects');return false">Projects</a></li></ul></div>
       </div>
     </div>
-    <div class="fb-bottom"><p>© 2024 Qube Technologies. All rights reserved.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
+    <div class="fb-bottom"><p>© 2026 Qube Technologies. All rights reserved.</p><p>Designed with <span class="acc">♥</span> in Hyderabad</p></div>
   </footer>
 </div>
-
-<!-- ════════ GLOBAL JS ════════ -->
-<style>
-@keyframes bFloat {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(18px,-13px) scale(1.04); }
-  66% { transform: translate(-9px,9px) scale(0.97); }
-}
-</style>
 
 <script>
 // ── Cursor Logic
@@ -2098,26 +1703,28 @@ const ring = document.getElementById('cur-ring');
 let mx = 0, my = 0, cx = 0, cy = 0, rx = 0, ry = 0, targetScale = 1, currentScale = 1;
 
 document.addEventListener('mousemove', e => {
+  if (window.innerWidth <= 992) return; // Disable JS cursor compute on mobile
   mx = e.clientX; 
   my = e.clientY;
 });
 
 (function loop() {
-  cx += (mx - cx) * 0.2; 
-  cy += (my - cy) * 0.2;
-  rx += (mx - rx) * 0.11; 
-  ry += (my - ry) * 0.11;
-  currentScale += (targetScale - currentScale) * 0.15;
-  
-  if (cur && ring) {
-    cur.style.transform = `translate(${cx - 5}px, ${cy - 5}px) scale(${currentScale})`;
-    ring.style.transform = `translate(${rx - 19}px, ${ry - 19}px)`;
+  if (window.innerWidth > 992) {
+    cx += (mx - cx) * 0.2; 
+    cy += (my - cy) * 0.2;
+    rx += (mx - rx) * 0.11; 
+    ry += (my - ry) * 0.11;
+    currentScale += (targetScale - currentScale) * 0.15;
+    
+    if (cur && ring) {
+      cur.style.transform = `translate(${cx - 5}px, ${cy - 5}px) scale(${currentScale})`;
+      ring.style.transform = `translate(${rx - 19}px, ${ry - 19}px)`;
+    }
   }
   requestAnimationFrame(loop);
 })();
 
-// Add hover effect for interactive elements (including the new .exp-item accordion cards)
-const interactiveElements = 'button, a, .ctrl-card, .pillar, .proj-card, .tc, .fp-room, .val-card, .ct-method, .exp-card, .exp-item, .pkg, .audio-card, .ps';
+const interactiveElements = 'button, a, .ctrl-card, .pillar, .proj-card, .tc, .fp-room, .val-card, .ct-method, .exp-card, .exp-item, .pkg, .audio-card, .ps, .split-pane';
 document.querySelectorAll(interactiveElements).forEach(el => {
   el.addEventListener('mouseenter', () => { targetScale = 2.2; ring.style.opacity = '0.4'; });
   el.addEventListener('mouseleave', () => { targetScale = 1; ring.style.opacity = '1'; });
@@ -2128,6 +1735,25 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
 });
+
+// ── Mobile Menu Logic
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  // Close menu when clicking a link
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+}
 
 // ── Page Navigation System
 function showPage(id) {
@@ -2142,7 +1768,6 @@ function showPage(id) {
   const nl = document.getElementById('nl-' + id);
   if (nl) nl.classList.add('active');
   
-  // Re-trigger reveal animations for the new page
   setTimeout(() => {
     document.querySelectorAll('#page-' + id + ' .reveal').forEach(el => {
       const r = new IntersectionObserver(entries => {
@@ -2172,18 +1797,24 @@ function initReveals() {
 }
 initReveals();
 
-// ── Hero Parallax (Home Page)
-window.addEventListener('scroll', () => {
-  const homePage = document.getElementById('page-home');
-  if (!homePage || !homePage.classList.contains('active')) return;
-  
-  const y = window.scrollY;
-  const hc = document.querySelector('#page-home .hero-content');
-  if (hc && y < window.innerHeight) {
-    hc.style.transform = `translateY(${y * 0.22}px)`;
-    hc.style.opacity = Math.max(0, 1 - y / (window.innerHeight * 0.65));
+// ── Reactive Parallax Engine for Home Hero
+document.addEventListener('mousemove', (e) => {
+  const homeHero = document.getElementById('home-hero-v2');
+  // Disable parallax compute on mobile bounds
+  if (window.innerWidth <= 992) return;
+  if (homeHero && homeHero.getBoundingClientRect().bottom > 0) {
+    const x = e.clientX - window.innerWidth / 2;
+    const y = e.clientY - window.innerHeight / 2;
+    const layers = homeHero.querySelectorAll('.parallax-layer');
+    layers.forEach(layer => {
+      const speed = layer.getAttribute('data-speed');
+      const xOffset = x * speed;
+      const yOffset = y * speed;
+      layer.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+    });
   }
 });
+
 // ── Reactive Smart Home Floor Plan Nodes
 document.querySelectorAll('.sh-node').forEach(node => {
   node.addEventListener('click', () => {
@@ -2192,7 +1823,6 @@ document.querySelectorAll('.sh-node').forEach(node => {
     if (!wasActive) {
       node.classList.add('node-active');
       const room = node.getAttribute('data-room');
-      // Optional: surface feedback via the floating label area
       let label = document.querySelector('.sh-node-label.dynamic');
       if (!label) {
         label = document.createElement('div');
@@ -2201,7 +1831,7 @@ document.querySelectorAll('.sh-node').forEach(node => {
         label.style.right = '11%';
         document.getElementById('sh-hero').appendChild(label);
       }
-      label.textContent = room + ' · DEVICE SELECTED';
+      label.textContent = room.toUpperCase() + ' · DEVICE SELECTED';
       label.style.display = 'block';
     } else {
       const label = document.querySelector('.sh-node-label.dynamic');
@@ -2210,37 +1840,87 @@ document.querySelectorAll('.sh-node').forEach(node => {
   });
 });
 
-// ── Project Filtering System
 function setFilter(btn, cat) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  
   document.querySelectorAll('.proj-card').forEach(card => {
     const cats = card.dataset.cat || '';
     card.style.display = (cat === 'all' || cats.includes(cat)) ? '' : 'none';
   });
 }
 
-// ── Interactive Experience Accordion (Home Theatre Page)
 function toggleExpCard(element) {
-  // Automatically close any currently open cards
   document.querySelectorAll('.exp-item').forEach(el => { 
     if(el !== element) el.classList.remove('active'); 
   });
-  
-  // Toggle the clicked card open/closed
   element.classList.toggle('active');
 }
 
-// ── Form Submission Mock
-function handleSubmit() {
-  const btn = document.querySelector('.form-submit');
-  if (btn) {
-    btn.textContent = '✓ Enquiry Sent — We\'ll Be In Touch Soon';
-    btn.style.background = '#1a4a1a';
-    btn.style.color = 'rgba(255,255,255,0.8)';
-    btn.disabled = true;
+const roomData={
+  living:{name:'LIVING ROOM',hl:'hl-living',features:['Scene-based Lighting','Automated Curtains','Hi-Fi Audio Control'],temp:'22°',dev:'8',sc:'5'},
+  master:{name:'MASTER SUITE',hl:'hl-master',features:['Sunrise Wake Protocol','Adaptive Climate','Privacy Mode'],temp:'20°',dev:'6',sc:'4'},
+  kitchen:{name:'KITCHEN',hl:'hl-kitchen',features:['Voice Control','Task Lighting','Auto Exhaust Fan'],temp:'26°',dev:'5',sc:'3'},
+  office:{name:'HOME OFFICE',hl:'hl-office',features:['Focus Mode','Conference Lighting','DND Protocol'],temp:'23°',dev:'7',sc:'4'},
+  bath:{name:'BATHROOM',hl:'hl-bath',features:['Auto Lighting','Ventilation Control','Mood Scenes'],temp:'28°',dev:'4',sc:'2'}
+};
+let activeRoom=null;
+
+function activateRoom(roomId){
+  if(activeRoom===roomId){deactivateRoom();return}
+  if(activeRoom){
+    document.getElementById('hl-'+activeRoom).setAttribute('opacity','0');
+    const prevNode=document.getElementById('node-'+activeRoom);
+    if(prevNode)prevNode.classList.remove('node-active');
   }
+  activeRoom=roomId;
+  const d=roomData[roomId];
+  document.getElementById(d.hl).setAttribute('opacity','1');
+  const node=document.getElementById('node-'+roomId);
+  if(node)node.classList.add('node-active');
+  document.getElementById('sh-rc-name').textContent=d.name;
+  document.getElementById('sh-rc-features').innerHTML=d.features.map(f=>`<div class="sh-rc-feat">${f}</div>`).join('');
+  document.getElementById('sw-temp').textContent=d.temp;
+  document.getElementById('sw-dev').textContent=d.dev;
+  document.getElementById('sw-sc').textContent=d.sc;
+  document.getElementById('sh-room-card').classList.add('visible');
+}
+
+function deactivateRoom(){
+  if(activeRoom){
+    document.getElementById('hl-'+activeRoom).setAttribute('opacity','0');
+    const node=document.getElementById('node-'+activeRoom);
+    if(node)node.classList.remove('node-active');
+    activeRoom=null;
+  }
+  document.getElementById('sh-room-card').classList.remove('visible');
+  document.getElementById('sw-temp').textContent='24°';
+  document.getElementById('sw-dev').textContent='12';
+  document.getElementById('sw-sc').textContent='3';
+}
+
+['living','master','kitchen','office','bath'].forEach(id=>{
+  const roomRect=document.getElementById('room-'+id);
+  const node=document.getElementById('node-'+id);
+  if(roomRect)roomRect.addEventListener('click',()=>activateRoom(id));
+  if(node)node.addEventListener('click',e=>{e.stopPropagation();activateRoom(id)});
+});
+
+document.getElementById('sh-fp-svg').addEventListener('click',function(e){
+  if(!e.target.closest('.sh-node')&&e.target.id!=='room-living'&&e.target.id!=='room-master'&&e.target.id!=='room-kitchen'&&e.target.id!=='room-office'&&e.target.id!=='room-bath'){
+    deactivateRoom();
+  }
+});
+
+// ── Theatre accordion
+function toggleExpCard(el){
+  document.querySelectorAll('.exp-item').forEach(e=>{if(e!==el)e.classList.remove('active')});
+  el.classList.toggle('active');
+}
+
+// ── Form
+function handleSubmit(){
+  const btn=document.querySelector('.form-submit');
+  if(btn){btn.textContent='✓ Enquiry Sent — We\'ll Be In Touch Soon';btn.style.background='#1a4a1a';btn.style.color='rgba(255,255,255,.8)';btn.disabled=true}
 }
 </script>
 </body>
